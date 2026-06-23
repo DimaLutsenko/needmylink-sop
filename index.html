@@ -3,47 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>NeedMyLink — Портал менеджера</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<title>NeedMyLink — Портал CSM</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{font-size:14px;-webkit-font-smoothing:antialiased}
-body{font-family:'Inter',sans-serif;background:#f4f5f7;color:#111827;display:flex;min-height:100vh;overflow-x:hidden}
+body{font-family:'Inter',sans-serif;background:#f4f5f7;color:#111827;display:flex;min-height:100vh}
 
-/* ─── SIDEBAR ─────────────────────────────────────── */
 .sb{width:232px;min-height:100vh;background:#0f1623;display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:200;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.1) transparent}
 .sb-logo{padding:18px 16px 14px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:9px}
 .sb-logo-icon{width:30px;height:30px;background:#dc2626;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .sb-logo-icon svg{width:17px;height:17px;fill:#fff}
-.sb-logo-text{font-size:12.5px;font-weight:600;color:#fff;letter-spacing:.01em;line-height:1.2}
+.sb-logo-text{font-size:12.5px;font-weight:600;color:#fff;line-height:1.2}
 .sb-logo-sub{font-size:10px;color:rgba(255,255,255,.35);margin-top:1px}
-
 .sb-user{padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.06)}
 .sb-user-name{font-size:12px;font-weight:500;color:#e5e7eb}
 .sb-user-role{font-size:10.5px;color:rgba(255,255,255,.38);margin-top:1px}
-
 .sb-nav{flex:1;padding:6px 0 12px}
-.sb-group{margin-bottom:1px}
 .sb-group-lbl{padding:12px 14px 4px;font-size:9.5px;font-weight:600;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:.09em}
-.sb-link{display:flex;align-items:center;gap:8px;padding:7px 14px;font-size:12px;color:rgba(255,255,255,.55);cursor:pointer;transition:all .12s;text-decoration:none;position:relative;border-left:2px solid transparent;user-select:none}
+.sb-link{display:flex;align-items:center;gap:8px;padding:7px 14px;font-size:12px;color:rgba(255,255,255,.55);cursor:pointer;transition:all .12s;position:relative;border-left:2px solid transparent;user-select:none}
 .sb-link:hover{background:rgba(255,255,255,.05);color:rgba(255,255,255,.85)}
 .sb-link.active{background:rgba(255,255,255,.07);color:#fff;border-left-color:#dc2626}
 .sb-link svg{width:14px;height:14px;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:1.7;opacity:.8}
 .sb-link.active svg{opacity:1}
 .sb-sub .sb-link{padding:5px 14px 5px 32px;font-size:11.5px;border-left:none}
 .sb-sub .sb-link.active{border-left:none;background:rgba(220,38,38,.12);color:#fca5a5}
-.sb-cnt{margin-left:auto;background:rgba(220,38,38,.8);color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:99px;line-height:1.4}
-
 .sb-foot{padding:12px 14px;border-top:1px solid rgba(255,255,255,.06)}
 .sb-bonus{width:100%;padding:8px 11px;background:rgba(220,38,38,.12);border:1px solid rgba(220,38,38,.25);border-radius:8px;color:#fca5a5;font-size:11.5px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:all .15s}
 .sb-bonus:hover{background:rgba(220,38,38,.2)}
 
-/* ─── MAIN ─────────────────────────────────────────── */
 .main{margin-left:232px;flex:1;display:flex;flex-direction:column;min-height:100vh}
 .topbar{background:#fff;border-bottom:1px solid #e5e7eb;padding:0 28px;height:50px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .breadcrumb{display:flex;align-items:center;gap:5px;font-size:12px;color:#9ca3af}
-.breadcrumb span.cur{color:#111827;font-weight:500}
-.breadcrumb sep{margin:0 1px;color:#d1d5db}
+.breadcrumb .cur{color:#111827;font-weight:500}
 .tb-right{display:flex;align-items:center;gap:10px}
 .tb-search{position:relative}
 .tb-search input{border:1px solid #e5e7eb;border-radius:7px;padding:5px 11px 5px 30px;font-size:12px;width:200px;outline:none;background:#f9fafb;color:#374151;font-family:inherit;transition:all .15s}
@@ -51,7 +43,6 @@ body{font-family:'Inter',sans-serif;background:#f4f5f7;color:#111827;display:fle
 .tb-search svg{position:absolute;left:9px;top:50%;transform:translateY(-50%);width:13px;height:13px;stroke:#9ca3af;fill:none;stroke-width:2}
 .tb-bal{font-size:11.5px;color:#6b7280;background:#f3f4f6;padding:3px 10px;border-radius:99px}
 
-/* ─── LAYOUT ────────────────────────────────────────── */
 .body-wrap{display:flex;flex:1}
 .content{flex:1;padding:26px 30px;min-width:0}
 .rnav{width:188px;flex-shrink:0;padding:26px 16px 26px 4px}
@@ -62,32 +53,21 @@ body{font-family:'Inter',sans-serif;background:#f4f5f7;color:#111827;display:fle
 .rnav-list a:hover{color:#111827}
 .rnav-list a.on{color:#dc2626;border-left-color:#dc2626;background:#fef2f2;font-weight:500}
 
-/* ─── TYPOGRAPHY ─────────────────────────────────────── */
 .pg-title{font-size:22px;font-weight:600;color:#111827;margin-bottom:5px}
 .pg-desc{font-size:13px;color:#6b7280;line-height:1.65;margin-bottom:22px;max-width:580px}
 .sec{margin-bottom:32px;scroll-margin-top:76px}
 .sec-lbl{font-size:9.5px;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:.09em;margin-bottom:10px}
-.sec-title{font-size:15px;font-weight:600;color:#111827;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #f0f1f3}
 hr.div{border:none;border-top:1px solid #f0f1f3;margin:26px 0}
 
-/* ─── SITUATION CARDS (home) ────────────────────────── */
 .sit-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:28px}
 .sit-card{background:#fff;border:1px solid #e5e7eb;border-radius:11px;padding:18px 16px;cursor:pointer;transition:all .15s;position:relative;overflow:hidden}
 .sit-card:hover{border-color:#9ca3af;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.06)}
-.sit-card-accent{position:absolute;top:0;left:0;right:0;height:3px;border-radius:11px 11px 0 0}
+.sit-card-accent{position:absolute;top:0;left:0;right:0;height:3px}
 .sit-card-icon{font-size:22px;margin-bottom:10px}
 .sit-card-title{font-size:13px;font-weight:600;color:#111827;margin-bottom:5px}
 .sit-card-desc{font-size:12px;color:#6b7280;line-height:1.55}
 .sit-card-cnt{position:absolute;top:14px;right:14px;font-size:10px;font-weight:600;color:#fff;background:#dc2626;padding:1px 7px;border-radius:99px}
 
-/* ─── SCENARIO TABS ─────────────────────────────────── */
-.scen-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
-.scen-tab{padding:5px 13px;font-size:12px;font-weight:500;border:1px solid #e5e7eb;border-radius:99px;background:#fff;color:#6b7280;cursor:pointer;transition:all .12s;white-space:nowrap}
-.scen-tab:hover{border-color:#9ca3af;color:#374151}
-.scen-tab.on{background:#0f1623;color:#fff;border-color:#0f1623}
-.scen-panel{display:none}.scen-panel.on{display:block}
-
-/* ─── CHECKLIST ─────────────────────────────────────── */
 .chklist{display:flex;flex-direction:column;gap:4px}
 .chi{display:flex;align-items:flex-start;gap:9px;padding:8px 11px;background:#fff;border:1px solid #e5e7eb;border-radius:8px;cursor:pointer;transition:all .12s;user-select:none}
 .chi:hover{border-color:#d1d5db;background:#fafafa}
@@ -99,18 +79,16 @@ hr.div{border:none;border-top:1px solid #f0f1f3;margin:26px 0}
 .chi.done .chi-check{display:block}
 .chi-txt{font-size:12.5px;color:#374151;line-height:1.5}
 .chi-tag{margin-left:auto;font-size:10px;padding:1px 7px;border-radius:99px;flex-shrink:0;font-weight:500;white-space:nowrap}
-.tag-p{background:#fef9c3;color:#92400e}
+.tag-j{background:#ede9fe;color:#5b21b6}
 .tag-c{background:#dbeafe;color:#1e40af}
-.tag-e{background:#ede9fe;color:#5b21b6}
+.tag-p{background:#dcfce7;color:#166534}
 
-/* ─── PROGRESS ──────────────────────────────────────── */
 .prog-wrap{margin-bottom:18px}
 .prog-head{display:flex;justify-content:space-between;margin-bottom:5px;font-size:11.5px}
 .prog-lbl{color:#6b7280}.prog-num{font-weight:600;color:#111827}
 .prog-track{height:4px;background:#f0f1f3;border-radius:99px;overflow:hidden}
 .prog-fill{height:100%;background:#10b981;border-radius:99px;transition:width .3s}
 
-/* ─── RULE CARDS ────────────────────────────────────── */
 .rules{display:flex;flex-direction:column;gap:7px}
 .rc{border-radius:8px;padding:11px 13px;border-left:3px solid transparent}
 .rc.warn{background:#fffbeb;border-left-color:#f59e0b}
@@ -120,16 +98,16 @@ hr.div{border:none;border-top:1px solid #f0f1f3;margin:26px 0}
 .rc-title{font-size:12px;font-weight:600;color:#111827;margin-bottom:3px}
 .rc-body{font-size:12px;color:#4b5563;line-height:1.7;white-space:pre-line}
 
-/* ─── TEMPLATES ─────────────────────────────────────── */
 .tpl-card{background:#fff;border:1px solid #e5e7eb;border-radius:9px;overflow:hidden;margin-bottom:6px}
 .tpl-head{padding:9px 13px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:background .1s}
 .tpl-head:hover{background:#fafafa}
 .tpl-head-left{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:#374151}
-.tpl-ch{display:flex;align-items:center;gap:5px}
+.tpl-ch{display:flex;gap:4px}
 .tpl-ch-icon{font-size:10px;padding:1px 7px;border-radius:99px;font-weight:600}
-.ch-pl{background:#dbeafe;color:#1e40af}
+.ch-pl{background:#f3f4f6;color:#374151}
 .ch-mg{background:#ede9fe;color:#5b21b6}
 .ch-em{background:#dcfce7;color:#166534}
+.ch-li{background:#dbeafe;color:#1e40af}
 .tpl-toggle{font-size:16px;color:#9ca3af;line-height:1;transition:transform .18s}
 .tpl-toggle.open{transform:rotate(45deg)}
 .tpl-body{display:none;padding:11px 13px;border-top:1px solid #f0f1f3;background:#fafafa}
@@ -141,7 +119,6 @@ hr.div{border:none;border-top:1px solid #f0f1f3;margin:26px 0}
 .tpl-btn:hover{border-color:#d1d5db;color:#374151}
 .tpl-btn svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2}
 
-/* ─── MATRIX TABLE ──────────────────────────────────── */
 .mtx{width:100%;border-collapse:collapse;font-size:12px}
 .mtx th{text-align:left;padding:8px 11px;background:#f9fafb;color:#6b7280;font-weight:500;border:1px solid #e5e7eb}
 .mtx th:first-child{border-radius:8px 0 0 0}
@@ -157,20 +134,17 @@ hr.div{border:none;border-top:1px solid #f0f1f3;margin:26px 0}
 .bdg-g{background:#dcfce7;color:#166534}
 .bdg-p{background:#ede9fe;color:#5b21b6}
 
-/* ─── STOP ITEMS ────────────────────────────────────── */
 .stop-item{display:flex;align-items:flex-start;gap:9px;padding:9px 12px;background:#fff;border:1px solid #fee2e2;border-radius:8px;margin-bottom:5px}
 .stop-x{width:17px;height:17px;background:#fee2e2;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
 .stop-x svg{width:9px;height:9px;stroke:#dc2626;fill:none;stroke-width:2.5}
 .stop-txt{font-size:12px;color:#374151;line-height:1.5}
 .stop-txt b{font-weight:600;color:#111827}
 
-/* ─── METRIC CARDS ──────────────────────────────────── */
 .mrow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}
 .mc{background:#fff;border:1px solid #e5e7eb;border-radius:9px;padding:13px 14px}
 .mc-val{font-size:19px;font-weight:600;color:#111827}
 .mc-lbl{font-size:11px;color:#9ca3af;margin-top:2px}
 
-/* ─── FLOW STEPS ─────────────────────────────────────── */
 .flow{display:flex;flex-direction:column;gap:0}
 .flow-step{display:flex;gap:13px;position:relative}
 .flow-step:not(:last-child)::before{content:'';position:absolute;left:15px;top:32px;bottom:0;width:1px;background:#e5e7eb}
@@ -179,135 +153,112 @@ hr.div{border:none;border-top:1px solid #f0f1f3;margin:26px 0}
 .flow-title{font-size:13px;font-weight:600;color:#111827;margin-bottom:3px}
 .flow-desc{font-size:12px;color:#6b7280;line-height:1.6}
 
-/* ─── CHANNEL BADGES ────────────────────────────────── */
-.chn{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:500;padding:2px 8px;border-radius:99px;margin:0 3px 4px 0}
-.chn-pl{background:#f3f4f6;color:#374151}
-.chn-mg{background:#ede9fe;color:#5b21b6}
-.chn-em{background:#dcfce7;color:#166534}
+.jira-box{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:16px;margin-bottom:10px}
+.jira-box-title{font-size:13px;font-weight:600;color:#111827;margin-bottom:10px;display:flex;align-items:center;gap:7px}
+.jira-status{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:3px 9px;border-radius:99px;margin:0 3px 4px 0}
+.s-green{background:#dcfce7;color:#166534}
+.s-yellow{background:#fef9c3;color:#92400e}
+.s-blue{background:#dbeafe;color:#1e40af}
+.s-red{background:#fee2e2;color:#b91c1c}
 
-/* ─── ALERT BOX ─────────────────────────────────────── */
+.tpl-field{background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:12px 14px;font-size:12px;color:#374151;line-height:1.8;white-space:pre-wrap;font-family:'Inter',sans-serif;margin-bottom:8px}
+.tpl-field b{font-weight:600;color:#111827}
+
 .alert{display:flex;gap:10px;padding:11px 13px;border-radius:8px;margin-bottom:14px}
-.alert.red{background:#fef2f2;border:1px solid #fecaca}
 .alert.blue{background:#eff6ff;border:1px solid #bfdbfe}
 .alert.green{background:#f0fdf4;border:1px solid #bbf7d0}
+.alert.red{background:#fef2f2;border:1px solid #fecaca}
 .alert-icon{font-size:15px;flex-shrink:0;line-height:1.4}
 .alert-txt{font-size:12px;color:#374151;line-height:1.6}
 .alert-txt b{font-weight:600;color:#111827}
 
-/* ─── ANIM ───────────────────────────────────────────── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
 .fadein{animation:fadeUp .18s ease both}
-
 @media(max-width:900px){.sit-grid{grid-template-columns:1fr 1fr}.rnav{display:none}}
-@media(max-width:620px){.sit-grid{grid-template-columns:1fr}.mrow{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
 
-<!-- ═══ SIDEBAR ════════════════════════════════════════════ -->
 <aside class="sb">
   <div class="sb-logo">
-    <div class="sb-logo-icon">
-      <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg>
-    </div>
-    <div>
-      <div class="sb-logo-text">NEEDMYLINK</div>
-      <div class="sb-logo-sub">Портал менеджера</div>
-    </div>
+    <div class="sb-logo-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg></div>
+    <div><div class="sb-logo-text">NEEDMYLINK</div><div class="sb-logo-sub">Портал CSM</div></div>
   </div>
-
   <div class="sb-user">
-    <div class="sb-user-name">Менеджер аккаунтов</div>
-    <div class="sb-user-role">Account Manager · NeedMyLink</div>
+    <div class="sb-user-name">Customer Success Manager</div>
+    <div class="sb-user-role">CSM · NeedMyLink</div>
   </div>
-
   <nav class="sb-nav">
-    <div class="sb-group">
-      <div class="sb-group-lbl">Главное</div>
-      <a class="sb-link active" onclick="go('home')">
-        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        Обзор
-      </a>
+    <div class="sb-group-lbl">Главное</div>
+    <a class="sb-link active" onclick="go('home')">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Обзор
+    </a>
+    <a class="sb-link" onclick="go('daily')">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Ежедневный ритм
+    </a>
+
+    <div class="sb-group-lbl">Ситуации</div>
+    <a class="sb-link" onclick="go('problems')">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      Проблемы с заказом
+    </a>
+    <div class="sb-sub" id="sub-problems" style="display:none">
+      <a class="sb-link" onclick="go('p-link-removed')">Ссылка удалена</a>
+      <a class="sb-link" onclick="go('p-not-indexed')">Не индексируется</a>
+      <a class="sb-link" onclick="go('p-quality')">Претензия к качеству</a>
+      <a class="sb-link" onclick="go('p-delay')">Задержка публикации</a>
+      <a class="sb-link" onclick="go('p-refund')">Запрос возврата</a>
+    </div>
+    <a class="sb-link" onclick="go('reactivation')">
+      <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+      Реактивация
+    </a>
+    <div class="sb-sub" id="sub-reactivation" style="display:none">
+      <a class="sb-link" onclick="go('r-process')">Процесс реактивации</a>
+      <a class="sb-link" onclick="go('r-channels')">Каналы и шаблоны</a>
     </div>
 
-    <div class="sb-group">
-      <div class="sb-group-lbl">Ситуации</div>
-
-      <a class="sb-link" onclick="go('problems')">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        Проблемы с заказом
-        <span class="sb-cnt" id="cnt-problems">7</span>
-      </a>
-      <div class="sb-sub" id="sub-problems" style="display:none">
-        <a class="sb-link" onclick="go('p-link-removed')">Ссылка удалена</a>
-        <a class="sb-link" onclick="go('p-not-indexed')">Не индексируется</a>
-        <a class="sb-link" onclick="go('p-quality')">Претензия к качеству</a>
-        <a class="sb-link" onclick="go('p-delay')">Задержка публикации</a>
-        <a class="sb-link" onclick="go('p-refund')">Запрос возврата</a>
-      </div>
-
-      <a class="sb-link" onclick="go('reactivation')">
-        <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
-        Реактивация клиентов
-        <span class="sb-cnt" id="cnt-react">3</span>
-      </a>
-      <div class="sb-sub" id="sub-reactivation" style="display:none">
-        <a class="sb-link" onclick="go('r-silent')">Замолчал (14–30 дней)</a>
-        <a class="sb-link" onclick="go('r-churned')">Ушёл к конкуренту</a>
-        <a class="sb-link" onclick="go('r-nobudget')">Нет бюджета</a>
-      </div>
-
-      <a class="sb-link" onclick="go('retention')">
-        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        Удержание и рост
-      </a>
-      <div class="sb-sub" id="sub-retention" style="display:none">
-        <a class="sb-link" onclick="go('ret-touch')">Касания и NPS</a>
-        <a class="sb-link" onclick="go('ret-upsell')">Upsell / кросс-сейл</a>
-        <a class="sb-link" onclick="go('ret-referral')">Реферальная программа</a>
-      </div>
+    <div class="sb-group-lbl">Инструменты</div>
+    <a class="sb-link" onclick="go('jira')">
+      <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
+      Работа с Jira
+    </a>
+    <div class="sb-sub" id="sub-jira" style="display:none">
+      <a class="sb-link" onclick="go('jira-chat')">[Portal] chat</a>
+      <a class="sb-link" onclick="go('jira-reviews')">[Portal] Reviews</a>
+      <a class="sb-link" onclick="go('jira-admin')">[ADMIN] space</a>
     </div>
-
-    <div class="sb-group">
-      <div class="sb-group-lbl">Инструменты</div>
-      <a class="sb-link" onclick="go('templates')">
-        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        Все шаблоны
-      </a>
-      <a class="sb-link" onclick="go('escalation')">
-        <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-        Матрица эскалации
-      </a>
-      <a class="sb-link" onclick="go('stoplist')">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
-        Стоп-листы
-      </a>
-    </div>
+    <a class="sb-link" onclick="go('escalation')">
+      <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+      Матрица эскалации
+    </a>
+    <a class="sb-link" onclick="go('stoplist')">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+      Стоп-листы
+    </a>
+    <a class="sb-link" onclick="go('templates')">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      Все шаблоны
+    </a>
   </nav>
-
   <div class="sb-foot">
-    <button class="sb-bonus">
-      <span>🎯 Trustpilot кешбэк</span>
-      <span style="font-size:10px;opacity:.7">+$25 →</span>
-    </button>
+    <button class="sb-bonus"><span>🎯 Trustpilot кешбэк</span><span style="font-size:10px;opacity:.7">+$25 →</span></button>
   </div>
 </aside>
 
-<!-- ═══ MAIN ════════════════════════════════════════════════ -->
 <div class="main">
   <div class="topbar">
-    <div class="breadcrumb" id="bc">
-      <span class="cur">Обзор</span>
-    </div>
+    <div class="breadcrumb" id="bc"><span class="cur">Обзор</span></div>
     <div class="tb-right">
       <div class="tb-search">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" placeholder="Найти ситуацию...">
+        <input type="text" placeholder="Найти в SOP...">
       </div>
-      <div class="tb-bal">CRM · Платформа</div>
+      <div class="tb-bal">CRM · Jira · Платформа</div>
     </div>
   </div>
-
   <div class="body-wrap">
     <div class="content" id="page"></div>
     <div class="rnav"><div class="rnav-sticky"><div class="rnav-title">На странице</div><ul class="rnav-list" id="rnav"></ul></div></div>
@@ -315,161 +266,145 @@ hr.div{border:none;border-top:1px solid #f0f1f3;margin:26px 0}
 </div>
 
 <script>
-// ══════════════════════════════════════════════════════
-// DATA
-// ══════════════════════════════════════════════════════
-const done = {};
+const done={};
 function isDone(id,i){return !!(done[id]&&done[id][i])}
 function toggleDone(id,i){if(!done[id])done[id]={};done[id][i]=!done[id][i];render()}
 function doneCount(id,total){if(!done[id])return 0;return Object.values(done[id]).filter(Boolean).length}
 
-// ── TEMPLATES helpers ──────────────────────────────────
 function tplCard(tpl,id,idx){
-  const chBadges = tpl.channels.map(c=>{
-    const map={platform:['ch-pl','Платформа'],messenger:['ch-mg','Мессенджер'],email:['ch-em','Email']};
-    const [cls,lbl]=map[c]||['ch-pl',c];
-    return `<span class="tpl-ch-icon ${cls}">${lbl}</span>`;
-  }).join('');
-  return `<div class="tpl-card">
+  const map={platform:['ch-pl','Платформа'],messenger:['ch-mg','Мессенджер'],email:['ch-em','Email'],linkedin:['ch-li','LinkedIn']};
+  const chBadges=(tpl.channels||[]).map(c=>{const[cls,lbl]=map[c]||['ch-pl',c];return`<span class="tpl-ch-icon ${cls}">${lbl}</span>`;}).join('');
+  return`<div class="tpl-card">
     <div class="tpl-head" onclick="tglTpl(this)">
-      <div class="tpl-head-left">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        ${tpl.label}
-      </div>
-      <div style="display:flex;align-items:center;gap:6px">
-        <div class="tpl-ch">${chBadges}</div>
-        <span class="tpl-toggle">+</span>
-      </div>
+      <div class="tpl-head-left"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>${tpl.label}</div>
+      <div style="display:flex;align-items:center;gap:6px"><div class="tpl-ch">${chBadges}</div><span class="tpl-toggle">+</span></div>
     </div>
     <div class="tpl-body">
       <div class="tpl-text">${tpl.body}</div>
-      <div class="tpl-actions">
-        <button class="tpl-btn" onclick="copyTpl(this,'${id}',${idx})">
-          <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-          Скопировать
-        </button>
-      </div>
+      <div class="tpl-actions"><button class="tpl-btn" onclick="copyTpl(this)"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Скопировать</button></div>
     </div>
   </div>`;
 }
 
-function checkList(id, items){
+function checkList(id,items){
+  const tagMap={j:'tag-j',c:'tag-c',p:'tag-p'};
+  const tagLbl={j:'Jira',c:'CRM',p:'Лично'};
   return items.map((it,i)=>{
-    const tagMap={p:'tag-p',c:'tag-c',e:'tag-e'};
-    const tagLbl={p:'Платформа',c:'CRM',e:'Email'};
-    const tagHtml = it.tag ? `<span class="chi-tag ${tagMap[it.tag]}">${tagLbl[it.tag]}</span>` : '';
-    return `<div class="chi ${isDone(id,i)?'done':''}" onclick="toggleDone('${id}',${i})">
+    const tagHtml=it.tag?`<span class="chi-tag ${tagMap[it.tag]}">${tagLbl[it.tag]}</span>`:'';
+    return`<div class="chi ${isDone(id,i)?'done':''}" onclick="toggleDone('${id}',${i})">
       <div class="chi-box"><svg class="chi-check" viewBox="0 0 12 10"><polyline points="1 5 4.5 8.5 11 1"/></svg></div>
-      <div class="chi-txt">${it.text}</div>
-      ${tagHtml}
+      <div class="chi-txt">${it.text}</div>${tagHtml}
     </div>`;
   }).join('');
 }
 
-function progBar(id, total){
-  const d = doneCount(id, total);
-  const pct = Math.round(d/total*100);
-  return `<div class="prog-wrap">
+function progBar(id,total){
+  const d=doneCount(id,total);
+  const pct=Math.round(d/total*100);
+  return`<div class="prog-wrap">
     <div class="prog-head"><span class="prog-lbl">Прогресс</span><span class="prog-num">${d}/${total}</span></div>
     <div class="prog-track"><div class="prog-fill" style="width:${pct}%"></div></div>
   </div>`;
 }
 
-// ══════════════════════════════════════════════════════
-// PAGES
-// ══════════════════════════════════════════════════════
-const PAGES = {
+const PAGES={
 
-// ── HOME ──────────────────────────────────────────────
 home:{
   bc:'Обзор',
-  rnav:['s-top','s-crm','s-kpi'],
-  rlbl:['Ситуации','Работа с CRM','KPI менеджера'],
-  render(){return `
-<h1 class="pg-title">Портал менеджера</h1>
-<p class="pg-desc">SOP для работы с существующими клиентами: решение проблем, реактивация молчащих, удержание и развитие активных.</p>
-
-<div class="sec" id="s-top">
-  <div class="sec-lbl">Три основные ситуации</div>
+  rnav:['s-sits','s-kpi'],rlbl:['Ситуации','KPI'],
+  render(){return`
+<h1 class="pg-title">Портал CSM — NeedMyLink</h1>
+<p class="pg-desc">База знаний для Customer Success Manager. Три зоны работы: решение проблем клиентов, реактивация по заданию PM, работа с Jira.</p>
+<div class="sec" id="s-sits">
+  <div class="sec-lbl">Три зоны работы</div>
   <div class="sit-grid">
     <div class="sit-card" onclick="go('problems')">
       <div class="sit-card-accent" style="background:linear-gradient(90deg,#ef4444,#f97316)"></div>
       <div class="sit-card-icon">🔥</div>
       <div class="sit-card-title">Проблемы с заказом</div>
-      <div class="sit-card-desc">Ссылка удалена, не индексируется, претензии к качеству, задержки, запрос возврата</div>
+      <div class="sit-card-desc">Клиент пишет в чат платформы — CSM отвечает в CRM и решает или эскалирует</div>
       <span class="sit-card-cnt">5 сценариев</span>
     </div>
     <div class="sit-card" onclick="go('reactivation')">
       <div class="sit-card-accent" style="background:linear-gradient(90deg,#6366f1,#a855f7)"></div>
       <div class="sit-card-icon">🔄</div>
       <div class="sit-card-title">Реактивация</div>
-      <div class="sit-card-desc">Клиент замолчал, ушёл к конкуренту или ссылается на нехватку бюджета</div>
-      <span class="sit-card-cnt">3 сценария</span>
+      <div class="sit-card-desc">PM формирует список клиентов — CSM пишет по email / мессенджеру / LinkedIn</div>
+      <span class="sit-card-cnt">по заданию PM</span>
     </div>
-    <div class="sit-card" onclick="go('retention')">
-      <div class="sit-card-accent" style="background:linear-gradient(90deg,#10b981,#06b6d4)"></div>
-      <div class="sit-card-icon">💚</div>
-      <div class="sit-card-title">Удержание и рост</div>
-      <div class="sit-card-desc">Проактивные касания, NPS, upsell, кросс-сейл и реферальная программа</div>
-      <span class="sit-card-cnt">3 сценария</span>
+    <div class="sit-card" onclick="go('jira')">
+      <div class="sit-card-accent" style="background:linear-gradient(90deg,#0ea5e9,#6366f1)"></div>
+      <div class="sit-card-icon">📋</div>
+      <div class="sit-card-title">Работа с Jira</div>
+      <div class="sit-card-desc">Три доски: [Portal] chat, [Portal] Reviews, [ADMIN] space — фиксация всех обращений</div>
+      <span class="sit-card-cnt">3 доски</span>
     </div>
   </div>
 </div>
-
-<div class="sec" id="s-crm">
-  <div class="sec-lbl">Работа с CRM — ежедневный ритм</div>
-  <div class="flow">
-    ${[
-      ['#dbeafe','#1e40af','Утро: открыть очередь',
-        'CRM → раздел «Мои клиенты». Отсортировать по триггерам: «нет ответа 14+ дней», «открытый тикет», «низкий NPS». Это приоритет дня.'],
-      ['#fef9c3','#92400e','Обработать тикеты',
-        'Каждый открытый тикет — ответ в течение рабочего дня. Статус «В работе» → «Решено» только после подтверждения клиента.'],
-      ['#ede9fe','#5b21b6','Касания по активным',
-        'Клиенты без контакта 10–14 дней получают проактивное сообщение. Повод: новые сайты, кейс из ниши, апдейт по индексации.'],
-      ['#dcfce7','#166534','Вечер: обновить CRM',
-        'Зафиксировать итог каждого контакта. Выставить дату следующего касания. Без записи в CRM — контакта не было.'],
-    ].map(([bg,tc,t,d],i)=>`
-    <div class="flow-step">
-      <div class="flow-num" style="background:${bg};color:${tc}">${i+1}</div>
-      <div class="flow-body">
-        <div class="flow-title">${t}</div>
-        <div class="flow-desc">${d}</div>
-      </div>
-    </div>`).join('')}
-  </div>
-</div>
-
 <div class="sec" id="s-kpi">
-  <div class="sec-lbl">KPI менеджера</div>
+  <div class="sec-lbl">KPI CSM</div>
   <div class="mrow" style="grid-template-columns:repeat(4,1fr)">
-    ${[['≤4ч','Ответ на тикет'],['≤72ч','Решение проблемы'],['≥2/мес','Касаний с клиентом'],['≤14д','Реакция на молчание']].map(([v,l])=>`
-    <div class="mc"><div class="mc-val">${v}</div><div class="mc-lbl">${l}</div></div>`).join('')}
+    ${[['≤2ч','Ответ клиенту в чате'],['≤30мин','Тикет в Jira после обращения'],['≤1 дня','Передача тикета на PM'],['100%','Тикеты с заполненными полями']].map(([v,l])=>`<div class="mc"><div class="mc-val">${v}</div><div class="mc-lbl">${l}</div></div>`).join('')}
   </div>
-  <div class="rc info">
-    <div class="rc-title">Каналы коммуникации</div>
-    <div class="rc-body">Платформа (тикеты в кабинете) → Мессенджер (Telegram / WhatsApp) → Email. Приоритет — тот канал где клиент активен. Все контакты фиксируются в CRM независимо от канала.</div>
+  <div class="rules">
+    <div class="rc info"><div class="rc-title">Как работает коммуникация</div><div class="rc-body">Клиент пишет через чат на платформе service.needmylink.com → CSM видит сообщение в CRM → отвечает в CRM → параллельно фиксирует тикет в Jira.</div></div>
   </div>
 </div>`;}
 },
 
-// ── PROBLEMS HUB ──────────────────────────────────────
+daily:{
+  bc:'Ежедневный ритм',
+  rnav:['s-morning','s-types','s-evening'],rlbl:['Утро','Типы обращений','Вечер'],
+  render(){return`
+<h1 class="pg-title">Ежедневный ритм</h1>
+<p class="pg-desc">Стандартный рабочий день CSM. Без сложной приоритизации — открыл чаты, ответил по очереди, зафиксировал в Jira.</p>
+<div class="sec" id="s-morning">
+  <div class="sec-lbl">Рабочий день</div>
+  <div class="flow">
+    ${[
+      ['#dbeafe','#1e40af','Открыть CRM и очередь чатов','Все входящие сообщения от клиентов через платформу собраны в CRM. Отвечать поочерёдно — без сложной приоритизации.'],
+      ['#fef9c3','#92400e','Определить тип обращения','Три основных типа: проблема с заказом / дополнительные требования к заказу / проблема с функционалом платформы. От типа зависит следующий шаг.'],
+      ['#ede9fe','#5b21b6','Решить или эскалировать','Простые вопросы — решить напрямую с Аутрич / Крауд / Копирайтинг командами. Сложные — передать PM. После решения зафиксировать тикет в Jira.'],
+      ['#dcfce7','#166534','Зафиксировать в Jira','Каждое обращение — тикет на доске [Portal] chat. Для простых: сначала решаем с командой, потом создаём тикет и описываем как закрыли. Для сложных: тикет сразу на PM.'],
+      ['#f3f4f6','#374151','Обновить статусы','Проверить открытые тикеты — нет ли просроченных без ответа. Тикет закрывается только после подтверждения от клиента.'],
+    ].map(([bg,tc,t,d],i)=>`
+    <div class="flow-step">
+      <div class="flow-num" style="background:${bg};color:${tc}">${i+1}</div>
+      <div class="flow-body"><div class="flow-title">${t}</div><div class="flow-desc">${d}</div></div>
+    </div>`).join('')}
+  </div>
+</div>
+<div class="sec" id="s-types">
+  <div class="sec-lbl">Три типа обращений</div>
+  <table class="mtx">
+    <thead><tr><th>Тип</th><th>Примеры</th><th>Действие CSM</th></tr></thead>
+    <tbody>
+      <tr><td><span class="bdg bdg-r">Проблема с заказом</span></td><td>Ссылка удалена, не индексируется, задержка, качество</td><td>Решить с Аутрич/Крауд или передать PM → тикет в [Portal] chat</td></tr>
+      <tr><td><span class="bdg bdg-y">Доп. требования</span></td><td>Уточнения по домену, срокам, критериям отбора</td><td>Уточнить у команды-исполнителя → ответить клиенту → тикет в [Portal] chat</td></tr>
+      <tr><td><span class="bdg bdg-p">Функционал платформы</span></td><td>Баг в кабинете, что-то не работает</td><td>Зафиксировать тикет → передать PM → не чинить самостоятельно</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="sec" id="s-evening">
+  <div class="sec-lbl">Важные правила</div>
+  <div class="rules">
+    <div class="rc danger"><div class="rc-title">Не чини баги платформы самостоятельно</div><div class="rc-body">Любая техническая проблема → тикет в [ADMIN] space или [Portal] chat → PM. Даже если кажется что знаешь решение.</div></div>
+    <div class="rc warn"><div class="rc-title">Простые вопросы — сначала решаем, потом тикет</div><div class="rc-body">Для простых сервисных вопросов: сначала решаем с командой исполнителей, потом создаём тикет на PM и описываем как закрыли. Это позволяет отслеживать паттерны.</div></div>
+    <div class="rc ok"><div class="rc-title">Тикет закрывается только после клиента</div><div class="rc-body">Статус "Готово / учтено" — только после того как клиент подтвердил что проблема решена. Не закрывай тикет в одностороннем порядке.</div></div>
+  </div>
+</div>`;}
+},
+
 problems:{
   bc:'Проблемы с заказом',
-  rnav:['s-nav','s-rules'],
-  rlbl:['Сценарии','Общие правила'],
-  render(){return `
+  rnav:['s-nav','s-rules'],rlbl:['Сценарии','Общие правила'],
+  render(){return`
 <h1 class="pg-title">Проблемы с заказом</h1>
-<p class="pg-desc">Выбери сценарий — каждый содержит пошаговый чеклист, правила коммуникации и готовые шаблоны.</p>
+<p class="pg-desc">Клиент написал в чат с проблемой. Выбери сценарий — пошаговый чеклист, правила и шаблоны ответов.</p>
 <div class="sec" id="s-nav">
   <div class="sec-lbl">Сценарии</div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-    ${[
-      ['p-link-removed','🔗','Ссылка удалена / стала nofollow','Замена по гарантии или возврат'],
-      ['p-not-indexed','🔍','Страница не индексируется','Ускорение индексации, гарантия 100%'],
-      ['p-quality','⚠️','Претензия к качеству статьи','Правки или замена контента'],
-      ['p-delay','⏱','Задержка публикации','Прозрачный таймлайн и компенсация'],
-      ['p-refund','💸','Запрос возврата средств','Алгоритм возврата или замены'],
-    ].map(([id,ic,t,d])=>`
+    ${[['p-link-removed','🔗','Ссылка удалена / nofollow','Замена по гарантии или возврат'],['p-not-indexed','🔍','Не индексируется','Ручная индексация, гарантия 100%'],['p-quality','⚠️','Претензия к качеству','Правки или замена контента'],['p-delay','⏱','Задержка публикации','Таймлайн и компенсация'],['p-refund','💸','Запрос возврата','Алгоритм возврата или замены']].map(([id,ic,t,d])=>`
     <div class="sit-card" style="padding:14px" onclick="go('${id}')">
       <div style="font-size:18px;margin-bottom:7px">${ic}</div>
       <div class="sit-card-title" style="font-size:12.5px">${t}</div>
@@ -478,816 +413,617 @@ problems:{
   </div>
 </div>
 <div class="sec" id="s-rules">
-  <div class="sec-lbl">Общие правила обработки жалоб</div>
+  <div class="sec-lbl">Общие правила</div>
   <div class="rules">
-    <div class="rc danger"><div class="rc-title">⏱ Скорость — главный фактор</div><div class="rc-body">Первый ответ на проблему — не позднее 4 часов в рабочее время. Клиент, который ждёт ответа сутки, уже пишет негативный отзыв.</div></div>
-    <div class="rc warn"><div class="rc-title">Не оправдывайся — предлагай решение</div><div class="rc-body">«Извините, так вышло» — не ответ. Ответ: «Вот что я сделаю и в какие сроки». Конкретика гасит конфликт.</div></div>
-    <div class="rc info"><div class="rc-title">Канал → Платформа первично</div><div class="rc-body">Тикет в кабинете — официальная фиксация. Мессенджер — для оперативной коммуникации. Email — для документации решения. Все три фиксируй в CRM.</div></div>
+    <div class="rc danger"><div class="rc-title">≤2 часа — первый ответ</div><div class="rc-body">Клиент, который ждёт ответа больше 2 часов в рабочее время, уже недоволен до того как ты ответил. Скорость реакции важнее идеального ответа.</div></div>
+    <div class="rc warn"><div class="rc-title">Не обещай сроки без подтверждения команды</div><div class="rc-body">Сначала уточни у Аутрич / Крауд / Копирайтинг — потом называй сроки клиенту. Нарушенное обещание хуже отсутствия обещания.</div></div>
+    <div class="rc info"><div class="rc-title">Простые вопросы → команда → тикет</div><div class="rc-body">Уточнения по домену, срокам, критериям — решаешь с командой исполнителей напрямую. После решения создаёшь тикет в Jira и описываешь как закрыл.</div></div>
     <div class="rc ok"><div class="rc-title">Жалоба ≠ уход клиента</div><div class="rc-body">80% клиентов с решённой проблемой остаются лояльнее тех, у кого проблем не было. Качество решения важнее факта проблемы.</div></div>
   </div>
 </div>`;}
 },
 
-// ── P: LINK REMOVED ───────────────────────────────────
 'p-link-removed':{
   bc:'Проблемы · Ссылка удалена',
-  rnav:['s-flow','s-tpl'],rlbl:['Алгоритм','Шаблоны'],
+  rnav:['s-flow','s-tpl'],rlbl:['Чеклист','Шаблоны'],
   render(){
     const id='p-link-removed';
     const items=[
-      {text:'Проверить факт удаления: открыть URL, проверить анкор и rel-атрибут',tag:'p'},
-      {text:'Зафиксировать тикет в CRM: дата обнаружения, URL, скрин',tag:'c'},
-      {text:'Ответить клиенту в течение 4 часов — подтвердить получение жалобы',tag:'p'},
-      {text:'Проверить дату размещения: белая ниша → гарантия 12 мес., серая → 6 мес.',tag:'c'},
-      {text:'Если в гарантийном периоде: запустить процедуру замены (связаться с вебмастером)',tag:'p'},
-      {text:'Если вебмастер не отвечает в течение 7 дней → эскалировать в команду аутрича',tag:'p'},
-      {text:'Предложить клиенту альтернативный сайт на замену (подборка из маркетплейса)',tag:'p'},
-      {text:'После подтверждения замены — обновить статус тикета в CRM',tag:'c'},
-      {text:'Если замена невозможна → оформить возврат через Finance',tag:'e'},
+      {text:'Проверить факт: открыть URL, проверить анкор и rel-атрибут',tag:'p'},
+      {text:'Создать тикет в [Portal] chat — зафиксировать дату, URL, скрин',tag:'j'},
+      {text:'Ответить клиенту в течение 2 часов — подтвердить получение жалобы',tag:'p'},
+      {text:'Проверить дату размещения: белая ниша → 12 мес., серая → 6 мес.',tag:'j'},
+      {text:'Если в гарантийном периоде: связаться с Аутрич командой для замены',tag:'p'},
+      {text:'Если Аутрич не решает за 7 дней → эскалировать на PM',tag:'p'},
+      {text:'Предложить клиенту альтернативный сайт на замену',tag:'p'},
+      {text:'Обновить статус тикета в Jira после решения',tag:'j'},
+      {text:'Закрыть тикет только после подтверждения клиентом',tag:'j'},
     ];
     const tpls=[
-      {label:'Первый ответ — подтверждение жалобы',channels:['platform','messenger'],body:`[Имя], получил ваше сообщение — проверяю прямо сейчас.
+      {label:'Первый ответ — подтверждение',channels:['platform','messenger'],body:`[Имя], получил ваше сообщение — проверяю прямо сейчас.
 
-Факт удаления подтверждён / проверяю (нужное). Заказ попадает под гарантию замены — запускаю процедуру.
+Факт удаления подтверждён. Заказ попадает под гарантию замены — запускаю процедуру.
 
 <b>Что дальше:</b>
 • Связываюсь с площадкой в течение 48 часов
-• Если площадка не восстанавливает — предлагаю замену равного или лучшего качества
-• Держу вас в курсе на каждом шаге
-
-Спасибо за сигнал — разберёмся.`},
+• Если не восстанавливают — предложу замену равного качества
+• Держу вас в курсе на каждом шаге`},
       {label:'Предложение замены',channels:['platform','email'],body:`[Имя], обновление по вашему тикету.
 
-К сожалению, площадка [домен] не восстановила ссылку. По условиям гарантии предлагаю замену:
+Площадка [домен] не восстановила ссылку. По гарантии предлагаю замену:
 
 <b>Вариант 1:</b> [домен] — DR [X], трафик [Y]/мес, ниша [Z]
 <b>Вариант 2:</b> [домен] — DR [X], трафик [Y]/мес, ниша [Z]
 
-Оба варианта с теми же анкором и URL. Скажите какой подходит — размещу приоритетно.`},
+Оба варианта с теми же анкором и URL. Скажите какой подходит.`},
     ];
-    const total=items.length;
-    return `<h1 class="pg-title">Ссылка удалена / nofollow</h1>
-<p class="pg-desc">Алгоритм действий при удалении ссылки или смене rel-атрибута на nofollow. Гарантия: белые ниши 12 мес., серые 6 мес.</p>
-<div class="mrow"><div class="mc"><div class="mc-val">≤4ч</div><div class="mc-lbl">Первый ответ</div></div><div class="mc"><div class="mc-val">48ч</div><div class="mc-lbl">Контакт с вебмастером</div></div><div class="mc"><div class="mc-val">7д</div><div class="mc-lbl">Срок замены</div></div></div>
-<div class="sec" id="s-flow">
-  <div class="sec-lbl">Чеклист</div>
-  ${progBar(id,total)}
-  <div class="chklist">${checkList(id,items)}</div>
-</div>
-<div class="sec" id="s-tpl">
-  <div class="sec-lbl">Шаблоны</div>
-  ${tpls.map((t,i)=>tplCard(t,id,i)).join('')}
-</div>`;
+    return`<h1 class="pg-title">Ссылка удалена / nofollow</h1>
+<p class="pg-desc">Гарантия: белые ниши 12 мес., серые 6 мес. Цель — замена, не возврат.</p>
+<div class="mrow"><div class="mc"><div class="mc-val">≤2ч</div><div class="mc-lbl">Первый ответ</div></div><div class="mc"><div class="mc-val">48ч</div><div class="mc-lbl">Контакт с Аутрич</div></div><div class="mc"><div class="mc-val">7д</div><div class="mc-lbl">Срок замены</div></div></div>
+<div class="sec" id="s-flow"><div class="sec-lbl">Чеклист</div>${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>
+<div class="sec" id="s-tpl"><div class="sec-lbl">Шаблоны</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>`;
   }
 },
 
-// ── P: NOT INDEXED ────────────────────────────────────
 'p-not-indexed':{
   bc:'Проблемы · Не индексируется',
-  rnav:['s-flow','s-tpl'],rlbl:['Алгоритм','Шаблоны'],
+  rnav:['s-flow','s-tpl'],rlbl:['Чеклист','Шаблоны'],
   render(){
     const id='p-not-indexed';
     const items=[
-      {text:'Проверить индексацию: site:URL в Google + Google Search Console если есть доступ',tag:'p'},
-      {text:'Уточнить дату публикации — индексация может занимать до 3–4 недель',tag:'c'},
-      {text:'Если прошло менее 3 недель: сообщить клиенту о нормальных сроках, поставить напоминание',tag:'p'},
-      {text:'Если прошло более 3 недель: запустить ручную индексацию через сервис платформы',tag:'p'},
-      {text:'Запросить у вебмастера sitemap и robots.txt — убедиться что страница не закрыта от индексации',tag:'p'},
-      {text:'Отправить URL на переобход в Google Search Console (если есть доступ к аккаунту платформы)',tag:'p'},
-      {text:'Повторная проверка через 7 дней — зафиксировать результат в CRM',tag:'c'},
-      {text:'Если не проиндексировалась — эскалировать в техническую команду',tag:'e'},
+      {text:'Проверить: site:URL в Google — есть ли страница в индексе',tag:'p'},
+      {text:'Уточнить дату публикации в CRM / Jira',tag:'j'},
+      {text:'Если прошло менее 3 недель — сообщить клиенту о нормальных сроках',tag:'p'},
+      {text:'Если прошло более 3 недель — создать тикет и передать на PM',tag:'j'},
+      {text:'PM запускает ручную индексацию через сервис платформы',tag:'p'},
+      {text:'Повторная проверка через 7 дней — зафиксировать результат',tag:'j'},
+      {text:'Обновить клиента о статусе',tag:'p'},
+      {text:'Закрыть тикет после подтверждения индексации',tag:'j'},
     ];
     const tpls=[
-      {label:'Ответ клиенту (ещё не прошло 3 недели)',channels:['platform','messenger'],body:`[Имя], проверил статус — публикация от [дата], прошло [X] дней.
+      {label:'Ответ (менее 3 недель)',channels:['platform','messenger'],body:`[Имя], проверил — публикация от [дата], прошло [X] дней.
 
-Это укладывается в нормальные сроки: Google индексирует новые страницы от 1 до 4 недель в зависимости от авторитетности домена.
+Это нормально: Google индексирует новые страницы от 1 до 4 недель в зависимости от авторитетности домена.
 
 Поставил напоминание на [дата] — если к тому моменту страница не появится в индексе, запущу ручную процедуру. Напишу вам сам.`},
-      {label:'Запуск ручной индексации',channels:['platform','email'],body:`[Имя], страница не проиндексировалась в установленные сроки — запускаю ручную процедуру.
+      {label:'Запуск ручной индексации',channels:['platform','email'],body:`[Имя], страница не проиндексировалась в установленные сроки — передаю на ручную процедуру.
 
-<b>Что делаю:</b>
-• Отправка URL на переобход
-• Проверка доступности страницы для краулеров
-• При необходимости — запрос к вебмастеру
-
-Обновлю статус в течение 7 дней. Гарантия индексации — 100%, если потребуется — заменю размещение.`},
+Обновлю статус в течение 7 дней. Гарантия индексации — 100%.`},
     ];
-    const total=items.length;
-    return `<h1 class="pg-title">Страница не индексируется</h1>
-<p class="pg-desc">Гарантия NeedMyLink — 100% индексация. Если не проиндексировалась за 3–4 недели, запускаем ручную процедуру.</p>
-<div class="mrow"><div class="mc"><div class="mc-val">3–4 нед</div><div class="mc-lbl">Норм. срок индексации</div></div><div class="mc"><div class="mc-val">100%</div><div class="mc-lbl">Гарантия</div></div><div class="mc"><div class="mc-val">7д</div><div class="mc-lbl">Ручная процедура</div></div></div>
-<div class="sec" id="s-flow">
-  <div class="sec-lbl">Чеклист</div>
-  ${progBar(id,total)}
-  <div class="chklist">${checkList(id,items)}</div>
-</div>
-<div class="sec" id="s-tpl">
-  <div class="sec-lbl">Шаблоны</div>
-  ${tpls.map((t,i)=>tplCard(t,id,i)).join('')}
-</div>`;
+    return`<h1 class="pg-title">Не индексируется</h1>
+<p class="pg-desc">Гарантия — 100% индексация. Если не проиндексировалась за 3–4 недели, передаём на ручную процедуру через PM.</p>
+<div class="mrow"><div class="mc"><div class="mc-val">3–4 нед</div><div class="mc-lbl">Норм. срок</div></div><div class="mc"><div class="mc-val">100%</div><div class="mc-lbl">Гарантия</div></div><div class="mc"><div class="mc-val">→ PM</div><div class="mc-lbl">После 3 недель</div></div></div>
+<div class="sec" id="s-flow"><div class="sec-lbl">Чеклист</div>${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>
+<div class="sec" id="s-tpl"><div class="sec-lbl">Шаблоны</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>`;
   }
 },
 
-// ── P: QUALITY ────────────────────────────────────────
 'p-quality':{
   bc:'Проблемы · Претензия к качеству',
-  rnav:['s-flow','s-tpl'],rlbl:['Алгоритм','Шаблоны'],
+  rnav:['s-flow','s-tpl'],rlbl:['Чеклист','Шаблоны'],
   render(){
     const id='p-quality';
     const items=[
-      {text:'Запросить конкретику: что именно не устраивает — текст, сайт, анкор, тематика',tag:'p'},
-      {text:'Не спорить и не защищаться — зафиксировать претензию как факт',tag:'c'},
-      {text:'Проверить ТЗ к заказу: соответствует ли результат исходным требованиям',tag:'c'},
-      {text:'Если ТЗ нарушено: предложить бесплатные правки или замену статьи',tag:'p'},
-      {text:'Если ТЗ выполнено, но клиент недоволен субъективно: предложить 1 раунд правок',tag:'p'},
-      {text:'Зафиксировать договорённость письменно (email или платформа)',tag:'e'},
-      {text:'Передать правки копирайтеру с чётким дедлайном',tag:'p'},
+      {text:'Запросить конкретику: что именно не устраивает',tag:'p'},
+      {text:'Не спорить — зафиксировать претензию как факт',tag:'p'},
+      {text:'Проверить ТЗ к заказу в CRM: соответствует ли результат',tag:'j'},
+      {text:'Если ТЗ нарушено — передать Копирайтинг команде на правки',tag:'p'},
+      {text:'Если ТЗ выполнено — предложить 1 раунд бесплатных правок',tag:'p'},
+      {text:'Зафиксировать договорённость в тикете Jira',tag:'j'},
       {text:'После правок — запросить подтверждение от клиента',tag:'p'},
-      {text:'Закрыть тикет в CRM только после одобрения клиентом',tag:'c'},
+      {text:'Закрыть тикет только после одобрения',tag:'j'},
     ];
     const tpls=[
-      {label:'Запрос деталей претензии',channels:['platform','messenger'],body:`[Имя], спасибо что написали — это важно для нас.
+      {label:'Запрос деталей',channels:['platform','messenger'],body:`[Имя], спасибо что написали.
 
-Чтобы исправить ситуацию быстро, уточните:
+Чтобы исправить быстро, уточните:
 • Что именно не устраивает? (текст, тематика сайта, анкор, другое)
 • Есть конкретные правки или предпочтения?
 
 Как только пойму детали — предложу решение.`},
-      {label:'Подтверждение правок',channels:['platform','email'],body:`[Имя], принял в работу — вот что делаем:
+      {label:'Подтверждение правок',channels:['platform','email'],body:`[Имя], принял в работу:
 
 <b>Правки:</b> [описание]
 <b>Срок:</b> [X рабочих дней]
-<b>Исполнитель:</b> передал копирайтеру
 
-После готовности пришлю на согласование. Если что-то ещё — пишите напрямую.`},
+После готовности пришлю на согласование.`},
     ];
-    const total=items.length;
-    return `<h1 class="pg-title">Претензия к качеству</h1>
-<p class="pg-desc">Разбираемся с претензиями к статье или выбору площадки. Цель — не доказать правоту, а сохранить клиента.</p>
-<div class="mrow"><div class="mc"><div class="mc-val">≤4ч</div><div class="mc-lbl">Первый ответ</div></div><div class="mc"><div class="mc-val">1 раунд</div><div class="mc-lbl">Бесплатных правок</div></div><div class="mc"><div class="mc-val">≤3д</div><div class="mc-lbl">Срок правок</div></div></div>
-<div class="sec" id="s-flow">
-  <div class="sec-lbl">Чеклист</div>
-  ${progBar(id,total)}
-  <div class="chklist">${checkList(id,items)}</div>
-</div>
-<div class="sec" id="s-tpl">
-  <div class="sec-lbl">Шаблоны</div>
-  ${tpls.map((t,i)=>tplCard(t,id,i)).join('')}
-</div>`;
+    return`<h1 class="pg-title">Претензия к качеству</h1>
+<p class="pg-desc">Цель — не доказать правоту, а сохранить клиента. 1 раунд бесплатных правок включён.</p>
+<div class="mrow"><div class="mc"><div class="mc-val">≤2ч</div><div class="mc-lbl">Первый ответ</div></div><div class="mc"><div class="mc-val">1 раунд</div><div class="mc-lbl">Бесплатных правок</div></div><div class="mc"><div class="mc-val">≤3д</div><div class="mc-lbl">Срок правок</div></div></div>
+<div class="sec" id="s-flow"><div class="sec-lbl">Чеклист</div>${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>
+<div class="sec" id="s-tpl"><div class="sec-lbl">Шаблоны</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>`;
   }
 },
 
-// ── P: DELAY ──────────────────────────────────────────
 'p-delay':{
-  bc:'Проблемы · Задержка публикации',
-  rnav:['s-flow','s-tpl'],rlbl:['Алгоритм','Шаблоны'],
+  bc:'Проблемы · Задержка',
+  rnav:['s-flow','s-tpl'],rlbl:['Чеклист','Шаблоны'],
   render(){
     const id='p-delay';
     const items=[
-      {text:'Проверить текущий статус заказа в платформе и у ответственного вебмастера',tag:'p'},
-      {text:'Выяснить причину задержки: вебмастер / контент / технические причины',tag:'c'},
+      {text:'Проверить статус заказа в CRM и уточнить у команды исполнителя',tag:'p'},
+      {text:'Выяснить причину задержки',tag:'p'},
       {text:'Написать клиенту первым — не ждать пока напишет он',tag:'p'},
       {text:'Дать конкретный новый дедлайн — не «скоро», а дату',tag:'p'},
-      {text:'Если задержка >7 дней от обещанной даты: предложить компенсацию (скидка на следующий заказ)',tag:'p'},
-      {text:'Если задержка >14 дней: предложить альтернативную площадку или возврат',tag:'p'},
-      {text:'Обновить дедлайн в CRM и поставить напоминание',tag:'c'},
+      {text:'Если задержка >7 дней от обещанной даты — уточнить у PM о компенсации',tag:'j'},
+      {text:'Если задержка >14 дней — предложить альтернативную площадку или возврат',tag:'p'},
+      {text:'Обновить статус тикета в Jira',tag:'j'},
     ];
     const tpls=[
       {label:'Проактивное сообщение о задержке',channels:['platform','messenger'],body:`[Имя], хочу предупредить заранее.
 
-Публикация на [домен] задерживается — вебмастер [причина]. Новый ожидаемый срок: <b>[дата]</b>.
+Публикация на [домен] задерживается — [причина]. Новый срок: <b>[дата]</b>.
 
-Извините за неудобство. Если срок критичен — могу предложить альтернативную площадку с аналогичными метриками без ожидания.`},
-      {label:'Компенсация при задержке >7 дней',channels:['email'],body:`[Имя], понимаю что ожидание затянулось — это неприемлемо.
-
-Публикация выйдет <b>[дата]</b>. В знак извинения предлагаю скидку 10% на следующий заказ — просто упомяните при оформлении.
-
-Спасибо за терпение.`},
+Если срок критичен — могу предложить альтернативную площадку с аналогичными метриками без ожидания.`},
     ];
-    const total=items.length;
-    return `<h1 class="pg-title">Задержка публикации</h1>
-<p class="pg-desc">Задержка неприятна, но управляема. Главное — сообщить первым, дать чёткий дедлайн и предложить компенсацию при >7 дней.</p>
-<div class="mrow"><div class="mc"><div class="mc-val">Проактивно</div><div class="mc-lbl">Сообщить до вопроса</div></div><div class="mc"><div class="mc-val">7д</div><div class="mc-lbl">Порог компенсации</div></div><div class="mc"><div class="mc-val">14д</div><div class="mc-lbl">Порог замены / возврата</div></div></div>
-<div class="sec" id="s-flow">
-  <div class="sec-lbl">Чеклист</div>
-  ${progBar(id,total)}
-  <div class="chklist">${checkList(id,items)}</div>
-</div>
-<div class="sec" id="s-tpl">
-  <div class="sec-lbl">Шаблоны</div>
-  ${tpls.map((t,i)=>tplCard(t,id,i)).join('')}
-</div>`;
+    return`<h1 class="pg-title">Задержка публикации</h1>
+<p class="pg-desc">Главное — сообщить первым, дать чёткий дедлайн. Компенсацию согласовывать с PM.</p>
+<div class="mrow"><div class="mc"><div class="mc-val">Проактивно</div><div class="mc-lbl">Сообщить до вопроса</div></div><div class="mc"><div class="mc-val">7д</div><div class="mc-lbl">Порог → PM</div></div><div class="mc"><div class="mc-val">14д</div><div class="mc-lbl">Замена или возврат</div></div></div>
+<div class="sec" id="s-flow"><div class="sec-lbl">Чеклист</div>${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>
+<div class="sec" id="s-tpl"><div class="sec-lbl">Шаблоны</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>`;
   }
 },
 
-// ── P: REFUND ─────────────────────────────────────────
 'p-refund':{
-  bc:'Проблемы · Запрос возврата',
-  rnav:['s-flow','s-rules','s-tpl'],rlbl:['Алгоритм','Когда возможен','Шаблоны'],
+  bc:'Проблемы · Возврат',
+  rnav:['s-flow','s-rules','s-tpl'],rlbl:['Чеклист','Когда возможен','Шаблоны'],
   render(){
     const id='p-refund';
     const items=[
-      {text:'Не отказывать сразу — сначала выяснить причину',tag:'p'},
-      {text:'Проверить: попадает ли ситуация под условия гарантии (гарантийный период, тип нарушения)',tag:'c'},
-      {text:'Предложить замену как первый вариант — часто клиент соглашается',tag:'p'},
-      {text:'Если клиент настаивает на возврате — передать в Finance с документацией',tag:'e'},
-      {text:'Зафиксировать причину возврата в CRM (обязательно для анализа оттока)',tag:'c'},
-      {text:'После возврата: написать клиенту через 30 дней (win-back)',tag:'e'},
+      {text:'Не отказывать сразу — выяснить причину',tag:'p'},
+      {text:'Проверить попадает ли под гарантию',tag:'j'},
+      {text:'Предложить замену как первый вариант',tag:'p'},
+      {text:'Если настаивает на возврате — передать на PM',tag:'p'},
+      {text:'Зафиксировать причину возврата в тикете Jira',tag:'j'},
     ];
     const tpls=[
       {label:'Предложение замены вместо возврата',channels:['platform','messenger'],body:`[Имя], получил запрос — разберёмся.
 
-Прежде чем оформлять возврат, хочу предложить замену: это быстрее и вы получаете результат, а не просто деньги назад.
+Прежде чем оформлять возврат, предлагаю замену: это быстрее и вы получаете результат.
 
-<b>Предлагаю:</b> [домен] — DR [X], трафик [Y], та же ниша.
+<b>Вариант:</b> [домен] — DR [X], та же ниша.
 
-Если всё равно предпочитаете возврат — оформлю без лишних вопросов.`},
-      {label:'Подтверждение возврата',channels:['email'],body:`[Имя], возврат оформлен.
-
-<b>Сумма:</b> $[X]
-<b>Способ:</b> [PayPal / карта / баланс платформы]
-<b>Срок поступления:</b> 3–7 рабочих дней
-
-Если в будущем понадобятся ссылки — буду рад помочь.`},
+Если всё равно предпочитаете возврат — оформлю, передам на согласование.`},
     ];
-    const total=items.length;
-    return `<h1 class="pg-title">Запрос возврата</h1>
-<p class="pg-desc">Цель — предложить замену как первый вариант. Возврат оформляем без споров, если клиент настаивает. Фиксируем причину в CRM.</p>
-<div class="mrow"><div class="mc"><div class="mc-val">Замена</div><div class="mc-lbl">Предложить первым</div></div><div class="mc"><div class="mc-val">Finance</div><div class="mc-lbl">Через кого оформлять</div></div><div class="mc"><div class="mc-val">30д</div><div class="mc-lbl">Win-back после возврата</div></div></div>
-<div class="sec" id="s-flow">
-  <div class="sec-lbl">Чеклист</div>
-  ${progBar(id,total)}
-  <div class="chklist">${checkList(id,items)}</div>
-</div>
+    return`<h1 class="pg-title">Запрос возврата</h1>
+<p class="pg-desc">Сначала предлагаем замену. Возврат — через PM. Причину всегда фиксируем в Jira.</p>
+<div class="mrow"><div class="mc"><div class="mc-val">Замена</div><div class="mc-lbl">Предложить первым</div></div><div class="mc"><div class="mc-val">→ PM</div><div class="mc-lbl">Все возвраты через PM</div></div><div class="mc"><div class="mc-val">Jira</div><div class="mc-lbl">Зафиксировать причину</div></div></div>
+<div class="sec" id="s-flow"><div class="sec-lbl">Чеклист</div>${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>
 <div class="sec" id="s-rules">
   <div class="sec-lbl">Когда возврат возможен</div>
   <div class="rules">
-    <div class="rc ok"><div class="rc-title">✅ Основания для возврата</div><div class="rc-body">• Ссылка удалена и замена невозможна (гарантийный период)\n• Качество явно нарушает ТЗ, правки не помогли\n• Заказ не выполнен в двойной срок от обещанного</div></div>
-    <div class="rc danger"><div class="rc-title">❌ Возврат не оформляем</div><div class="rc-body">• Клиент «передумал» без конкретной причины после публикации\n• Субъективное недовольство при выполненном ТЗ\n• Запрос после окончания гарантийного периода</div></div>
+    <div class="rc ok"><div class="rc-title">✅ Основания</div><div class="rc-body">• Ссылка удалена и замена невозможна (гарантийный период)\n• Качество явно нарушает ТЗ, правки не помогли\n• Заказ не выполнен в двойной срок от обещанного</div></div>
+    <div class="rc danger"><div class="rc-title">❌ Не оформляем</div><div class="rc-body">• Клиент передумал без причины после публикации\n• Субъективное недовольство при выполненном ТЗ\n• Запрос после окончания гарантийного периода</div></div>
   </div>
 </div>
-<div class="sec" id="s-tpl">
-  <div class="sec-lbl">Шаблоны</div>
-  ${tpls.map((t,i)=>tplCard(t,id,i)).join('')}
-</div>`;
+<div class="sec" id="s-tpl"><div class="sec-lbl">Шаблоны</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>`;
   }
 },
 
-// ── REACTIVATION HUB ──────────────────────────────────
 reactivation:{
   bc:'Реактивация',
-  rnav:['s-nav','s-trigger'],rlbl:['Сценарии','Триггеры CRM'],
-  render(){return `
+  rnav:['s-process','s-nav'],rlbl:['Как работает','Сценарии'],
+  render(){return`
 <h1 class="pg-title">Реактивация клиентов</h1>
-<p class="pg-desc">Клиент замолчал — это не уход, это сигнал. У каждого молчания есть причина: занятость, бюджет, конкурент. Задача — выяснить и предложить решение.</p>
-<div class="sec" id="s-nav">
-  <div class="sec-lbl">Сценарии реактивации</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
-    ${[
-      ['r-silent','😶','Замолчал (14–30 дней)','Нет ответа, нет заказов'],
-      ['r-churned','🏃','Ушёл к конкуренту','Прямо сказал или видно по активности'],
-      ['r-nobudget','💬','Нет бюджета','Отложил из-за финансов'],
-    ].map(([id,ic,t,d])=>`
-    <div class="sit-card" onclick="go('${id}')">
-      <div style="font-size:20px;margin-bottom:8px">${ic}</div>
-      <div class="sit-card-title">${t}</div>
-      <div class="sit-card-desc" style="font-size:11.5px">${d}</div>
-    </div>`).join('')}
-  </div>
-</div>
-<div class="sec" id="s-trigger">
-  <div class="sec-lbl">Триггеры в CRM — когда действовать</div>
-  <table class="mtx">
-    <thead><tr><th>Сигнал</th><th>Триггер</th><th>Действие</th><th>Канал</th></tr></thead>
-    <tbody>
-      ${[
-        ['Нет заказов','14 дней','Проактивное касание','Мессенджер'],
-        ['Нет ответа на касание','+7 дней (21д)','Второе касание, другой канал','Email'],
-        ['Нет ответа на 2 касания','30 дней','Финальное сообщение + win-back воронка','Email'],
-        ['Открытый тикет без ответа','48 часов','Напоминание','Платформа'],
-        ['NPS < 7','Сразу','Звонок или личное сообщение','Мессенджер'],
-      ].map(([s,t,a,c])=>`<tr><td>${s}</td><td><span class="bdg bdg-y">${t}</span></td><td>${a}</td><td>${c}</td></tr>`).join('')}
-    </tbody>
-  </table>
-</div>`;}
-},
-
-// ── R: SILENT ─────────────────────────────────────────
-'r-silent':{
-  bc:'Реактивация · Замолчал',
-  rnav:['s-flow','s-tpl'],rlbl:['Алгоритм','Шаблоны'],
-  render(){
-    const id='r-silent';
-    const items=[
-      {text:'Проверить CRM: когда был последний контакт и последний заказ',tag:'c'},
-      {text:'Посмотреть историю: были ли жалобы, проблемы, NPS < 7',tag:'c'},
-      {text:'Выбрать повод для первого касания (новые сайты / кейс / апдейт по нише)',tag:'p'},
-      {text:'Отправить первое касание через мессенджер (14 дней тишины)',tag:'p'},
-      {text:'Если нет ответа 7 дней — второе касание через другой канал (email)',tag:'e'},
-      {text:'Если нет ответа ещё 7 дней — финальное сообщение с открытым вопросом',tag:'p'},
-      {text:'После 3 касаний без ответа — добавить в win-back email-воронку, не беспокоить вручную',tag:'c'},
-    ];
-    const tpls=[
-      {label:'Первое касание (14 дней)',channels:['messenger'],body:`[Имя], давно не общались!
-
-Появились новые сайты в вашей нише — [ниша/GEO]. Подумал, что могут быть интересны:
-• [домен] — DR [X], трафик [Y]/мес
-• [домен] — DR [X], трафик [Y]/мес
-
-Если актуально — пришлю подборку. Если сейчас не до ссылок — просто скажите, не буду мешать.`},
-      {label:'Второе касание (21 день, email)',channels:['email'],body:`Тема: Кейс из вашей ниши — [ниша]
-
-[Имя], хотел поделиться результатом похожего проекта.
-
-Клиент в нише [ниша] за 3 месяца получил [результат] с помощью [сервис]. Подготовил похожую стратегию для вашего сайта — могу прислать если интересно.`},
-      {label:'Финальное касание (30 дней)',channels:['messenger'],body:`[Имя], последний раз пишу — не хочу быть навязчивым.
-
-Если всё хорошо и ссылки пока не нужны — окей, буду рад когда понадобится.
-
-Если что-то не устроило в прошлый раз — скажите, разберёмся. Это важно.`},
-    ];
-    const total=items.length;
-    return `<h1 class="pg-title">Клиент замолчал</h1>
-<p class="pg-desc">14–30 дней без ответа и заказов. Три касания с нарастающей паузой — не надоедать, но не терять.</p>
-<div class="mrow"><div class="mc"><div class="mc-val">14д</div><div class="mc-lbl">Первое касание</div></div><div class="mc"><div class="mc-val">21д</div><div class="mc-lbl">Второе (другой канал)</div></div><div class="mc"><div class="mc-val">30д</div><div class="mc-lbl">Финальное</div></div></div>
-<div class="sec" id="s-flow">
-  <div class="sec-lbl">Чеклист</div>
-  ${progBar(id,total)}
-  <div class="chklist">${checkList(id,items)}</div>
-</div>
-<div class="sec" id="s-tpl">
-  <div class="sec-lbl">Шаблоны</div>
-  ${tpls.map((t,i)=>tplCard(t,id,i)).join('')}
-</div>`;
-  }
-},
-
-// ── R: CHURNED ────────────────────────────────────────
-'r-churned':{
-  bc:'Реактивация · Ушёл к конкуренту',
-  rnav:['s-flow','s-tpl'],rlbl:['Алгоритм','Шаблоны'],
-  render(){
-    const id='r-churned';
-    const items=[
-      {text:'Не спорить и не критиковать конкурента — узнать что именно там привлекло',tag:'p'},
-      {text:'Выяснить: цена / функционал / личный менеджер / другой сервис',tag:'p'},
-      {text:'Подготовить сравнение по ключевым параметрам (гарантии, качество, GEO)',tag:'c'},
-      {text:'Предложить один бесплатный тест-заказ или специальные условия на возврат',tag:'p'},
-      {text:'Зафиксировать причину ухода в CRM — это данные для продукта',tag:'c'},
-      {text:'Если клиент не возвращается: добавить в win-back воронку 60/90 дней',tag:'e'},
-    ];
-    const tpls=[
-      {label:'Ответ на «ушёл к другим»',channels:['messenger'],body:`[Имя], понимаю — конкуренция на рынке есть, это нормально.
-
-Не претендую на то чтобы переубеждать. Но если не секрет — что именно привлекло? Цена, другой сервис, что-то ещё?
-
-Это поможет нам стать лучше. И если вдруг что-то не устроит там — здесь всегда рады вернуться.`},
-      {label:'Предложение теста после сравнения',channels:['email'],body:`Тема: Один тест — чтобы сравнить честно
-
-[Имя], подготовил короткое сравнение NeedMyLink и [конкурент] по ключевым параметрам:
-
-• Гарантия замены: 12 мес. (белые) / 6 мес. (серые) vs [их условия]
-• GEO: 30+ стран vs [их охват]  
-• Маркетплейс: 60 000+ сайтов vs [их база]
-
-Предлагаю один тест-заказ по себестоимости — чтобы сравнить качество на реальном примере. Без обязательств.`},
-    ];
-    const total=items.length;
-    return `<h1 class="pg-title">Ушёл к конкуренту</h1>
-<p class="pg-desc">Не спорим, не критикуем конкурента. Выясняем причину, предлагаем сравнение и один честный тест.</p>
-<div class="mrow"><div class="mc"><div class="mc-val">Без споров</div><div class="mc-lbl">Выяснить, не убеждать</div></div><div class="mc"><div class="mc-val">1 тест</div><div class="mc-lbl">Предложить по себестоимости</div></div><div class="mc"><div class="mc-val">60–90д</div><div class="mc-lbl">Win-back воронка</div></div></div>
-<div class="sec" id="s-flow">
-  <div class="sec-lbl">Чеклист</div>
-  ${progBar(id,total)}
-  <div class="chklist">${checkList(id,items)}</div>
-</div>
-<div class="sec" id="s-tpl">
-  <div class="sec-lbl">Шаблоны</div>
-  ${tpls.map((t,i)=>tplCard(t,id,i)).join('')}
-</div>`;
-  }
-},
-
-// ── R: NO BUDGET ──────────────────────────────────────
-'r-nobudget':{
-  bc:'Реактивация · Нет бюджета',
-  rnav:['s-flow','s-tpl'],rlbl:['Алгоритм','Шаблоны'],
-  render(){
-    const id='r-nobudget';
-    const items=[
-      {text:'Уточнить: «нет бюджета» сейчас или в принципе (временно / постоянно)',tag:'p'},
-      {text:'Если временно: договориться о конкретной дате возврата к разговору',tag:'p'},
-      {text:'Предложить минимальный пакет: 1–2 ссылки вместо полной кампании',tag:'p'},
-      {text:'Рассказать о реферальной программе — клиент может зарабатывать без трат',tag:'p'},
-      {text:'Поставить напоминание в CRM на согласованную дату',tag:'c'},
-      {text:'Если бюджета нет совсем — не давить, добавить в воронку на 60 дней',tag:'e'},
-    ];
-    const tpls=[
-      {label:'Выяснение ситуации',channels:['messenger'],body:`[Имя], понял — бюджеты штука непростая.
-
-Уточните: это временно (квартал, полугодие) или пока полностью нет задач по ссылкам?
-
-Если временно — просто скажите когда удобно вернуться, поставлю напоминание и не буду беспокоить.`},
-      {label:'Минимальный вход',channels:['platform','email'],body:`[Имя], если полная кампания сейчас не вписывается — есть вариант начать с минимума.
-
-1–2 ссылки от $[X] — это хорошая «точка входа» которая уже даёт сигнал Google и позволяет тестировать без большого риска.
-
-Плюс: у нас есть реферальная программа — за каждого привлечённого клиента вы получаете % от его заказов на баланс.`},
-    ];
-    const total=items.length;
-    return `<h1 class="pg-title">Нет бюджета</h1>
-<p class="pg-desc">Не давить. Выяснить временно или нет, предложить минимальный вход или реферальную программу, поставить дату возврата.</p>
-<div class="mrow"><div class="mc"><div class="mc-val">Временно?</div><div class="mc-lbl">Выяснить горизонт</div></div><div class="mc"><div class="mc-val">Минипакет</div><div class="mc-lbl">1–2 ссылки</div></div><div class="mc"><div class="mc-val">Реферал</div><div class="mc-lbl">Зарабатывать без трат</div></div></div>
-<div class="sec" id="s-flow">
-  <div class="sec-lbl">Чеклист</div>
-  ${progBar(id,total)}
-  <div class="chklist">${checkList(id,items)}</div>
-</div>
-<div class="sec" id="s-tpl">
-  <div class="sec-lbl">Шаблоны</div>
-  ${tpls.map((t,i)=>tplCard(t,id,i)).join('')}
-</div>`;
-  }
-},
-
-// ── RETENTION HUB ─────────────────────────────────────
-retention:{
-  bc:'Удержание и рост',
-  rnav:['s-nav','s-cycle'],rlbl:['Сценарии','Цикл работы'],
-  render(){return `
-<h1 class="pg-title">Удержание и рост</h1>
-<p class="pg-desc">Активный клиент — главный актив. Проактивные касания, рост среднего чека и реферальная программа.</p>
-<div class="sec" id="s-nav">
-  <div class="sec-lbl">Сценарии</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
-    ${[
-      ['ret-touch','📡','Касания и NPS','Ритм коммуникации и замер лояльности'],
-      ['ret-upsell','📈','Upsell / кросс-сейл','Рост среднего чека на активных клиентах'],
-      ['ret-referral','🤝','Реферальная программа','Привлечение через существующих клиентов'],
-    ].map(([id,ic,t,d])=>`
-    <div class="sit-card" onclick="go('${id}')">
-      <div style="font-size:20px;margin-bottom:8px">${ic}</div>
-      <div class="sit-card-title">${t}</div>
-      <div class="sit-card-desc" style="font-size:11.5px">${d}</div>
-    </div>`).join('')}
-  </div>
-</div>
-<div class="sec" id="s-cycle">
-  <div class="sec-lbl">Цикл работы с активным клиентом</div>
-  <div class="alert blue"><div class="alert-icon">💡</div><div class="alert-txt"><b>Принцип:</b> каждое касание должно давать клиенту ценность — новые сайты, данные по нише, кейс. Касание ради галочки хуже отсутствия касания.</div></div>
+<p class="pg-desc">CSM не инициирует реактивацию самостоятельно. PM формирует список клиентов с инструкциями — CSM работает по этому списку.</p>
+<div class="sec" id="s-process">
+  <div class="sec-lbl">Как работает процесс</div>
+  <div class="alert blue"><div class="alert-icon">💡</div><div class="alert-txt"><b>Важно:</b> список клиентов для реактивации, что предлагать и какие скидки применять — формирует PM через выгрузку из CRM. CSM получает документ и действует по инструкции.</div></div>
   <div class="flow">
     ${[
-      ['#dbeafe','#1e40af','Неделя 1–2: Онбординг','Убедиться что заказ запущен, клиент знает как пользоваться кабинетом, вопросы закрыты.'],
-      ['#fef9c3','#92400e','Месяц 1: Первый результат','Статус-апдейт по публикации. Проверить индексацию. Запросить фидбек.'],
-      ['#ede9fe','#5b21b6','Месяц 2: Upsell-окно','Предложить расширение кампании: новые сайты, другой сервис, увеличение объёма.'],
-      ['#dcfce7','#166534','Квартал: NPS + реферал','Замер NPS. При ≥8 — предложить реферальную программу. При <7 — выяснить причину.'],
+      ['#dbeafe','#1e40af','PM формирует список','Выгрузка из CRM — список клиентов с указанием: кому писать, что предлагать, какие скидки доступны.'],
+      ['#fef9c3','#92400e','CSM получает задание','Изучить документ: кто клиент, какой сервис использовал, что предложить, есть ли скидка.'],
+      ['#ede9fe','#5b21b6','Выбрать канал и написать','Email / мессенджер / LinkedIn — в зависимости от того что известно о клиенте и его предпочтениях.'],
+      ['#dcfce7','#166534','Применить скидку или передать PM','Если скидка в полномочиях CSM — применить самостоятельно. Если нет — согласовать с PM перед обещанием клиенту.'],
+      ['#f3f4f6','#374151','Зафиксировать результат','Ответил / не ответил / согласился / отказал — записать в документ или CRM.'],
     ].map(([bg,tc,t,d],i)=>`
     <div class="flow-step">
       <div class="flow-num" style="background:${bg};color:${tc}">${i+1}</div>
       <div class="flow-body"><div class="flow-title">${t}</div><div class="flow-desc">${d}</div></div>
     </div>`).join('')}
   </div>
-</div>`;}
-},
-
-// ── RET: TOUCH ────────────────────────────────────────
-'ret-touch':{
-  bc:'Удержание · Касания и NPS',
-  rnav:['s-flow','s-tpl'],rlbl:['Алгоритм','Шаблоны'],
-  render(){
-    const id='ret-touch';
-    const items=[
-      {text:'Установить ритм: касание раз в 2 недели для активных клиентов',tag:'c'},
-      {text:'Каждое касание — с поводом: новые сайты, кейс, данные по нише, апдейт',tag:'p'},
-      {text:'После каждой публикации: проверить индексацию и написать клиенту с результатом',tag:'p'},
-      {text:'Раз в квартал: отправить NPS-вопрос (1 вопрос, шкала 1–10)',tag:'e'},
-      {text:'NPS ≥ 8: поблагодарить и плавно предложить реферальную программу',tag:'p'},
-      {text:'NPS 7: уточнить что можно улучшить',tag:'p'},
-      {text:'NPS < 7: немедленно выяснить причину, не ждать следующего контакта',tag:'p'},
-      {text:'Фиксировать все касания и NPS-баллы в CRM с датой',tag:'c'},
-    ];
-    const tpls=[
-      {label:'Проактивное касание с поводом',channels:['messenger'],body:`[Имя], добрый день!
-
-Появились свежие сайты в нише [ниша] — подумал, что могут быть интересны:
-• [домен] — DR [X], трафик [Y]/мес, $[Z]
-• [домен] — DR [X], трафик [Y]/мес, $[Z]
-
-Если что-то зацепило — пришлю полную подборку.`},
-      {label:'Замер NPS',channels:['messenger','email'],body:`[Имя], один вопрос — займёт 10 секунд.
-
-По шкале от 1 до 10: насколько готовы рекомендовать NeedMyLink коллегам или партнёрам?
-
-Любой ответ помогает стать лучше — спасибо!`},
-      {label:'Ответ при NPS < 7',channels:['messenger'],body:`[Имя], спасибо за честность — это ценно.
-
-Хочу понять что пошло не так. Можете рассказать подробнее? Что конкретно не устроило?
-
-Для меня это приоритет — не отчёт, а реальное решение.`},
-    ];
-    const total=items.length;
-    return `<h1 class="pg-title">Касания и NPS</h1>
-<p class="pg-desc">Ритм проактивной коммуникации и измерение лояльности. Касание без повода — хуже отсутствия касания.</p>
-<div class="mrow"><div class="mc"><div class="mc-val">2/мес</div><div class="mc-lbl">Мин. касаний</div></div><div class="mc"><div class="mc-val">1/квартал</div><div class="mc-lbl">Замер NPS</div></div><div class="mc"><div class="mc-val">&lt;7 → сразу</div><div class="mc-lbl">Реакция на низкий NPS</div></div></div>
-<div class="sec" id="s-flow">
-  <div class="sec-lbl">Чеклист</div>
-  ${progBar(id,total)}
-  <div class="chklist">${checkList(id,items)}</div>
 </div>
-<div class="sec" id="s-tpl">
-  <div class="sec-lbl">Шаблоны</div>
-  ${tpls.map((t,i)=>tplCard(t,id,i)).join('')}
-</div>`;
-  }
-},
-
-// ── RET: UPSELL ───────────────────────────────────────
-'ret-upsell':{
-  bc:'Удержание · Upsell',
-  rnav:['s-flow','s-map','s-tpl'],rlbl:['Алгоритм','Карта upsell','Шаблоны'],
-  render(){
-    const id='ret-upsell';
-    const items=[
-      {text:'Определить момент: upsell актуален после первого успешного заказа (месяц 2)',tag:'c'},
-      {text:'Проверить что клиент доволен текущим заказом — не предлагать при открытых тикетах',tag:'c'},
-      {text:'Выбрать логичный следующий шаг по карте upsell (ниже)',tag:'p'},
-      {text:'Связать предложение с целью клиента, а не с продуктом',tag:'p'},
-      {text:'Не давить — предложить один раз, зафиксировать реакцию в CRM',tag:'c'},
-      {text:'Если отказ: уточнить причину и поставить дату повторного предложения (+30 дней)',tag:'c'},
-    ];
-    const tpls=[
-      {label:'Upsell после первого заказа',channels:['messenger'],body:`[Имя], ссылка опубликована и уже проиндексировалась — отличный старт.
-
-Смотрел на ваш профиль: для укрепления позиций хорошо сработают краудлинки в добавление к гостевым постам. Это диверсифицирует ссылочный профиль и выглядит естественно для Google.
-
-Могу показать конкретную схему под ваш сайт — 10 минут разговора.`},
-    ];
-    const total=items.length;
-    return `<h1 class="pg-title">Upsell / кросс-сейл</h1>
-<p class="pg-desc">Увеличиваем LTV через логичные следующие шаги. Upsell работает только при довольном клиенте и понятной пользе для него.</p>
-<div class="mrow"><div class="mc"><div class="mc-val">Месяц 2</div><div class="mc-lbl">Окно для upsell</div></div><div class="mc"><div class="mc-val">1 раз</div><div class="mc-lbl">Предложить, не давить</div></div><div class="mc"><div class="mc-val">+30д</div><div class="mc-lbl">Повтор при отказе</div></div></div>
-<div class="sec" id="s-flow">
-  <div class="sec-lbl">Чеклист</div>
-  ${progBar(id,total)}
-  <div class="chklist">${checkList(id,items)}</div>
-</div>
-<div class="sec" id="s-map">
-  <div class="sec-lbl">Карта upsell по текущему сервису</div>
-  <table class="mtx">
-    <thead><tr><th>Текущий сервис</th><th>Логичный следующий шаг</th><th>Аргумент</th></tr></thead>
-    <tbody>
-      ${[
-        ['Гостевые посты (Outreach)','Краудлинки','Диверсификация ссылочного профиля'],
-        ['Гостевые посты (Outreach)','Индексация','Гарантировать что ссылки работают'],
-        ['Краудлинки','Гостевые посты','Добавить авторитетные доноры'],
-        ['Маркетплейс','Outreach (кастомный)','Эксклюзивные площадки вне маркетплейса'],
-        ['Любой сервис','SEO-копирайтинг','Качество контента влияет на силу ссылки'],
-        ['Любой сервис','Партнёрская программа','Зарабатывать на рекомендациях'],
-      ].map(([c,n,a])=>`<tr><td><span class="bdg bdg-b">${c}</span></td><td>${n}</td><td style="color:#6b7280">${a}</td></tr>`).join('')}
-    </tbody>
-  </table>
-</div>
-<div class="sec" id="s-tpl">
-  <div class="sec-lbl">Шаблоны</div>
-  ${tpls.map((t,i)=>tplCard(t,id,i)).join('')}
-</div>`;
-  }
-},
-
-// ── RET: REFERRAL ─────────────────────────────────────
-'ret-referral':{
-  bc:'Удержание · Реферальная программа',
-  rnav:['s-flow','s-tpl'],rlbl:['Алгоритм','Шаблоны'],
-  render(){
-    const id='ret-referral';
-    const items=[
-      {text:'Предлагать только клиентам с NPS ≥ 8 или после 2+ успешных заказов',tag:'c'},
-      {text:'Объяснить механику: клиент получает % с каждого заказа своего реферала',tag:'p'},
-      {text:'Отправить реферальную ссылку или инструкцию как её сгенерировать в кабинете',tag:'p'},
-      {text:'Зафиксировать в CRM что клиент знает о программе',tag:'c'},
-      {text:'Через 30 дней — уточнить использовал ли / есть вопросы',tag:'p'},
-    ];
-    const tpls=[
-      {label:'Предложение реферальной программы',channels:['messenger'],body:`[Имя], раз уж сотрудничество идёт хорошо — хочу рассказать об одной возможности.
-
-У нас есть реферальная программа: если вы рекомендуете NeedMyLink коллеге или клиенту — получаете % с каждого его заказа на баланс. Пассивно, без усилий.
-
-Ссылку можно сгенерировать прямо в кабинете → раздел «Реферальная программа». Если нужна помощь — помогу.`},
-    ];
-    const total=items.length;
-    return `<h1 class="pg-title">Реферальная программа</h1>
-<p class="pg-desc">Лояльный клиент — лучший канал привлечения. Предлагаем программу только тем кто доволен, не всем подряд.</p>
-<div class="mrow"><div class="mc"><div class="mc-val">NPS ≥ 8</div><div class="mc-lbl">Порог для предложения</div></div><div class="mc"><div class="mc-val">%</div><div class="mc-lbl">С заказов реферала</div></div><div class="mc"><div class="mc-val">Кабинет</div><div class="mc-lbl">Реф. ссылка</div></div></div>
-<div class="sec" id="s-flow">
-  <div class="sec-lbl">Чеклист</div>
-  ${progBar(id,total)}
-  <div class="chklist">${checkList(id,items)}</div>
-</div>
-<div class="sec" id="s-tpl">
-  <div class="sec-lbl">Шаблоны</div>
-  ${tpls.map((t,i)=>tplCard(t,id,i)).join('')}
-</div>`;
-  }
-},
-
-// ── TEMPLATES ─────────────────────────────────────────
-templates:{
-  bc:'Все шаблоны',
-  rnav:['s-problems','s-react','s-retain'],rlbl:['Проблемы','Реактивация','Удержание'],
-  render(){
-    const groups=[
-      {id:'s-problems',label:'Проблемы с заказом',items:[
-        {label:'Первый ответ на жалобу',channels:['platform','messenger'],body:`[Имя], получил ваше сообщение — проверяю прямо сейчас.\n\nФакт удаления подтверждён. Заказ попадает под гарантию замены — запускаю процедуру.\n\n<b>Что дальше:</b>\n• Связываюсь с площадкой в течение 48 часов\n• Если не восстанавливают — предлагаю замену равного качества\n• Держу вас в курсе на каждом шаге`},
-        {label:'Ответ на задержку (проактивно)',channels:['platform','messenger'],body:`[Имя], хочу предупредить заранее.\n\nПубликация на [домен] задерживается. Новый срок: <b>[дата]</b>.\n\nЕсли срок критичен — предложу альтернативную площадку без ожидания.`},
-        {label:'Компенсация при задержке',channels:['email'],body:`[Имя], ожидание затянулось — это неприемлемо.\n\nПубликация выйдет <b>[дата]</b>. В знак извинения — скидка 10% на следующий заказ.`},
-        {label:'Предложение замены вместо возврата',channels:['platform','messenger'],body:`[Имя], прежде чем оформлять возврат — предлагаю замену: это быстрее и вы получаете результат.\n\n<b>Вариант:</b> [домен] — DR [X], та же ниша.\n\nЕсли всё равно предпочитаете возврат — оформлю без лишних вопросов.`},
-      ]},
-      {id:'s-react',label:'Реактивация',items:[
-        {label:'Первое касание (14 дней тишины)',channels:['messenger'],body:`[Имя], давно не общались!\n\nПоявились новые сайты в вашей нише — [ниша]. Если актуально — пришлю подборку. Если сейчас не до ссылок — просто скажите.`},
-        {label:'Второе касание (email, 21 день)',channels:['email'],body:`Тема: Кейс из вашей ниши\n\n[Имя], хотел поделиться результатом похожего проекта. Клиент в нише [ниша] за 3 месяца получил [результат]. Могу прислать стратегию для вашего сайта.`},
-        {label:'Финальное касание (30 дней)',channels:['messenger'],body:`[Имя], последний раз пишу — не хочу надоедать.\n\nЕсли что-то не устроило в прошлый раз — скажите, разберёмся. Если всё ок и ссылки пока не нужны — буду рад когда понадобится.`},
-        {label:'Ответ «ушёл к конкуренту»',channels:['messenger'],body:`[Имя], понимаю — конкуренция на рынке есть, это нормально.\n\nЕсли не секрет — что именно привлекло там? Хочу понять чтобы стать лучше.\n\nИ если что-то не устроит — здесь всегда рады вернуться.`},
-        {label:'Вариант при нет бюджета',channels:['messenger'],body:`[Имя], понял — бюджеты штука непростая.\n\nЭто временно или пока задачи по ссылкам не актуальны совсем? Если временно — скажите когда удобно вернуться, поставлю напоминание.`},
-      ]},
-      {id:'s-retain',label:'Удержание и рост',items:[
-        {label:'Проактивное касание',channels:['messenger'],body:`[Имя], добрый день!\n\nПоявились свежие сайты в нише [ниша]:\n• [домен] — DR [X], трафик [Y]/мес\n• [домен] — DR [X], трафик [Y]/мес\n\nЕсли что-то зацепило — пришлю полную подборку.`},
-        {label:'Замер NPS',channels:['messenger','email'],body:`[Имя], один вопрос — займёт 10 секунд.\n\nПо шкале от 1 до 10: насколько готовы рекомендовать NeedMyLink коллегам?\n\nЛюбой ответ помогает стать лучше — спасибо!`},
-        {label:'Upsell после первого заказа',channels:['messenger'],body:`[Имя], ссылка опубликована и уже проиндексировалась — отличный старт.\n\nДля укрепления позиций хорошо сработают краудлинки в добавление к гостевым постам — диверсифицирует профиль и выглядит естественно.\n\nМогу показать конкретную схему под ваш сайт.`},
-        {label:'Предложение реферальной программы',channels:['messenger'],body:`[Имя], раз сотрудничество идёт хорошо — есть одна возможность.\n\nРеферальная программа: рекомендуете нас — получаете % с заказов вашего реферала на баланс. Пассивно.\n\nСсылка генерируется в кабинете → «Реферальная программа».`},
-      ]},
-    ];
-    return `<h1 class="pg-title">Все шаблоны</h1>
-<p class="pg-desc">Все шаблоны сообщений в одном месте. Каналы: <span class="chn chn-pl">Платформа</span><span class="chn chn-mg">Мессенджер</span><span class="chn chn-em">Email</span></p>
-${groups.map(g=>`
-<div class="sec" id="${g.id}">
-  <div class="sec-lbl">${g.label}</div>
-  ${g.items.map((t,i)=>tplCard(t,'all-'+g.id,i)).join('')}
-</div>`).join('<hr class="div">')}`;
-  }
-},
-
-// ── ESCALATION ────────────────────────────────────────
-escalation:{
-  bc:'Матрица эскалации',
-  rnav:['s-matrix','s-who'],rlbl:['Матрица','Контакты'],
-  render(){return `
-<h1 class="pg-title">Матрица эскалации</h1>
-<p class="pg-desc">Когда и кому передавать ситуацию. Менеджер не должен решать всё самостоятельно — важно знать момент подключения команды.</p>
-<div class="sec" id="s-matrix">
-  <div class="sec-lbl">Матрица</div>
-  <table class="mtx">
-    <thead><tr><th>Ситуация</th><th>Срок реакции</th><th>Кто подключается</th><th>Канал</th></tr></thead>
-    <tbody>
-      ${[
-        ['NPS < 7','Немедленно','TL продаж','Мессенджер / звонок','bdg-r'],
-        ['Chargeback / диспут','Немедленно','Finance + TL','Email','bdg-r'],
-        ['Публичная угроза отзывом','≤4ч','TL + Marketing','Мессенджер','bdg-r'],
-        ['Жалоба на качество (не решена)','≤24ч','Senior + QA','Платформа','bdg-y'],
-        ['Задержка >14 дней','≤24ч','Project Manager','Jira / чат','bdg-y'],
-        ['Запрос возврата >$200','≤24ч','Finance','Email','bdg-y'],
-        ['Технический баг платформы','≤48ч','Support + Dev','Jira тикет','bdg-b'],
-        ['Вопрос по серой нише','По запросу','TL / юрист','Внутренний чат','bdg-b'],
-      ].map(([s,t,w,c,bc])=>`<tr><td>${s}</td><td><span class="bdg ${bc}">${t}</span></td><td>${w}</td><td>${c}</td></tr>`).join('')}
-    </tbody>
-  </table>
-</div>
-<div class="sec" id="s-who">
-  <div class="sec-lbl">Контакты для эскалации</div>
-  <div class="rules">
-    <div class="rc danger"><div class="rc-title">TL продаж</div><div class="rc-body">NPS &lt; 7, публичные угрозы, крупные клиенты, конфликты которые менеджер не может решить.\nTelegram: @tl_needmylink</div></div>
-    <div class="rc warn"><div class="rc-title">Finance</div><div class="rc-body">Chargeback, диспуты, возвраты >$200, вопросы по балансу.\nEmail: finance@needmylink.com</div></div>
-    <div class="rc info"><div class="rc-title">Support / Tech</div><div class="rc-body">Технические баги, проблемы с кабинетом, статусы заказов которые не обновляются.\nJira или внутренний чат команды.</div></div>
-    <div class="rc ok"><div class="rc-title">Project Manager</div><div class="rc-body">Задержки публикации >7 дней, проблемы с вебмастерами, форс-мажор по заказам.\nВнутренний чат / Jira.</div></div>
+<div class="sec" id="s-nav">
+  <div class="sec-lbl">Сценарии коммуникации</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+    ${[['r-process','📧','Каналы и шаблоны','Email, мессенджер, LinkedIn — что и когда писать'],['r-channels','💬','Работа со скидками','Когда применять самому, когда идти к PM']].map(([id,ic,t,d])=>`
+    <div class="sit-card" onclick="go('${id}')">
+      <div style="font-size:18px;margin-bottom:7px">${ic}</div>
+      <div class="sit-card-title">${t}</div>
+      <div class="sit-card-desc" style="font-size:11.5px">${d}</div>
+    </div>`).join('')}
   </div>
 </div>`;}
 },
 
-// ── STOPLIST ──────────────────────────────────────────
-stoplist:{
-  bc:'Стоп-листы',
-  rnav:['s-promises','s-toxic','s-grey'],rlbl:['Запрещённые обещания','Токсичные клиенты','Серые ниши'],
-  render(){return `
-<h1 class="pg-title">Стоп-листы</h1>
-<p class="pg-desc">Что нельзя обещать, как распознать токсичного клиента, и особенности работы с серыми нишами.</p>
-<div class="sec" id="s-promises">
-  <div class="sec-lbl">Запрещённые обещания</div>
-  ${[
-    ['Гарантировать конкретные позиции в Google','SEO — вероятностный процесс. Гарантируем качество ссылок, но не позиции.'],
-    ['Обещать результат за конкретный срок (топ за 2 недели)','Сроки зависят от конкуренции, истории домена, алгоритмов Google.'],
-    ['Давать скидки без согласования с TL','Нарушает ценовую политику и создаёт прецеденты. Любое исключение — через TL.'],
-    ['Обещать публикацию на конкретном домене без проверки доступности','Проверяй маркетплейс перед обещанием — домен может быть снят.'],
-    ['Называть ссылки «вечными» без оговорок','Правильно: «постоянные ссылки + гарантия замены 12 / 6 месяцев».'],
-    ['Гарантировать dofollow для серых ниш без проверки','Условия по серым нишам отличаются — уточняй у TL.'],
-  ].map(([t,d])=>`<div class="stop-item">
-    <div class="stop-x"><svg viewBox="0 0 12 12"><line x1="1" y1="1" x2="11" y2="11"/><line x1="11" y1="1" x2="1" y2="11"/></svg></div>
-    <div class="stop-txt"><b>${t}</b><br><span style="color:#6b7280">${d}</span></div>
-  </div>`).join('')}
+'r-process':{
+  bc:'Реактивация · Каналы и шаблоны',
+  rnav:['s-channels','s-tpl'],rlbl:['Каналы','Шаблоны'],
+  render(){
+    const id='r-process';
+    const items=[
+      {text:'Изучить задание от PM: кто клиент, что предлагать, какая скидка',tag:'p'},
+      {text:'Выбрать канал: email (если есть), мессенджер (Telegram/WhatsApp), LinkedIn',tag:'p'},
+      {text:'Отправить первое сообщение с конкретным предложением',tag:'p'},
+      {text:'Если нет ответа 5 дней — написать повторно через другой канал',tag:'p'},
+      {text:'Если нет ответа на два касания — зафиксировать и сообщить PM',tag:'j'},
+      {text:'При согласии — применить скидку или согласовать с PM',tag:'p'},
+      {text:'Зафиксировать результат в документе / CRM',tag:'j'},
+    ];
+    const tpls=[
+      {label:'Первое касание (email)',channels:['email'],body:`Тема: [Имя], для вас есть специальное предложение
+
+[Имя], добрый день!
+
+Мы работали вместе по [сервис] — хотел предложить вернуться на выгодных условиях.
+
+[Конкретное предложение от PM: скидка X% / бонус / специальный пакет]
+
+Если интересно — отвечу на любые вопросы. Предложение действует до [дата].`},
+      {label:'Первое касание (мессенджер)',channels:['messenger'],body:`[Имя], добрый день!
+
+Работали вместе по [сервис] — хотел предложить специальные условия для возобновления.
+
+[Конкретное предложение]
+
+Актуально?`},
+      {label:'Второе касание (LinkedIn)',channels:['linkedin'],body:`[Имя], писал ранее по email — возможно не попало.
+
+У нас есть специальное предложение для вас по [сервис]. Буду рад обсудить если актуально.`},
+    ];
+    return`<h1 class="pg-title">Каналы и шаблоны реактивации</h1>
+<p class="pg-desc">Три канала: email, мессенджер, LinkedIn. Конкретное предложение и скидку берёшь из задания PM.</p>
+<div class="sec" id="s-channels">
+  <div class="sec-lbl">Чеклист</div>
+  ${progBar(id,items.length)}
+  <div class="chklist">${checkList(id,items)}</div>
 </div>
-<div class="sec" id="s-toxic">
-  <div class="sec-lbl">Признаки токсичного клиента</div>
-  <div class="alert red"><div class="alert-icon">⚠️</div><div class="alert-txt"><b>При 2+ признаках</b> — согласуй с TL возможность закрытия аккаунта. Ресурс команды важнее удержания любой ценой.</div></div>
-  ${[
-    ['Повторные chargeback без обоснования (2+ за 3 месяца)'],
-    ['Требует гарантий которых нет в оффере (топ-1 за 1 неделю)'],
-    ['Использует угрозу отзывом как инструмент давления для получения скидок'],
-    ['Отклоняет все предложенные решения, требует только денег'],
-    ['Неуважительная коммуникация с командой — оскорбления, агрессия'],
-  ].map(([t])=>`<div class="stop-item">
-    <div class="stop-x"><svg viewBox="0 0 12 12"><line x1="1" y1="1" x2="11" y2="11"/><line x1="11" y1="1" x2="1" y2="11"/></svg></div>
-    <div class="stop-txt">${t}</div>
-  </div>`).join('')}
+<div class="sec" id="s-tpl"><div class="sec-lbl">Шаблоны</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>`;
+  }
+},
+
+'r-channels':{
+  bc:'Реактивация · Скидки',
+  rnav:['s-disc'],rlbl:['Работа со скидками'],
+  render(){return`
+<h1 class="pg-title">Работа со скидками</h1>
+<p class="pg-desc">Скидки без согласования с PM — запрещены. Всегда сверяйся с заданием.</p>
+<div class="sec" id="s-disc">
+  <div class="rules">
+    <div class="rc ok"><div class="rc-title">✅ Можешь применить сам</div><div class="rc-body">Скидка или условие явно указаны в задании от PM для этого клиента. Применяешь самостоятельно в системе или озвучиваешь клиенту.</div></div>
+    <div class="rc danger"><div class="rc-title">❌ Нельзя без PM</div><div class="rc-body">• Скидка не указана в задании\n• Клиент просит скидку бо́льшую чем в задании\n• Нестандартные условия которых нет в документе\n\nВ этих случаях: «Уточню для вас условия и напишу сегодня» → идёшь к PM.</div></div>
+    <div class="rc warn"><div class="rc-title">Не обещай до согласования</div><div class="rc-body">Никогда не называй клиенту скидку до того как убедился что можешь её дать. Отозвать обещание — хуже чем не давать его.</div></div>
+  </div>
+</div>`;}
+},
+
+jira:{
+  bc:'Работа с Jira',
+  rnav:['s-boards','s-kpi'],rlbl:['Три доски','KPI'],
+  render(){return`
+<h1 class="pg-title">Работа с Jira</h1>
+<p class="pg-desc">Три доски для разных типов задач. Каждое обращение клиента → тикет. Без записи в Jira — обращения не было.</p>
+<div class="sec" id="s-boards">
+  <div class="sec-lbl">Три доски</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+    ${[['jira-chat','💬','[Portal] chat','Все обращения клиентов из чата платформы'],['jira-reviews','⭐','[Portal] Reviews','Отзывы и фидбеки от пользователей'],['jira-admin','⚙️','[ADMIN] space','Личный тасочник CSM: баги, идеи, внутренние задачи']].map(([id,ic,t,d])=>`
+    <div class="sit-card" onclick="go('${id}')">
+      <div style="font-size:20px;margin-bottom:8px">${ic}</div>
+      <div class="sit-card-title">${t}</div>
+      <div class="sit-card-desc" style="font-size:11.5px">${d}</div>
+    </div>`).join('')}
+  </div>
 </div>
-<div class="sec" id="s-grey">
-  <div class="sec-lbl">Серые ниши — особые условия</div>
+<div class="sec" id="s-kpi">
+  <div class="sec-lbl">KPI по Jira</div>
   <table class="mtx">
-    <thead><tr><th>Ниша</th><th>Гарантия</th><th>Особенности</th></tr></thead>
+    <thead><tr><th>Метрика</th><th>Норма</th></tr></thead>
     <tbody>
-      ${[
-        ['iGaming / Казино','6 мес.','Ограниченный список площадок. Согласование с командой.'],
-        ['Adult / 18+','6 мес.','Только согласованные сайты. Обязательно уточнять перед КП.'],
-        ['Фарма / CBD','6 мес.','Проверка регуляторных требований по GEO клиента.'],
-        ['Forex / Trading','6 мес.','Не все площадки принимают. Уточнять доступность заранее.'],
-        ['Криптовалюта','6 мес.','Отдельный список партнёров. Ценообразование отличается.'],
-      ].map(([n,g,o])=>`<tr><td><b style="font-weight:500">${n}</b></td><td><span class="bdg bdg-y">${g}</span></td><td style="color:#6b7280">${o}</td></tr>`).join('')}
+      <tr><td>Время передачи тикета в Jira после обращения</td><td><span class="bdg bdg-g">≤30 минут</span></td></tr>
+      <tr><td>Время передачи тикета на PM (из "Нахождение" → "Передано")</td><td><span class="bdg bdg-g">≤1 рабочего дня</span></td></tr>
+      <tr><td>Тикеты с корректно заполненными полями</td><td><span class="bdg bdg-g">100%</span></td></tr>
+      <tr><td>Активных задач в "Нахождении" одновременно</td><td><span class="bdg bdg-y">не более 10</span></td></tr>
+      <tr><td>Ревизия беклога</td><td><span class="bdg bdg-b">раз в месяц</span></td></tr>
+      <tr><td>Доля дублей и мусорных задач</td><td><span class="bdg bdg-y">не более 5%</span></td></tr>
     </tbody>
   </table>
 </div>`;}
 },
 
+'jira-chat':{
+  bc:'Jira · [Portal] chat',
+  rnav:['s-flow','s-statuses','s-template'],rlbl:['Процесс','Статусы','Шаблон тикета'],
+  render(){
+    const id='jira-chat';
+    const items=[
+      {text:'Получить обращение в CRM из чата платформы',tag:'p'},
+      {text:'Проверить данные клиента: имя, ID, тип аккаунта',tag:'j'},
+      {text:'Оценить тип: вопрос / баг / фидбек / предложение',tag:'p'},
+      {text:'Создать тикет в [Portal] chat по шаблону',tag:'j'},
+      {text:'Простой вопрос → решить с Аутрич / Крауд / Копирайтинг напрямую',tag:'p'},
+      {text:'Сложная проблема / баг → назначить тикет на PM',tag:'j'},
+      {text:'Сообщить клиенту что запрос принят в работу',tag:'p'},
+      {text:'После решения — получить подтверждение от клиента',tag:'p'},
+      {text:'Закрыть тикет: перевести в статус "Готово / учтено"',tag:'j'},
+      {text:'Еженедельно: проверить просроченные тикеты на доске',tag:'j'},
+    ];
+    return`<h1 class="pg-title">[Portal] chat</h1>
+<p class="pg-desc">Основная доска для всех клиентских обращений из чата платформы. Каждый чат → тикет.</p>
+<div class="sec" id="s-flow"><div class="sec-lbl">Чеклист</div>${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>
+<div class="sec" id="s-statuses">
+  <div class="sec-lbl">Логика статусов</div>
+  <div class="jira-box">
+    ${[['s-green','🟢 На рассмотрении','PM анализирует тикет, задаёт уточняющие вопросы'],['s-yellow','🟡 В работе','Задача передана исполнителям'],['s-green','✅ Готово / учтено','Проблема решена, клиент подтвердил'],['s-red','🗑 Корзина','Тикет отклонён PM с комментарием']].map(([cls,lbl,desc])=>`
+    <div style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #f0f1f3">
+      <span class="jira-status ${cls}">${lbl}</span>
+      <span style="font-size:12px;color:#6b7280;padding-top:3px">${desc}</span>
+    </div>`).join('')}
+  </div>
+</div>
+<div class="sec" id="s-template">
+  <div class="sec-lbl">Шаблон тикета</div>
+  <div class="tpl-field"><b>Заголовок:</b> краткое описание проблемы
+
+<b>👤 Общая информация</b>
+Пользователь: [Имя] | [ссылка на страницу юзера в CRM]
+Время обращения: [указывается в поле "Start date"]
+
+<b>💬 Сообщение юзера:</b>
+"[полный текст запроса]"
+
+<b>🔍 Анализ CSM</b>
+Проверено: да / нет
+Есть ошибка: да / нет
+Категория: UI / UX / DEV / Prod
+Заключение (1–2 предложения): [вывод]
+Скриншоты: [вложением]
+
+<b>🎯 Приоритет</b>
+🔴 High — блокирует работу пользователя
+🟠 Medium — усложняет работу
+🟢 Low — не влияет на работу</div>
+</div>`;
+  }
+},
+
+'jira-reviews':{
+  bc:'Jira · [Portal] Reviews',
+  rnav:['s-flow','s-types','s-template'],rlbl:['Процесс','Типы','Шаблон'],
+  render(){
+    const id='jira-reviews';
+    const items=[
+      {text:'Получить отзыв от пользователя (чат / форма / устно)',tag:'p'},
+      {text:'Определить тип: Positive / Negative / Suggestion',tag:'p'},
+      {text:'Создать тикет в [Portal] Reviews по шаблону',tag:'j'},
+      {text:'Назначить тикет на PM',tag:'j'},
+      {text:'При необходимости — уведомить клиента что отзыв учтён',tag:'p'},
+      {text:'После обработки PM: тикет → "Готово / учтено"',tag:'j'},
+      {text:'Еженедельно: формировать отчёт по категориям отзывов',tag:'j'},
+      {text:'Ежемесячно: синк с PM по трендам и топ-5 повторяющихся тем',tag:'p'},
+    ];
+    return`<h1 class="pg-title">[Portal] Reviews</h1>
+<p class="pg-desc">Сбор и фиксация отзывов пользователей. Три типа: Positive, Negative, Suggestion.</p>
+<div class="sec" id="s-flow"><div class="sec-lbl">Чеклист</div>${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>
+<div class="sec" id="s-types">
+  <div class="sec-lbl">Типы отзывов</div>
+  <table class="mtx">
+    <thead><tr><th>Тип</th><th>Примеры</th><th>Приоритет</th></tr></thead>
+    <tbody>
+      <tr><td><span class="bdg bdg-g">💬 Positive</span></td><td>Похвала, благодарность, рекомендация</td><td>Low</td></tr>
+      <tr><td><span class="bdg bdg-r">⚠️ Negative</span></td><td>Жалоба, баг, недовольство</td><td>High / Medium</td></tr>
+      <tr><td><span class="bdg bdg-b">💡 Suggestion</span></td><td>Идея по улучшению, запрос функционала</td><td>Medium / Low</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="sec" id="s-template">
+  <div class="sec-lbl">Шаблон тикета</div>
+  <div class="tpl-field"><b>Заголовок:</b> [тип отзыва] — [раздел платформы: Онбординг / Платежи / Интерфейс / Контент / Поддержка]
+
+<b>👤 Общая информация</b>
+Пользователь: [Имя] | [ссылка на страницу юзера]
+Время обращения: [поле "Start date"]
+
+<b>💬 Фидбек юзера:</b>
+"[полный текст]"
+
+<b>🔍 Анализ CSM</b>
+Тип: Positive / Negative / Suggestion
+Проверено: да / нет
+Есть ошибка: да / нет
+Категория: UI / UX / DEV / Prod
+Заключение (1–2 предложения):
+Скриншоты: [вложением]
+
+<b>🎯 Приоритет</b>
+🔴 High — влияет на бизнес / частая проблема
+🟠 Medium — заметный, но не критичный
+🟢 Low — единичный или малозначимый</div>
+</div>`;
+  }
+},
+
+'jira-admin':{
+  bc:'Jira · [ADMIN] space',
+  rnav:['s-flow','s-statuses'],rlbl:['Процесс','Статусы'],
+  render(){
+    const id='jira-admin';
+    const items=[
+      {text:'Обнаружен баг / идея / кейс — создать задачу на доске [ADMIN] space',tag:'j'},
+      {text:'Заполнить: описание, источник (ссылка / путь), приоритет, скрин',tag:'j'},
+      {text:'Критический баг (не работает вход / главная) → пометить как Критический, передать Dev сразу',tag:'j'},
+      {text:'Обычная задача → проверить контекст, собрать детали, определить категорию',tag:'p'},
+      {text:'Заполнить все поля → передать на PM: статус "Передано"',tag:'j'},
+      {text:'Проверять актуальность статусов раз в неделю',tag:'j'},
+      {text:'Не держать более 10 активных задач в "Нахождении"',tag:'j'},
+      {text:'Раз в месяц пересматривать беклог и актуализировать приоритеты',tag:'j'},
+    ];
+    return`<h1 class="pg-title">[ADMIN] space</h1>
+<p class="pg-desc">Личный тасочник CSM. Баги замеченные самим CSM, идеи, внутренние кейсы — не клиентские обращения.</p>
+<div class="sec" id="s-flow"><div class="sec-lbl">Чеклист</div>${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>
+<div class="sec" id="s-statuses">
+  <div class="sec-lbl">Логика статусов</div>
+  <div class="jira-box">
+    ${[
+      ['s-green','🟢 Нахождение','Сбор информации: проверить контекст, собрать детали, определить категорию (баг / улучшение)'],
+      ['s-yellow','🟡 Передано','Задача передана на PM или другую команду. Все поля заполнены.'],
+      ['s-blue','🔵 Беклог','Идеи и задачи без активных действий. Пересматривать раз в месяц.'],
+      ['s-red','🗑 Мусорка','Нерелевантные, дублирующие, тестовые записи. С коротким комментарием почему закрыто.'],
+    ].map(([cls,lbl,desc])=>`
+    <div style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #f0f1f3">
+      <span class="jira-status ${cls}" style="white-space:nowrap">${lbl}</span>
+      <span style="font-size:12px;color:#6b7280;padding-top:3px">${desc}</span>
+    </div>`).join('')}
+  </div>
+  <div class="alert red" style="margin-top:12px"><div class="alert-icon">🔴</div><div class="alert-txt"><b>Критический баг</b> — не работает вход или главная страница портала. Такие задачи автоматически передаются Dev в обход планов.</div></div>
+</div>`;
+  }
+},
+
+escalation:{
+  bc:'Матрица эскалации',
+  rnav:['s-matrix','s-contacts'],rlbl:['Матрица','Контакты'],
+  render(){return`
+<h1 class="pg-title">Матрица эскалации</h1>
+<p class="pg-desc">Кому и когда передавать. CSM не должен решать всё самостоятельно — важно знать момент подключения.</p>
+<div class="sec" id="s-matrix">
+  <div class="sec-lbl">Кто решает что</div>
+  <table class="mtx">
+    <thead><tr><th>Ситуация</th><th>Кто решает</th><th>Как обратиться</th></tr></thead>
+    <tbody>
+      ${[
+        ['Вопросы по аутрич-заказу (домены, сроки, критерии)','Тимлид Аутрич','Напрямую в чате'],
+        ['Вопросы по краудлинкам','Тимлид Крауд','Напрямую в чате'],
+        ['Вопросы по текстам и статьям','Тимлид Копирайтинг','Напрямую в чате'],
+        ['Скидки и спецусловия','PM','Согласовать до ответа клиенту'],
+        ['Возврат средств','PM','Тикет в Jira + сообщение PM'],
+        ['Сложная проблема с заказом','PM','Тикет в [Portal] chat → назначить на PM'],
+        ['Баг функционала платформы','PM → Dev','Тикет в [ADMIN] space'],
+        ['Критический баг (вход / главная)','Dev напрямую','Тикет с пометкой "Критический"'],
+      ].map(([s,w,h])=>`<tr><td>${s}</td><td><b style="font-weight:500">${w}</b></td><td style="color:#6b7280">${h}</td></tr>`).join('')}
+    </tbody>
+  </table>
+</div>
+<div class="sec" id="s-contacts">
+  <div class="sec-lbl">Правило эскалации</div>
+  <div class="rules">
+    <div class="rc info"><div class="rc-title">Простые вопросы → команда исполнителей</div><div class="rc-body">Аутрич, Крауд, Копирайтинг — напрямую. Решаешь → потом тикет PM с описанием как закрыл.</div></div>
+    <div class="rc warn"><div class="rc-title">Сложные вопросы → сначала PM</div><div class="rc-body">Если не знаешь как решить с командой исполнителей — тикет сразу на PM. Не угадывай и не обещай клиенту.</div></div>
+    <div class="rc danger"><div class="rc-title">Скидки — только через PM</div><div class="rc-body">Никогда не называй скидку клиенту до согласования с PM. Даже если кажется что это мелочь.</div></div>
+  </div>
+</div>`;}
+},
+
+stoplist:{
+  bc:'Стоп-листы',
+  rnav:['s-stops'],rlbl:['Запрещено'],
+  render(){return`
+<h1 class="pg-title">Стоп-листы</h1>
+<p class="pg-desc">Что CSM не должен делать или обещать клиенту ни при каких обстоятельствах.</p>
+<div class="sec" id="s-stops">
+  ${[
+    ['Давать скидки без согласования с PM','Любые скидки — сначала согласовать с PM, потом озвучивать клиенту.'],
+    ['Обсуждать условия других клиентов','Конфиденциальность — абсолютный приоритет. Никаких «у другого клиента было так».'],
+    ['Критиковать конкурентов или сравнивать публично','Если клиент спрашивает о конкурентах — говорить о преимуществах NeedMyLink, не о недостатках других.'],
+    ['Давать личные гарантии от своего имени','Гарантии даёт компания, не CSM лично. Формулировка: «по условиям платформы», не «я гарантирую».'],
+    ['Решать технические баги платформы самостоятельно без фиксации в Jira','Любой баг → тикет в Jira → PM. Даже если кажется что знаешь решение.'],
+    ['Обещать клиенту срок решения без подтверждения от команды','Сначала уточни у Аутрич / Крауд / Копирайтинг / PM — потом называй срок клиенту.'],
+    ['Скрывать проблему от PM если не можешь решить сам','Лучше сообщить PM о проблеме которую не можешь решить, чем обещать клиенту и не выполнить.'],
+  ].map(([t,d])=>`<div class="stop-item">
+    <div class="stop-x"><svg viewBox="0 0 12 12"><line x1="1" y1="1" x2="11" y2="11"/><line x1="11" y1="1" x2="1" y2="11"/></svg></div>
+    <div class="stop-txt"><b>${t}</b><br><span style="color:#6b7280">${d}</span></div>
+  </div>`).join('')}
+</div>`;}
+},
+
+templates:{
+  bc:'Все шаблоны',
+  rnav:['s-problems','s-react'],rlbl:['Проблемы','Реактивация'],
+  render(){
+    const groups=[
+      {id:'s-problems',label:'Проблемы с заказом',items:[
+        {label:'Первый ответ на жалобу',channels:['platform','messenger'],body:`[Имя], получил ваше сообщение — проверяю прямо сейчас.\n\nДержу вас в курсе — отпишу как только будет обновление.`},
+        {label:'Предложение замены (ссылка удалена)',channels:['platform','email'],body:`[Имя], площадка [домен] не восстановила ссылку. По гарантии предлагаю замену:\n\n<b>Вариант 1:</b> [домен] — DR [X], трафик [Y]/мес\n<b>Вариант 2:</b> [домен] — DR [X], трафик [Y]/мес\n\nСкажите какой подходит.`},
+        {label:'Ответ про индексацию (норм. сроки)',channels:['platform','messenger'],body:`[Имя], публикация от [дата] — прошло [X] дней.\n\nЭто нормально: Google индексирует от 1 до 4 недель. Поставил напоминание на [дата] — напишу сам если что-то пойдёт не так.`},
+        {label:'Запрос деталей по качеству',channels:['platform','messenger'],body:`[Имя], спасибо что написали.\n\nЧтобы исправить быстро — уточните что именно не устраивает? (текст, тематика, анкор, другое)`},
+        {label:'Проактивно о задержке',channels:['platform','messenger'],body:`[Имя], хочу предупредить заранее.\n\nПубликация на [домен] задерживается — [причина]. Новый срок: <b>[дата]</b>.\n\nЕсли срок критичен — могу предложить альтернативу.`},
+        {label:'Замена вместо возврата',channels:['platform','messenger'],body:`[Имя], прежде чем оформлять возврат — предлагаю замену: быстрее и вы получаете результат.\n\n<b>Вариант:</b> [домен] — DR [X], та же ниша.\n\nЕсли всё равно предпочитаете возврат — передам на согласование.`},
+      ]},
+      {id:'s-react',label:'Реактивация',items:[
+        {label:'Первое касание (email)',channels:['email'],body:`Тема: [Имя], для вас есть специальное предложение\n\n[Имя], добрый день!\n\nРаботали вместе по [сервис] — хотел предложить вернуться на выгодных условиях.\n\n[Предложение от PM]\n\nАктуально до [дата]. Буду рад ответить на вопросы.`},
+        {label:'Первое касание (мессенджер)',channels:['messenger'],body:`[Имя], добрый день!\n\nРаботали вместе по [сервис] — есть специальные условия для возобновления.\n\n[Предложение]\n\nАктуально?`},
+        {label:'Второе касание (LinkedIn)',channels:['linkedin'],body:`[Имя], писал ранее по email — возможно не попало.\n\nЕсть предложение по [сервис]. Буду рад обсудить если актуально.`},
+      ]},
+    ];
+    return`<h1 class="pg-title">Все шаблоны</h1>
+<p class="pg-desc">Все шаблоны в одном месте. <span style="background:#f3f4f6;color:#374151;font-size:11px;padding:1px 6px;border-radius:99px">Платформа</span> <span style="background:#ede9fe;color:#5b21b6;font-size:11px;padding:1px 6px;border-radius:99px">Мессенджер</span> <span style="background:#dcfce7;color:#166534;font-size:11px;padding:1px 6px;border-radius:99px">Email</span> <span style="background:#dbeafe;color:#1e40af;font-size:11px;padding:1px 6px;border-radius:99px">LinkedIn</span></p>
+${groups.map(g=>`<div class="sec" id="${g.id}"><div class="sec-lbl">${g.label}</div>${g.items.map((t,i)=>tplCard(t,'all-'+g.id,i)).join('')}</div>`).join('<hr class="div">')}`;
+  }
+},
+
 };
 
-// ══════════════════════════════════════════════════════
-// ROUTING
-// ══════════════════════════════════════════════════════
-let cur = 'home';
-const tplStore = {};
+let cur='home';
+function render(){
+  const pg=PAGES[cur];
+  if(!pg)return;
+  document.getElementById('page').innerHTML=`<div class="fadein">${pg.render()}</div>`;
+}
 
 function go(pageId){
-  if(!PAGES[pageId]) return;
-  cur = pageId;
-
-  // sidebar active
+  if(!PAGES[pageId])return;
+  cur=pageId;
   document.querySelectorAll('.sb-link').forEach(el=>{
     el.classList.remove('active');
-    const oc = el.getAttribute('onclick')||'';
-    if(oc.includes(`'${pageId}'`)) el.classList.add('active');
+    const oc=el.getAttribute('onclick')||'';
+    if(oc.includes(`'${pageId}'`))el.classList.add('active');
   });
-
-  // sub-menus
-  ['problems','reactivation','retention'].forEach(grp=>{
-    const sub = document.getElementById('sub-'+grp);
-    if(!sub) return;
-    const open = pageId===grp || pageId.startsWith(grp.slice(0,3).replace('pro','p-').replace('rea','r-').replace('ret','ret-')) ||
-      (grp==='problems' && ['p-link-removed','p-not-indexed','p-quality','p-delay','p-refund'].includes(pageId)) ||
-      (grp==='reactivation' && ['r-silent','r-churned','r-nobudget'].includes(pageId)) ||
-      (grp==='retention' && ['ret-touch','ret-upsell','ret-referral'].includes(pageId));
-    sub.style.display = open ? 'block' : 'none';
+  ['problems','reactivation','jira'].forEach(grp=>{
+    const sub=document.getElementById('sub-'+grp);
+    if(!sub)return;
+    const problemPages=['p-link-removed','p-not-indexed','p-quality','p-delay','p-refund'];
+    const reactPages=['r-process','r-channels'];
+    const jiraPages=['jira-chat','jira-reviews','jira-admin'];
+    const open=(grp==='problems'&&(pageId===grp||problemPages.includes(pageId)))||
+               (grp==='reactivation'&&(pageId===grp||reactPages.includes(pageId)))||
+               (grp==='jira'&&(pageId===grp||jiraPages.includes(pageId)));
+    sub.style.display=open?'block':'none';
   });
-
-  // breadcrumb
-  const pg = PAGES[pageId];
-  document.getElementById('bc').innerHTML = pg.bc.split(' · ').map((p,i,a)=>
-    i<a.length-1 ? `<span>${p}</span><sep>›</sep>` : `<span class="cur">${p}</span>`
+  const pg=PAGES[pageId];
+  const parts=pg.bc.split(' · ');
+  document.getElementById('bc').innerHTML=parts.map((p,i,a)=>
+    i<a.length-1?`<span>${p}</span><span style="margin:0 4px;color:#d1d5db">›</span>`:`<span class="cur">${p}</span>`
   ).join('');
-
-  // render
-  const html = pg.render();
-  const el = document.getElementById('page');
-  el.innerHTML = `<div class="fadein">${html}</div>`;
-
-  // right nav
-  const rn = document.getElementById('rnav');
-  rn.innerHTML = pg.rnav.map((id,i)=>`<a class="${i===0?'on':''}" onclick="rnav(this,'${id}')">${pg.rlbl[i]}</a>`).join('');
-
+  render();
+  document.getElementById('rnav').innerHTML=pg.rnav.map((id,i)=>
+    `<a class="${i===0?'on':''}" onclick="rnav(this,'${id}')">${pg.rlbl[i]}</a>`
+  ).join('');
   window.scrollTo(0,0);
 }
 
-function rnav(el, id){
+function rnav(el,id){
   document.querySelectorAll('.rnav-list a').forEach(a=>a.classList.remove('on'));
   el.classList.add('on');
-  const t = document.getElementById(id);
-  if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+  const t=document.getElementById(id);
+  if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 function tglTpl(header){
-  const body = header.nextElementSibling;
-  const icon = header.querySelector('.tpl-toggle');
-  const open = body.classList.toggle('open');
+  const body=header.nextElementSibling;
+  const icon=header.querySelector('.tpl-toggle');
+  const open=body.classList.toggle('open');
   if(icon){icon.classList.toggle('open',open);icon.textContent=open?'×':'+';}
 }
 
-function copyTpl(btn, id, idx){
-  // find template text from rendered DOM
-  const cards = btn.closest('.tpl-body');
-  const txt = cards ? cards.querySelector('.tpl-text').innerText : '';
+function copyTpl(btn){
+  const txt=btn.closest('.tpl-body').querySelector('.tpl-text').innerText;
   navigator.clipboard.writeText(txt).then(()=>{
-    const orig = btn.innerHTML;
-    btn.innerHTML='<svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Скопировано';
+    const orig=btn.innerHTML;
+    btn.innerHTML='✓ Скопировано';
     setTimeout(()=>{btn.innerHTML=orig},2000);
   });
 }
 
-// init
 go('home');
 </script>
 </body>
