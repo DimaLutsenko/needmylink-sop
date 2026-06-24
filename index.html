@@ -82,6 +82,7 @@ hr.div{border:none;border-top:1px solid #f0f1f3;margin:26px 0}
 .tag-j{background:#ede9fe;color:#5b21b6}
 .tag-c{background:#dbeafe;color:#1e40af}
 .tag-p{background:#dcfce7;color:#166534}
+.tag-s{background:#fef9c3;color:#92400e}
 
 .prog-wrap{margin-bottom:18px}
 .prog-head{display:flex;justify-content:space-between;margin-bottom:5px;font-size:11.5px}
@@ -168,9 +169,40 @@ hr.div{border:none;border-top:1px solid #f0f1f3;margin:26px 0}
 .alert.blue{background:#eff6ff;border:1px solid #bfdbfe}
 .alert.green{background:#f0fdf4;border:1px solid #bbf7d0}
 .alert.red{background:#fef2f2;border:1px solid #fecaca}
+.alert.yellow{background:#fffbeb;border:1px solid #fde68a}
 .alert-icon{font-size:15px;flex-shrink:0;line-height:1.4}
 .alert-txt{font-size:12px;color:#374151;line-height:1.6}
 .alert-txt b{font-weight:600;color:#111827}
+
+/* Spreadsheet visual styles */
+.sheet-wrap{overflow-x:auto;margin-bottom:16px}
+.sheet{border-collapse:collapse;font-size:11.5px;min-width:100%}
+.sheet th{padding:6px 10px;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;border:1px solid #e5e7eb}
+.sheet td{padding:7px 10px;border:1px solid #f0f1f3;vertical-align:top;line-height:1.45;white-space:nowrap}
+.sheet .col-pm{background:#1e3a5f;color:#fff}
+.sheet .col-sales{background:#1a3a2a;color:#fff}
+.sheet .col-result{background:#2d4a1e;color:#fff}
+.sheet .cell-pm{background:#eaf0fb}
+.sheet .cell-sales{background:#eafaf1}
+.sheet .cell-result{background:#f0fdf4}
+.sheet .cell-neutral{background:#f9fafb;color:#6b7280}
+.col-tag{display:inline-block;padding:1px 6px;border-radius:4px;font-size:10px;font-weight:600}
+.col-tag-pm{background:#dbeafe;color:#1e40af}
+.col-tag-sales{background:#dcfce7;color:#166534}
+
+.field-card{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:11px 13px;margin-bottom:5px;display:flex;gap:10px;align-items:flex-start}
+.field-name{font-size:12px;font-weight:600;color:#111827;min-width:160px;flex-shrink:0}
+.field-desc{font-size:12px;color:#4b5563;line-height:1.6}
+.field-tag{font-size:10px;padding:1px 7px;border-radius:99px;font-weight:600;flex-shrink:0;margin-top:1px}
+.ft-pm{background:#dbeafe;color:#1e40af}
+.ft-sales{background:#dcfce7;color:#166534}
+.ft-auto{background:#f3f4f6;color:#374151}
+
+.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.metric-card{background:#fff;border:1px solid #e5e7eb;border-radius:9px;padding:12px 13px}
+.metric-val{font-size:17px;font-weight:600;color:#111827}
+.metric-lbl{font-size:10.5px;color:#9ca3af;margin-top:2px;line-height:1.4}
+.metric-formula{font-size:10px;color:#6366f1;margin-top:3px;font-family:monospace}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
 .fadein{animation:fadeUp .18s ease both}
@@ -218,6 +250,7 @@ hr.div{border:none;border-top:1px solid #f0f1f3;margin:26px 0}
     <div class="sb-sub" id="sub-reactivation" style="display:none">
       <a class="sb-link" onclick="go('r-process')">Процесс реактивации</a>
       <a class="sb-link" onclick="go('r-channels')">Каналы и шаблоны</a>
+      <a class="sb-link" onclick="go('r-tracker')">Отчёт реактивации</a>
     </div>
 
     <div class="sb-group-lbl">Инструменты</div>
@@ -287,8 +320,8 @@ function tplCard(tpl,id,idx){
 }
 
 function checkList(id,items){
-  const tagMap={j:'tag-j',c:'tag-c',p:'tag-p'};
-  const tagLbl={j:'Jira',c:'CRM',p:'Лично'};
+  const tagMap={j:'tag-j',c:'tag-c',p:'tag-p',s:'tag-s'};
+  const tagLbl={j:'Jira',c:'CRM',p:'Лично',s:'Sheets'};
   return items.map((it,i)=>{
     const tagHtml=it.tag?`<span class="chi-tag ${tagMap[it.tag]}">${tagLbl[it.tag]}</span>`:'';
     return`<div class="chi ${isDone(id,i)?'done':''}" onclick="toggleDone('${id}',${i})">
@@ -625,14 +658,23 @@ reactivation:{
   </div>
 </div>
 <div class="sec" id="s-nav">
-  <div class="sec-lbl">Сценарии коммуникации</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-    ${[['r-process','📧','Каналы и шаблоны','Email, мессенджер, LinkedIn — что и когда писать'],['r-channels','💬','Работа со скидками','Когда применять самому, когда идти к PM']].map(([id,ic,t,d])=>`
-    <div class="sit-card" onclick="go('${id}')">
-      <div style="font-size:18px;margin-bottom:7px">${ic}</div>
-      <div class="sit-card-title">${t}</div>
-      <div class="sit-card-desc" style="font-size:11.5px">${d}</div>
-    </div>`).join('')}
+  <div class="sec-lbl">Сценарии и инструменты</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+    <div class="sit-card" onclick="go('r-process')">
+      <div style="font-size:18px;margin-bottom:7px">📧</div>
+      <div class="sit-card-title">Каналы и шаблоны</div>
+      <div class="sit-card-desc" style="font-size:11.5px">Email, мессенджер, LinkedIn — что и когда писать</div>
+    </div>
+    <div class="sit-card" onclick="go('r-channels')">
+      <div style="font-size:18px;margin-bottom:7px">💬</div>
+      <div class="sit-card-title">Работа со скидками</div>
+      <div class="sit-card-desc" style="font-size:11.5px">Когда применять самому, когда идти к PM</div>
+    </div>
+    <div class="sit-card" onclick="go('r-tracker')">
+      <div style="font-size:18px;margin-bottom:7px">📊</div>
+      <div class="sit-card-title">Отчёт реактивации</div>
+      <div class="sit-card-desc" style="font-size:11.5px">Как работать с Google Sheets трекером</div>
+    </div>
   </div>
 </div>`;}
 },
@@ -696,6 +738,118 @@ reactivation:{
     <div class="rc warn"><div class="rc-title">Не обещай до согласования</div><div class="rc-body">Никогда не называй клиенту скидку до того как убедился что можешь её дать. Отозвать обещание — хуже чем не давать его.</div></div>
   </div>
 </div>`;}
+},
+
+'r-tracker':{
+  bc:'Реактивация · Отчёт реактивации',
+  rnav:['s-overview','s-sheet1','s-sheet2','s-sheet3','s-metrics','s-rules-tracker'],
+  rlbl:['Обзор трекера','Данные клиентов','Заполнение контактов','Итоговый результат','Метрики воронки','Правила'],
+  render(){
+    const id='r-tracker';
+    const onboarding=[
+      {text:'Получить от PM ссылку на Google Sheet с названием «Отчет для сейлов»',tag:'s'},
+      {text:'Убедиться что у тебя есть права на редактирование файла',tag:'s'},
+      {text:'Открыть лист — найти свои строки (по имени в колонке «Воронка»)',tag:'s'},
+      {text:'Прочитать колонку «Комментарий PM» для каждого клиента',tag:'s'},
+      {text:'Изучить «Услуги юзера» и «Топ сервис» — понять что предлагать',tag:'s'},
+      {text:'Первый контакт: заполнить дату, выбрать канал из дропдауна',tag:'s'},
+      {text:'Заполнить «Детали предложения» и «Предложенный сервис»',tag:'s'},
+      {text:'Выбрать «Скидка» из дропдауна если PM указал',tag:'s'},
+      {text:'После ответа клиента — выбрать «Реакция юзера» из дропдауна',tag:'s'},
+      {text:'Выбрать «Результат» контакта из дропдауна',tag:'s'},
+      {text:'Если нет ответа 5 дней — переходишь ко второму контакту',tag:'s'},
+      {text:'Финальный результат занести в блок «Результат» (колонки AG–AK)',tag:'s'},
+    ];
+    return`
+<h1 class="pg-title">Отчёт реактивации — Google Sheets</h1>
+<p class="pg-desc">Трекер реактивации — общий файл для PM и сейлза. PM заполняет данные по клиентам и параметры воронки. Ты (CSM/сейлз) заполняешь всё что связано с контактами.</p>
+
+<div class="sec" id="s-overview">
+  <div class="sec-lbl">Онбординг — с чего начать</div>
+  ${progBar(id,onboarding.length)}
+  <div class="chklist">${checkList(id,onboarding)}</div>
+</div>
+
+<div class="sec" id="s-sheet1">
+  <div class="sec-lbl">Лист: данные клиентов (заполняет PM)</div>
+  <div class="alert blue"><div class="alert-icon">ℹ️</div><div class="alert-txt"><b>Эти колонки не трогаешь</b> — PM заполнил их при формировании списка. Твоя задача — прочитать и понять контекст по каждому клиенту перед первым контактом.</div></div>
+  <div class="field-card"><div class="field-name">Email клиента</div><div class="field-desc">Основной идентификатор. По нему ищи клиента в CRM если нужно больше деталей.</div><span class="field-tag ft-pm">PM</span></div>
+  <div class="field-card"><div class="field-name">Первая покупка</div><div class="field-desc">Когда клиент впервые купил на платформе. Помогает понять насколько он «старый».</div><span class="field-tag ft-pm">PM</span></div>
+  <div class="field-card"><div class="field-name">Последняя покупка</div><div class="field-desc">Дата последней транзакции. Чем давнее — тем сложнее реактивация.</div><span class="field-tag ft-pm">PM</span></div>
+  <div class="field-card"><div class="field-name">Дней отсутствует</div><div class="field-desc">Автоматически рассчитывается. Показывает глубину оттока.</div><span class="field-tag ft-auto">Авто</span></div>
+  <div class="field-card"><div class="field-name">Кол-во транзакций</div><div class="field-desc">Сколько заказов сделал клиент за всё время. Высокое число = лояльный клиент, которого стоит вернуть.</div><span class="field-tag ft-pm">PM</span></div>
+  <div class="field-card"><div class="field-name">Общая сумма (USD)</div><div class="field-desc">Суммарный LTV клиента. Приоритизируй тех у кого сумма выше — они ценнее.</div><span class="field-tag ft-pm">PM</span></div>
+  <div class="field-card"><div class="field-name">Средний чек</div><div class="field-desc">Средний размер заказа. Ориентир для предложения — не предлагай пакет сильно дешевле или дороже привычного.</div><span class="field-tag ft-pm">PM</span></div>
+  <div class="field-card"><div class="field-name">Топ сервис</div><div class="field-desc">Сервис который клиент покупал чаще всего. Отправная точка для предложения — предлагай то что он уже знает.</div><span class="field-tag ft-pm">PM</span></div>
+  <div class="field-card"><div class="field-name">Статус</div><div class="field-desc">Текущий статус клиента: Відвалився (отток) / Ризик (риск оттока). Влияет на приоритет и тональность.</div><span class="field-tag ft-pm">PM</span></div>
+  <div class="field-card"><div class="field-name">Услуги юзера</div><div class="field-desc">Все сервисы которые клиент использовал. Показывает ширину интереса — можно предложить смежный сервис.</div><span class="field-tag ft-pm">PM</span></div>
+  <div class="field-card"><div class="field-name">Комментарий PM</div><div class="field-desc">Важно! Здесь PM оставляет конкретные инструкции: что предложить, есть ли скидка, есть ли особенности по клиенту. Читай перед каждым контактом.</div><span class="field-tag ft-pm">PM</span></div>
+</div>
+
+<div class="sec" id="s-sheet2">
+  <div class="sec-lbl">Блоки контактов — что и как заполнять (твоя работа)</div>
+  <div class="alert green"><div class="alert-icon">✏️</div><div class="alert-txt"><b>Три блока:</b> Первый контакт → Второй контакт → Третий контакт. В каждом одинаковые поля. Заполняй последовательно — только если предыдущий не дал результата.</div></div>
+
+  <div style="margin-bottom:10px">
+    <div style="font-size:11px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px">Поля каждого блока контакта</div>
+    <div class="field-card"><div class="field-name">Дата контакта</div><div class="field-desc">Дата когда отправил сообщение. Заполняй в день отправки — без этого непонятно когда был контакт.</div><span class="field-tag ft-sales">Сейлз</span></div>
+    <div class="field-card"><div class="field-name">Канал связи</div><div class="field-desc">Выбирается из дропдауна: Telegram / WhatsApp / Email / LinkedIn / Другое. Выбирай тот канал через который реально написал.</div><span class="field-tag ft-sales">Сейлз</span></div>
+    <div class="field-card"><div class="field-name">Детали предложения</div><div class="field-desc">Свободный текст — кратко что именно предложил клиенту. Например: «10 статей Forum Links + скидка 15%». Без этого поля непонятно что обсуждалось.</div><span class="field-tag ft-sales">Сейлз</span></div>
+    <div class="field-card"><div class="field-name">Предложенный сервис</div><div class="field-desc">Выбирается из дропдауна: Forum_Links / Crowd_Links / Guest_Post / Indexing / другой. Выбирай основной сервис который предложил.</div><span class="field-tag ft-sales">Сейлз</span></div>
+    <div class="field-card"><div class="field-name">Скидка</div><div class="field-desc">Выбирается из дропдауна. Заполняй только если скидка была озвучена клиенту. Не заполняй если скидка не согласована с PM.</div><span class="field-tag ft-sales">Сейлз</span></div>
+    <div class="field-card"><div class="field-name">Реакция юзера</div><div class="field-desc">Выбирается из дропдауна: Заинтересован / Не ответил / Отказал / Попросил перезвонить / Другое. Заполняй сразу как получил ответ.</div><span class="field-tag ft-sales">Сейлз</span></div>
+    <div class="field-card"><div class="field-name">Результат</div><div class="field-desc">Выбирается из дропдауна: Договорились / Нет ответа / Отказ. Итог конкретного контакта — не финальный итог по клиенту.</div><span class="field-tag ft-sales">Сейлз</span></div>
+  </div>
+
+  <div class="rules">
+    <div class="rc warn"><div class="rc-title">Когда переходить ко второму контакту</div><div class="rc-body">Нет ответа 5 рабочих дней на первое сообщение → пишешь повторно через другой канал. Не пиши через тот же канал подряд.</div></div>
+    <div class="rc info"><div class="rc-title">Когда переходить к третьему контакту</div><div class="rc-body">Нет ответа на второй контакт через 5 дней → третья попытка. После трёх касаний без ответа — фиксируешь как «Не удалось» и сообщаешь PM.</div></div>
+  </div>
+</div>
+
+<div class="sec" id="s-sheet3">
+  <div class="sec-lbl">Блок «Результат» — финальные данные по клиенту</div>
+  <div class="alert yellow"><div class="alert-icon">🎯</div><div class="alert-txt"><b>Этот блок заполняешь один раз</b> — когда история контактов с клиентом завершена (договорились / три касания без ответа / явный отказ).</div></div>
+  <div class="field-card"><div class="field-name">Статус реактивации</div><div class="field-desc">Выбирается из дропдауна: Удержано / Потеряно / В работе. «В работе» — если ещё идут переговоры. Закрываешь статус только когда результат окончательный.</div><span class="field-tag ft-sales">Сейлз</span></div>
+  <div class="field-card"><div class="field-name">Дата угоды</div><div class="field-desc">Дата когда клиент согласился / сделал заказ. Заполняй только при статусе «Удержано».</div><span class="field-tag ft-sales">Сейлз</span></div>
+  <div class="field-card"><div class="field-name">Сума нової угоди (USD)</div><div class="field-desc">Сумма нового заказа в долларах. Заполняй только при «Удержано». Это ключевая метрика для отчёта по выручке.</div><span class="field-tag ft-sales">Сейлз</span></div>
+  <div class="field-card"><div class="field-name">Примітки</div><div class="field-desc">Свободный комментарий. Пиши если есть важный контекст: клиент попросил перезвонить через месяц, ушёл к конкуренту, проблема с платёжкой и т.д.</div><span class="field-tag ft-sales">Сейлз</span></div>
+  <div class="field-card"><div class="field-name">Воронка</div><div class="field-desc">Название воронки — заполнено PM при формировании списка. Показывает к какой кампании относится клиент (например «Реактивация ТОП-20»).</div><span class="field-tag ft-pm">PM</span></div>
+</div>
+
+<div class="sec" id="s-metrics">
+  <div class="sec-lbl">Лист «Отчёт по ретеншн» — как читать метрики</div>
+  <div class="alert blue"><div class="alert-icon">📈</div><div class="alert-txt">Этот лист PM использует для анализа эффективности воронок. Тебе не нужно его заполнять — он обновляется автоматически на основе твоих данных в основном листе.</div></div>
+  <div class="metric-row">
+    <div class="metric-card"><div class="metric-val">Audience</div><div class="metric-lbl">Всего клиентов в воронке</div><div class="metric-formula">= кол-во строк в листе</div></div>
+    <div class="metric-card"><div class="metric-val">Contacted</div><div class="metric-lbl">Кому написали (есть дата контакта)</div><div class="metric-formula">= строки с датой</div></div>
+    <div class="metric-card"><div class="metric-val">Responses</div><div class="metric-lbl">Кто ответил (не «Не ответил»)</div><div class="metric-formula">Response Rate %</div></div>
+    <div class="metric-card"><div class="metric-val">Удержано</div><div class="metric-lbl">Статус = «Удержано»</div><div class="metric-formula">Retention Rate %</div></div>
+  </div>
+  <table class="mtx">
+    <thead><tr><th>Метрика</th><th>Что показывает</th><th>Хороший результат</th></tr></thead>
+    <tbody>
+      <tr><td><b>Response Rate %</b></td><td>Доля клиентов которые хоть как-то отреагировали на обращение</td><td><span class="bdg bdg-g">&gt;20%</span></td></tr>
+      <tr><td><b>Retention Rate %</b></td><td>Доля клиентов из списка которых удалось вернуть</td><td><span class="bdg bdg-y">5–15%</span></td></tr>
+      <tr><td><b>Revenue (USD)</b></td><td>Суммарная выручка от реактивированных клиентов</td><td>зависит от воронки</td></tr>
+      <tr><td><b>Потеряно %</b></td><td>Доля явных отказов или трёх касаний без ответа</td><td><span class="bdg bdg-b">информативно</span></td></tr>
+      <tr><td><b>В работе</b></td><td>Клиенты у которых ещё идут переговоры</td><td>должен обнуляться</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="sec" id="s-rules-tracker">
+  <div class="sec-lbl">Правила работы с трекером</div>
+  <div class="rules">
+    <div class="rc danger"><div class="rc-title">Не трогай колонки PM</div><div class="rc-body">Всё что в синем/тёмном заголовке «Данные по клиентам (Заполняет PM)» — только для чтения. Случайно изменил — сообщи PM сразу.</div></div>
+    <div class="rc danger"><div class="rc-title">Только дропдауны — никакого ручного ввода в поля выбора</div><div class="rc-body">Канал связи, Предложенный сервис, Реакция юзера, Результат, Статус реактивации — всегда выбирай из выпадающего списка. Ручной ввод ломает формулы в отчёте.</div></div>
+    <div class="rc warn"><div class="rc-title">Заполняй в день контакта</div><div class="rc-body">Дата контакта должна совпадать с реальной датой отправки. Не заполняй задним числом — это искажает метрики воронки.</div></div>
+    <div class="rc warn"><div class="rc-title">«Сума угоди» — только при «Удержано»</div><div class="rc-body">Не пиши сумму пока клиент не подтвердил заказ. Предварительные договорённости — в поле «Примітки».</div></div>
+    <div class="rc ok"><div class="rc-title">Статус «В работе» → обнуляй</div><div class="rc-body">Если клиент завис в «В работе» больше 10 дней без движения — сообщи PM. Незакрытые статусы портят метрики воронки.</div></div>
+    <div class="rc info"><div class="rc-title">Файл — один источник правды</div><div class="rc-body">Все договорённости, результаты и суммы фиксируются здесь. Устные договорённости без записи в таблицу не считаются.</div></div>
+  </div>
+</div>`;
+  }
 },
 
 jira:{
@@ -929,6 +1083,8 @@ stoplist:{
     ['Решать технические баги платформы самостоятельно без фиксации в Jira','Любой баг → тикет в Jira → PM. Даже если кажется что знаешь решение.'],
     ['Обещать клиенту срок решения без подтверждения от команды','Сначала уточни у Аутрич / Крауд / Копирайтинг / PM — потом называй срок клиенту.'],
     ['Скрывать проблему от PM если не можешь решить сам','Лучше сообщить PM о проблеме которую не можешь решить, чем обещать клиенту и не выполнить.'],
+    ['Вносить данные в трекере реактивации задним числом','Дата контакта = реальная дата отправки. Ретроспективное заполнение искажает метрики воронки.'],
+    ['Вручную вписывать значения в дропдаун-поля трекера','Только выбор из списка. Ручной ввод ломает формулы в листе «Отчёт по ретеншн».'],
   ].map(([t,d])=>`<div class="stop-item">
     <div class="stop-x"><svg viewBox="0 0 12 12"><line x1="1" y1="1" x2="11" y2="11"/><line x1="11" y1="1" x2="1" y2="11"/></svg></div>
     <div class="stop-txt"><b>${t}</b><br><span style="color:#6b7280">${d}</span></div>
@@ -982,7 +1138,7 @@ function go(pageId){
     const sub=document.getElementById('sub-'+grp);
     if(!sub)return;
     const problemPages=['p-link-removed','p-not-indexed','p-quality','p-delay','p-refund'];
-    const reactPages=['r-process','r-channels'];
+    const reactPages=['r-process','r-channels','r-tracker'];
     const jiraPages=['jira-chat','jira-reviews','jira-admin'];
     const open=(grp==='problems'&&(pageId===grp||problemPages.includes(pageId)))||
                (grp==='reactivation'&&(pageId===grp||reactPages.includes(pageId)))||
