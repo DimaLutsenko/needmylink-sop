@@ -288,6 +288,10 @@ hr.div{border:none;border-top:1px solid #f0f1f3;margin:26px 0}
       <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
       Матрица эскалации
     </a>
+    <a class="sb-link" onclick="go('standards')">
+      <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+      Стандарты коммуникации
+    </a>
     <a class="sb-link" onclick="go('stoplist')">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
       Стоп-листы
@@ -1497,6 +1501,128 @@ escalation:{
     <div class="rc danger"><div class="rc-title">Скидки — только через PM</div><div class="rc-body">Никогда не называй скидку клиенту до согласования с PM. Даже если кажется что это мелочь.</div></div>
   </div>
 </div>`;}
+},
+
+standards:{
+  bc:'Стандарты коммуникации',
+  rnav:['s-open','s-frustrated','s-questions','s-wait','s-escalate','s-refuse','s-close','s-avoid','s-tone'],
+  rlbl:['Приветствие','Клиент расстроен','Уточняющие вопросы','Нужно время','Эскалация','Отказ','Закрытие тикета','Фразы, которых избегаем','Общий тон'],
+  render(){
+    const id='standards';
+    return`
+<h1 class="pg-title">Стандарты коммуникации</h1>
+<p class="pg-desc">Как CSM должен общаться с клиентом на каждом этапе диалога — правила и готовые шаблоны фраз.</p>
+
+<div class="sec" id="s-open">
+  <div class="sec-lbl">1. Приветствие / открытие диалога</div>
+  <p style="font-size:12px;color:#6b7280;margin-bottom:10px;line-height:1.6">Первое сообщение задаёт тон всему разговору — представиться, показать что это живой человек, а не бот.</p>
+  <div class="rules" style="margin-bottom:10px">
+    <div class="rc info"><div class="rc-title">Правила</div><div class="rc-body">• Всегда представляться по имени — это не бот, это менеджер
+• Не тянуть с первым ответом, даже если решения ещё нет — сначала подтвердить что вопрос принят
+• Обращаться на "Ви" — деловой, но тёплый тон, не сухой</div></div>
+  </div>
+  ${tplCard({label:'Приветствие',channels:['platform','messenger'],body:`[Ім'я], вітаю! Мене звати [Ім'я], я Ваш персональний менеджер на платформі NeedMyLink. Отримав Ваше повідомлення — вже розбираюсь.`},id+'-open',0)}
+</div>
+
+<div class="sec" id="s-frustrated">
+  <div class="sec-lbl">2. Когда клиент жалуется / расстроен</div>
+  <p style="font-size:12px;color:#6b7280;margin-bottom:10px;line-height:1.6">Задача — не защищаться, а показать что проблему слышат и уже решают.</p>
+  <div class="rules" style="margin-bottom:10px">
+    <div class="rc danger"><div class="rc-title">Правила</div><div class="rc-body">• Никогда не спорить и не оправдываться в первом сообщении
+• Не говорить "это не наша вина" — даже если формально так
+• Сначала признать проблему как факт, потом уже разбираться в причинах</div></div>
+  </div>
+  ${[
+    {label:'Подтверждение — принято в работу',channels:['platform','messenger'],body:`Дякую, що звернули увагу — це важливо для нас, і ми обов'язково розберемось.`},
+    {label:'Признание + срок',channels:['platform','messenger'],body:`Розумію Ваше занепокоєння, дайте мені [X хвилин/годин], щоб перевірити деталі і повернутися з конкретною відповіддю.`},
+  ].map((t,i)=>tplCard(t,id+'-frust',i)).join('')}
+</div>
+
+<div class="sec" id="s-questions">
+  <div class="sec-lbl">3. Уточняющие вопросы</div>
+  <p style="font-size:12px;color:#6b7280;margin-bottom:10px;line-height:1.6">Когда нужно больше деталей, чтобы решить — задавать конкретно, не расплывчато.</p>
+  <div class="rules" style="margin-bottom:10px">
+    <div class="rc warn"><div class="rc-title">Правила</div><div class="rc-body">• Не больше 2-3 вопросов за раз — не перегружать
+• Каждый вопрос должен явно вести к решению, не быть "для галочки"
+• Если можешь проверить сам (например, через site: в Google) — не спрашивай, проверь сам сначала</div></div>
+  </div>
+  ${tplCard({label:'Запрос деталей',channels:['platform','messenger'],body:`Щоб оперативно розібратися, підкажіть, будь ласка:
+— [конкретний пункт 1]
+— [конкретний пункт 2]`},id+'-quest',0)}
+</div>
+
+<div class="sec" id="s-wait">
+  <div class="sec-lbl">4. Когда нужно время / нет решения сразу</div>
+  <p style="font-size:12px;color:#6b7280;margin-bottom:10px;line-height:1.6">Не оставлять клиента в тишине — дать понятный срок и держать слово.</p>
+  <div class="rules" style="margin-bottom:10px">
+    <div class="rc warn"><div class="rc-title">Правила</div><div class="rc-body">• Никогда не говорить "скоро" без конкретной даты/времени
+• Не обещать сроки без подтверждения от команды-исполнителя
+• Если обещал написать сам — написать, даже если новостей нет ("пока в процессе, ожидаю ответа от площадки")</div></div>
+  </div>
+  ${[
+    {label:'Передано команде + срок',channels:['platform','messenger'],body:`Я вже передав це нашій команді, дайте мені [X годин / до кінця дня], і я повернуся з результатом.`},
+    {label:'Личный контроль',channels:['platform','messenger'],body:`Тримаю це на особистому контролі — напишу Вам сам, як тільки буде оновлення.`},
+  ].map((t,i)=>tplCard(t,id+'-wait',i)).join('')}
+</div>
+
+<div class="sec" id="s-escalate">
+  <div class="sec-lbl">5. Когда решение не в твоих силах (эскалация)</div>
+  <p style="font-size:12px;color:#6b7280;margin-bottom:10px;line-height:1.6">Не создавать у клиента ощущение, что его футболят.</p>
+  <div class="rules" style="margin-bottom:10px">
+    <div class="rc info"><div class="rc-title">Правила</div><div class="rc-body">• Не говорить "я не знаю" без продолжения — сразу добавлять что делаешь дальше
+• Не перекладывать явно на другого человека без объяснения — звучит как "не моя проблема"
+• Не обещать что ответит кто-то другой — обещать что вернёшься ты сам</div></div>
+  </div>
+  ${tplCard({label:'Передача на PM / команду',channels:['platform','messenger'],body:`Це питання виходить за межі моїх повноважень, тому я вже передав його [PM / профільній команді]. Я повернусь до Вас з відповіддю протягом [X годин/днів].`},id+'-esc',0)}
+</div>
+
+<div class="sec" id="s-refuse">
+  <div class="sec-lbl">6. Отказ / когда просьбу нельзя выполнить</div>
+  <p style="font-size:12px;color:#6b7280;margin-bottom:10px;line-height:1.6">Отказывать твёрдо, но не резко — дать альтернативу если есть.</p>
+  <div class="rules" style="margin-bottom:10px">
+    <div class="rc danger"><div class="rc-title">Правила</div><div class="rc-body">• Никогда не отказывать без причины — клиент должен понимать логику
+• По возможности сразу предлагать альтернативу, а не просто "нет"
+• Не говорить "я гарантирую" от своего имени — только "по умовах платформи"</div></div>
+  </div>
+  ${tplCard({label:'Отказ с альтернативой',channels:['platform','messenger'],body:`На жаль, у цьому випадку ми не можемо [X], оскільки [коротка зрозуміла причина].
+Натомість можу запропонувати [альтернатива] — це закриє Вашу задачу швидше/якісніше.`},id+'-refuse',0)}
+</div>
+
+<div class="sec" id="s-close">
+  <div class="sec-lbl">7. Закрытие тикета / подтверждение решения</div>
+  <p style="font-size:12px;color:#6b7280;margin-bottom:10px;line-height:1.6">Не закрывать в одностороннем порядке — дождаться подтверждения клиента.</p>
+  <div class="rules" style="margin-bottom:10px">
+    <div class="rc ok"><div class="rc-title">Правила</div><div class="rc-body">• Тикет закрывается только после ответа клиента "да, всё ок"
+• Даже если проблема технически решена — не закрывать молча</div></div>
+  </div>
+  ${tplCard({label:'Запрос подтверждения',channels:['platform','messenger'],body:`[Ім'я], перевірте, будь ласка — чи все влаштовує зараз? Якщо так, закриваю тікет; якщо залишились питання — з радістю допоможу.`},id+'-close',0)}
+</div>
+
+<div class="sec" id="s-avoid">
+  <div class="sec-lbl">8. Фразы, которых нужно избегать</div>
+  <table class="mtx">
+    <thead><tr><th>Не говорим</th><th>Говорим вместо</th></tr></thead>
+    <tbody>
+      <tr><td>"Я гарантую особисто"</td><td>"За умовами платформи гарантується..."</td></tr>
+      <tr><td>"Це не наша провина"</td><td>"Розберемось, що сталося, і виправимо"</td></tr>
+      <tr><td>"Зачекайте" (без строка)</td><td>"Дайте мені [X годин], і я повернусь з відповіддю"</td></tr>
+      <tr><td>"У інших клієнтів так само"</td><td>(не обсуждаем других клиентов вообще)</td></tr>
+      <tr><td>"Конкуренти гірші за нас, бо..."</td><td>Говорим только о своих преимуществах</td></tr>
+      <tr><td>"Не можу нічим допомогти"</td><td>Всегда искать альтернативу или эскалировать</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="sec" id="s-tone">
+  <div class="sec-lbl">9. Общий тон</div>
+  <div class="rules">
+    <div class="rc info"><div class="rc-title">Скорость важнее идеальности</div><div class="rc-body">Быстрое "принял в работу" лучше долгого молчания ради идеального ответа.</div></div>
+    <div class="rc info"><div class="rc-title">Конкретика вместо общих фраз</div><div class="rc-body">Даты, а не "скоро"; проценты и цифры, а не "мы постараемся".</div></div>
+    <div class="rc ok"><div class="rc-title">Проактивность</div><div class="rc-body">Если знаешь о проблеме заранее (задержка, баг) — написать первым, не ждать вопроса.</div></div>
+    <div class="rc warn"><div class="rc-title">Жалоба ≠ повод для защиты</div><div class="rc-body">Сначала решить, объяснения потом и только если нужны.</div></div>
+  </div>
+</div>`;
+  }
 },
 
 stoplist:{
