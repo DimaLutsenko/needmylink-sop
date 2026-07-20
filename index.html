@@ -232,17 +232,6 @@ hr.div{border:none;border-top:1px solid #f0f1f3;margin:26px 0}
     </a>
 
     <div class="sb-group-lbl">Ситуации</div>
-    <a class="sb-link" onclick="go('problems')">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      Проблемы с заказом
-    </a>
-    <div class="sb-sub" id="sub-problems" style="display:none">
-      <a class="sb-link" onclick="go('p-link-removed')">Ссылка удалена</a>
-      <a class="sb-link" onclick="go('p-not-indexed')">Не индексируется</a>
-      <a class="sb-link" onclick="go('p-quality')">Претензия к качеству</a>
-      <a class="sb-link" onclick="go('p-delay')">Задержка публикации</a>
-      <a class="sb-link" onclick="go('p-refund')">Запрос возврата</a>
-    </div>
     <a class="sb-link" onclick="go('reactivation')">
       <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
       Реактивация
@@ -251,6 +240,15 @@ hr.div{border:none;border-top:1px solid #f0f1f3;margin:26px 0}
       <a class="sb-link" onclick="go('r-process')">Процесс реактивации</a>
       <a class="sb-link" onclick="go('r-channels')">Каналы и шаблоны</a>
       <a class="sb-link" onclick="go('r-tracker')">Отчёт реактивации</a>
+    </div>
+    <a class="sb-link" onclick="go('winback')">
+      <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg>
+      Win-back
+    </a>
+    <div class="sb-sub" id="sub-winback" style="display:none">
+      <a class="sb-link" onclick="go('wb-process')">Процесс win-back</a>
+      <a class="sb-link" onclick="go('wb-offers')">Условия и офферы</a>
+      <a class="sb-link" onclick="go('wb-tracker')">Отчёт win-back</a>
     </div>
 
     <div class="sb-group-lbl">Инструменты</div>
@@ -262,6 +260,29 @@ hr.div{border:none;border-top:1px solid #f0f1f3;margin:26px 0}
       <a class="sb-link" onclick="go('jira-chat')">[Portal] chat</a>
       <a class="sb-link" onclick="go('jira-reviews')">[Portal] Reviews</a>
       <a class="sb-link" onclick="go('jira-admin')">[ADMIN] space</a>
+    </div>
+    <a class="sb-link" onclick="go('tgbot')">
+      <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+      TG Bot
+    </a>
+    <div class="sb-sub" id="sub-tgbot" style="display:none">
+      <a class="sb-link" onclick="go('tg-support')">Поддержка юзеров бота</a>
+      <a class="sb-link" onclick="go('tg-index')">Не индексируется</a>
+      <a class="sb-link" onclick="go('tg-issues')">Типовые проблемы</a>
+    </div>
+    <a class="sb-link" onclick="go('platform')">
+      <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      Platform
+    </a>
+    <div class="sb-sub" id="sub-platform" style="display:none">
+      <a class="sb-link" onclick="go('pl-link-removed')">Ссылка удалена</a>
+      <a class="sb-link" onclick="go('pl-quality')">Претензия к качеству</a>
+      <a class="sb-link" onclick="go('pl-delay')">Задержка публикации</a>
+      <a class="sb-link" onclick="go('pl-refund')">Возврат / вывод средств</a>
+      <a class="sb-link" onclick="go('pl-bug')">Не работает кнопка</a>
+      <a class="sb-link" onclick="go('pl-cabinet')">Личный кабинет</a>
+      <a class="sb-link" onclick="go('pl-payments')">Оплаты и баланс</a>
+      <a class="sb-link" onclick="go('pl-orders')">Оформление заказов</a>
     </div>
     <a class="sb-link" onclick="go('escalation')">
       <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
@@ -347,22 +368,22 @@ home:{
   rnav:['s-sits','s-kpi'],rlbl:['Ситуации','KPI'],
   render(){return`
 <h1 class="pg-title">Портал CSM — NeedMyLink</h1>
-<p class="pg-desc">База знаний для Customer Success Manager. Три зоны работы: решение проблем клиентов, реактивация по заданию PM, работа с Jira.</p>
+<p class="pg-desc">База знаний для Customer Success Manager. Зоны работы: реактивация и win-back по заданию PM, поддержка Telegram-бота и платформы (включая проблемы с заказами), работа с Jira.</p>
 <div class="sec" id="s-sits">
-  <div class="sec-lbl">Три зоны работы</div>
+  <div class="sec-lbl">Зоны работы</div>
   <div class="sit-grid">
-    <div class="sit-card" onclick="go('problems')">
-      <div class="sit-card-accent" style="background:linear-gradient(90deg,#ef4444,#f97316)"></div>
-      <div class="sit-card-icon">🔥</div>
-      <div class="sit-card-title">Проблемы с заказом</div>
-      <div class="sit-card-desc">Клиент пишет в чат платформы — CSM отвечает в CRM и решает или эскалирует</div>
-      <span class="sit-card-cnt">5 сценариев</span>
-    </div>
     <div class="sit-card" onclick="go('reactivation')">
       <div class="sit-card-accent" style="background:linear-gradient(90deg,#6366f1,#a855f7)"></div>
       <div class="sit-card-icon">🔄</div>
       <div class="sit-card-title">Реактивация</div>
       <div class="sit-card-desc">PM формирует список клиентов — CSM пишет по email / мессенджеру / LinkedIn</div>
+      <span class="sit-card-cnt">по заданию PM</span>
+    </div>
+    <div class="sit-card" onclick="go('winback')">
+      <div class="sit-card-accent" style="background:linear-gradient(90deg,#f59e0b,#ef4444)"></div>
+      <div class="sit-card-icon">🎯</div>
+      <div class="sit-card-title">Win-back</div>
+      <div class="sit-card-desc">Точечная работа с ушедшими высокоценными клиентами — персональные офферы и условия возврата</div>
       <span class="sit-card-cnt">по заданию PM</span>
     </div>
     <div class="sit-card" onclick="go('jira')">
@@ -371,6 +392,20 @@ home:{
       <div class="sit-card-title">Работа с Jira</div>
       <div class="sit-card-desc">Три доски: [Portal] chat, [Portal] Reviews, [ADMIN] space — фиксация всех обращений</div>
       <span class="sit-card-cnt">3 доски</span>
+    </div>
+    <div class="sit-card" onclick="go('tgbot')">
+      <div class="sit-card-accent" style="background:linear-gradient(90deg,#0ea5e9,#0284c7)"></div>
+      <div class="sit-card-icon">🤖</div>
+      <div class="sit-card-title">TG Bot</div>
+      <div class="sit-card-desc">Поддержка пользователей Telegram-бота индексации — вопросы, индексация ссылок, ошибки, подписки</div>
+      <span class="sit-card-cnt">3 раздела</span>
+    </div>
+    <div class="sit-card" onclick="go('platform')">
+      <div class="sit-card-accent" style="background:linear-gradient(90deg,#64748b,#334155)"></div>
+      <div class="sit-card-icon">🖥️</div>
+      <div class="sit-card-title">Platform</div>
+      <div class="sit-card-desc">Проблемы с заказами (ссылка удалена, качество, задержка, возврат), баги, кабинет, оплаты</div>
+      <span class="sit-card-cnt">8 разделов</span>
     </div>
   </div>
 </div>
@@ -387,19 +422,19 @@ home:{
 
 daily:{
   bc:'Ежедневный ритм',
-  rnav:['s-morning','s-types','s-evening'],rlbl:['Утро','Типы обращений','Вечер'],
+  rnav:['s-morning','s-types','s-evening'],rlbl:['Рабочий день','Типы обращений','Правила'],
   render(){return`
 <h1 class="pg-title">Ежедневный ритм</h1>
-<p class="pg-desc">Стандартный рабочий день CSM. Без сложной приоритизации — открыл чаты, ответил по очереди, зафиксировал в Jira.</p>
+<p class="pg-desc">Стандартный рабочий день CSM. Без сложной приоритизации — открыл очереди, ответил по порядку, зафиксировал в Jira.</p>
 <div class="sec" id="s-morning">
   <div class="sec-lbl">Рабочий день</div>
   <div class="flow">
     ${[
-      ['#dbeafe','#1e40af','Открыть CRM и очередь чатов','Все входящие сообщения от клиентов через платформу собраны в CRM. Отвечать поочерёдно — без сложной приоритизации.'],
-      ['#fef9c3','#92400e','Определить тип обращения','Три основных типа: проблема с заказом / дополнительные требования к заказу / проблема с функционалом платформы. От типа зависит следующий шаг.'],
-      ['#ede9fe','#5b21b6','Решить или эскалировать','Простые вопросы — решить напрямую с Аутрич / Крауд / Копирайтинг командами. Сложные — передать PM. После решения зафиксировать тикет в Jira.'],
+      ['#dbeafe','#1e40af','Открыть CRM платформы и транзакции','Подтвердить / отклонить все новые транзакции от юзеров.'],
+      ['#bfdbfe','#1e3a8a','Открыть CRM платформы и очередь чатов','Все входящие сообщения от клиентов через платформу собраны в CRM. Отвечать поочерёдно — без сложной приоритизации.'],
+      ['#fef9c3','#92400e','Открыть основные почты NeedMyLink','Проверить поступление новых писем на почты.'],
+      ['#ede9fe','#5b21b6','Решить или эскалировать','Все простые вопросы, которые не требуют участия команд — решить самостоятельно. Вопросы, которые требуют внимания команд — передать. Параллельно зафиксировать тикеты в Jira.'],
       ['#dcfce7','#166534','Зафиксировать в Jira','Каждое обращение — тикет на доске [Portal] chat. Для простых: сначала решаем с командой, потом создаём тикет и описываем как закрыли. Для сложных: тикет сразу на PM.'],
-      ['#f3f4f6','#374151','Обновить статусы','Проверить открытые тикеты — нет ли просроченных без ответа. Тикет закрывается только после подтверждения от клиента.'],
     ].map(([bg,tc,t,d],i)=>`
     <div class="flow-step">
       <div class="flow-num" style="background:${bg};color:${tc}">${i+1}</div>
@@ -408,230 +443,24 @@ daily:{
   </div>
 </div>
 <div class="sec" id="s-types">
-  <div class="sec-lbl">Три типа обращений</div>
+  <div class="sec-lbl">Типы обращений</div>
   <table class="mtx">
-    <thead><tr><th>Тип</th><th>Примеры</th><th>Действие CSM</th></tr></thead>
+    <thead><tr><th>Тип</th><th>Где искать сценарии</th></tr></thead>
     <tbody>
-      <tr><td><span class="bdg bdg-r">Проблема с заказом</span></td><td>Ссылка удалена, не индексируется, задержка, качество</td><td>Решить с Аутрич/Крауд или передать PM → тикет в [Portal] chat</td></tr>
-      <tr><td><span class="bdg bdg-y">Доп. требования</span></td><td>Уточнения по домену, срокам, критериям отбора</td><td>Уточнить у команды-исполнителя → ответить клиенту → тикет в [Portal] chat</td></tr>
-      <tr><td><span class="bdg bdg-p">Функционал платформы</span></td><td>Баг в кабинете, что-то не работает</td><td>Зафиксировать тикет → передать PM → не чинить самостоятельно</td></tr>
+      <tr><td><span class="bdg bdg-r">Проблема с заказом</span></td><td>Раздел <b style="font-weight:500">Platform</b> — ссылка удалена, качество, задержка, возврат/вывод средств; раздел <b style="font-weight:500">TG Bot</b> — вопросы индексации</td></tr>
+      <tr><td><span class="bdg bdg-y">Доп. требования</span></td><td>Уточнения по домену, срокам, критериям — решаются с командой-исполнителем напрямую</td></tr>
+      <tr><td><span class="bdg bdg-p">Функционал платформы</span></td><td>Раздел <b style="font-weight:500">Platform</b> — баг в кабинете, не работает кнопка и т.п.</td></tr>
     </tbody>
   </table>
 </div>
 <div class="sec" id="s-evening">
-  <div class="sec-lbl">Важные правила</div>
+  <div class="sec-lbl">Правила</div>
   <div class="rules">
-    <div class="rc danger"><div class="rc-title">Не чини баги платформы самостоятельно</div><div class="rc-body">Любая техническая проблема → тикет в [ADMIN] space или [Portal] chat → PM. Даже если кажется что знаешь решение.</div></div>
+    <div class="rc danger"><div class="rc-title">Баг сразу передаём на PM</div><div class="rc-body">Проверить наличие бага, создать тикет в Jira. Не чинить самостоятельно.</div></div>
     <div class="rc warn"><div class="rc-title">Простые вопросы — сначала решаем, потом тикет</div><div class="rc-body">Для простых сервисных вопросов: сначала решаем с командой исполнителей, потом создаём тикет на PM и описываем как закрыли. Это позволяет отслеживать паттерны.</div></div>
-    <div class="rc ok"><div class="rc-title">Тикет закрывается только после клиента</div><div class="rc-body">Статус "Готово / учтено" — только после того как клиент подтвердил что проблема решена. Не закрывай тикет в одностороннем порядке.</div></div>
+    <div class="rc ok"><div class="rc-title">Тикет закрывается только после уточнения клиента</div><div class="rc-body">Только после того как клиент подтвердил что проблема решена. Не закрывай тикет в одностороннем порядке.</div></div>
   </div>
 </div>`;}
-},
-
-problems:{
-  bc:'Проблемы с заказом',
-  rnav:['s-nav','s-rules'],rlbl:['Сценарии','Общие правила'],
-  render(){return`
-<h1 class="pg-title">Проблемы с заказом</h1>
-<p class="pg-desc">Клиент написал в чат с проблемой. Выбери сценарий — пошаговый чеклист, правила и шаблоны ответов.</p>
-<div class="sec" id="s-nav">
-  <div class="sec-lbl">Сценарии</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-    ${[['p-link-removed','🔗','Ссылка удалена / nofollow','Замена по гарантии или возврат'],['p-not-indexed','🔍','Не индексируется','Ручная индексация, гарантия 100%'],['p-quality','⚠️','Претензия к качеству','Правки или замена контента'],['p-delay','⏱','Задержка публикации','Таймлайн и компенсация'],['p-refund','💸','Запрос возврата','Алгоритм возврата или замены']].map(([id,ic,t,d])=>`
-    <div class="sit-card" style="padding:14px" onclick="go('${id}')">
-      <div style="font-size:18px;margin-bottom:7px">${ic}</div>
-      <div class="sit-card-title" style="font-size:12.5px">${t}</div>
-      <div class="sit-card-desc" style="font-size:11.5px">${d}</div>
-    </div>`).join('')}
-  </div>
-</div>
-<div class="sec" id="s-rules">
-  <div class="sec-lbl">Общие правила</div>
-  <div class="rules">
-    <div class="rc danger"><div class="rc-title">≤2 часа — первый ответ</div><div class="rc-body">Клиент, который ждёт ответа больше 2 часов в рабочее время, уже недоволен до того как ты ответил. Скорость реакции важнее идеального ответа.</div></div>
-    <div class="rc warn"><div class="rc-title">Не обещай сроки без подтверждения команды</div><div class="rc-body">Сначала уточни у Аутрич / Крауд / Копирайтинг — потом называй сроки клиенту. Нарушенное обещание хуже отсутствия обещания.</div></div>
-    <div class="rc info"><div class="rc-title">Простые вопросы → команда → тикет</div><div class="rc-body">Уточнения по домену, срокам, критериям — решаешь с командой исполнителей напрямую. После решения создаёшь тикет в Jira и описываешь как закрыл.</div></div>
-    <div class="rc ok"><div class="rc-title">Жалоба ≠ уход клиента</div><div class="rc-body">80% клиентов с решённой проблемой остаются лояльнее тех, у кого проблем не было. Качество решения важнее факта проблемы.</div></div>
-  </div>
-</div>`;}
-},
-
-'p-link-removed':{
-  bc:'Проблемы · Ссылка удалена',
-  rnav:['s-flow','s-tpl'],rlbl:['Чеклист','Шаблоны'],
-  render(){
-    const id='p-link-removed';
-    const items=[
-      {text:'Проверить факт: открыть URL, проверить анкор и rel-атрибут',tag:'p'},
-      {text:'Создать тикет в [Portal] chat — зафиксировать дату, URL, скрин',tag:'j'},
-      {text:'Ответить клиенту в течение 2 часов — подтвердить получение жалобы',tag:'p'},
-      {text:'Проверить дату размещения: белая ниша → 12 мес., серая → 6 мес.',tag:'j'},
-      {text:'Если в гарантийном периоде: связаться с Аутрич командой для замены',tag:'p'},
-      {text:'Если Аутрич не решает за 7 дней → эскалировать на PM',tag:'p'},
-      {text:'Предложить клиенту альтернативный сайт на замену',tag:'p'},
-      {text:'Обновить статус тикета в Jira после решения',tag:'j'},
-      {text:'Закрыть тикет только после подтверждения клиентом',tag:'j'},
-    ];
-    const tpls=[
-      {label:'Первый ответ — подтверждение',channels:['platform','messenger'],body:`[Имя], получил ваше сообщение — проверяю прямо сейчас.
-
-Факт удаления подтверждён. Заказ попадает под гарантию замены — запускаю процедуру.
-
-<b>Что дальше:</b>
-• Связываюсь с площадкой в течение 48 часов
-• Если не восстанавливают — предложу замену равного качества
-• Держу вас в курсе на каждом шаге`},
-      {label:'Предложение замены',channels:['platform','email'],body:`[Имя], обновление по вашему тикету.
-
-Площадка [домен] не восстановила ссылку. По гарантии предлагаю замену:
-
-<b>Вариант 1:</b> [домен] — DR [X], трафик [Y]/мес, ниша [Z]
-<b>Вариант 2:</b> [домен] — DR [X], трафик [Y]/мес, ниша [Z]
-
-Оба варианта с теми же анкором и URL. Скажите какой подходит.`},
-    ];
-    return`<h1 class="pg-title">Ссылка удалена / nofollow</h1>
-<p class="pg-desc">Гарантия: белые ниши 12 мес., серые 6 мес. Цель — замена, не возврат.</p>
-<div class="mrow"><div class="mc"><div class="mc-val">≤2ч</div><div class="mc-lbl">Первый ответ</div></div><div class="mc"><div class="mc-val">48ч</div><div class="mc-lbl">Контакт с Аутрич</div></div><div class="mc"><div class="mc-val">7д</div><div class="mc-lbl">Срок замены</div></div></div>
-<div class="sec" id="s-flow"><div class="sec-lbl">Чеклист</div>${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>
-<div class="sec" id="s-tpl"><div class="sec-lbl">Шаблоны</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>`;
-  }
-},
-
-'p-not-indexed':{
-  bc:'Проблемы · Не индексируется',
-  rnav:['s-flow','s-tpl'],rlbl:['Чеклист','Шаблоны'],
-  render(){
-    const id='p-not-indexed';
-    const items=[
-      {text:'Проверить: site:URL в Google — есть ли страница в индексе',tag:'p'},
-      {text:'Уточнить дату публикации в CRM / Jira',tag:'j'},
-      {text:'Если прошло менее 3 недель — сообщить клиенту о нормальных сроках',tag:'p'},
-      {text:'Если прошло более 3 недель — создать тикет и передать на PM',tag:'j'},
-      {text:'PM запускает ручную индексацию через сервис платформы',tag:'p'},
-      {text:'Повторная проверка через 7 дней — зафиксировать результат',tag:'j'},
-      {text:'Обновить клиента о статусе',tag:'p'},
-      {text:'Закрыть тикет после подтверждения индексации',tag:'j'},
-    ];
-    const tpls=[
-      {label:'Ответ (менее 3 недель)',channels:['platform','messenger'],body:`[Имя], проверил — публикация от [дата], прошло [X] дней.
-
-Это нормально: Google индексирует новые страницы от 1 до 4 недель в зависимости от авторитетности домена.
-
-Поставил напоминание на [дата] — если к тому моменту страница не появится в индексе, запущу ручную процедуру. Напишу вам сам.`},
-      {label:'Запуск ручной индексации',channels:['platform','email'],body:`[Имя], страница не проиндексировалась в установленные сроки — передаю на ручную процедуру.
-
-Обновлю статус в течение 7 дней. Гарантия индексации — 100%.`},
-    ];
-    return`<h1 class="pg-title">Не индексируется</h1>
-<p class="pg-desc">Гарантия — 100% индексация. Если не проиндексировалась за 3–4 недели, передаём на ручную процедуру через PM.</p>
-<div class="mrow"><div class="mc"><div class="mc-val">3–4 нед</div><div class="mc-lbl">Норм. срок</div></div><div class="mc"><div class="mc-val">100%</div><div class="mc-lbl">Гарантия</div></div><div class="mc"><div class="mc-val">→ PM</div><div class="mc-lbl">После 3 недель</div></div></div>
-<div class="sec" id="s-flow"><div class="sec-lbl">Чеклист</div>${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>
-<div class="sec" id="s-tpl"><div class="sec-lbl">Шаблоны</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>`;
-  }
-},
-
-'p-quality':{
-  bc:'Проблемы · Претензия к качеству',
-  rnav:['s-flow','s-tpl'],rlbl:['Чеклист','Шаблоны'],
-  render(){
-    const id='p-quality';
-    const items=[
-      {text:'Запросить конкретику: что именно не устраивает',tag:'p'},
-      {text:'Не спорить — зафиксировать претензию как факт',tag:'p'},
-      {text:'Проверить ТЗ к заказу в CRM: соответствует ли результат',tag:'j'},
-      {text:'Если ТЗ нарушено — передать Копирайтинг команде на правки',tag:'p'},
-      {text:'Если ТЗ выполнено — предложить 1 раунд бесплатных правок',tag:'p'},
-      {text:'Зафиксировать договорённость в тикете Jira',tag:'j'},
-      {text:'После правок — запросить подтверждение от клиента',tag:'p'},
-      {text:'Закрыть тикет только после одобрения',tag:'j'},
-    ];
-    const tpls=[
-      {label:'Запрос деталей',channels:['platform','messenger'],body:`[Имя], спасибо что написали.
-
-Чтобы исправить быстро, уточните:
-• Что именно не устраивает? (текст, тематика сайта, анкор, другое)
-• Есть конкретные правки или предпочтения?
-
-Как только пойму детали — предложу решение.`},
-      {label:'Подтверждение правок',channels:['platform','email'],body:`[Имя], принял в работу:
-
-<b>Правки:</b> [описание]
-<b>Срок:</b> [X рабочих дней]
-
-После готовности пришлю на согласование.`},
-    ];
-    return`<h1 class="pg-title">Претензия к качеству</h1>
-<p class="pg-desc">Цель — не доказать правоту, а сохранить клиента. 1 раунд бесплатных правок включён.</p>
-<div class="mrow"><div class="mc"><div class="mc-val">≤2ч</div><div class="mc-lbl">Первый ответ</div></div><div class="mc"><div class="mc-val">1 раунд</div><div class="mc-lbl">Бесплатных правок</div></div><div class="mc"><div class="mc-val">≤3д</div><div class="mc-lbl">Срок правок</div></div></div>
-<div class="sec" id="s-flow"><div class="sec-lbl">Чеклист</div>${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>
-<div class="sec" id="s-tpl"><div class="sec-lbl">Шаблоны</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>`;
-  }
-},
-
-'p-delay':{
-  bc:'Проблемы · Задержка',
-  rnav:['s-flow','s-tpl'],rlbl:['Чеклист','Шаблоны'],
-  render(){
-    const id='p-delay';
-    const items=[
-      {text:'Проверить статус заказа в CRM и уточнить у команды исполнителя',tag:'p'},
-      {text:'Выяснить причину задержки',tag:'p'},
-      {text:'Написать клиенту первым — не ждать пока напишет он',tag:'p'},
-      {text:'Дать конкретный новый дедлайн — не «скоро», а дату',tag:'p'},
-      {text:'Если задержка >7 дней от обещанной даты — уточнить у PM о компенсации',tag:'j'},
-      {text:'Если задержка >14 дней — предложить альтернативную площадку или возврат',tag:'p'},
-      {text:'Обновить статус тикета в Jira',tag:'j'},
-    ];
-    const tpls=[
-      {label:'Проактивное сообщение о задержке',channels:['platform','messenger'],body:`[Имя], хочу предупредить заранее.
-
-Публикация на [домен] задерживается — [причина]. Новый срок: <b>[дата]</b>.
-
-Если срок критичен — могу предложить альтернативную площадку с аналогичными метриками без ожидания.`},
-    ];
-    return`<h1 class="pg-title">Задержка публикации</h1>
-<p class="pg-desc">Главное — сообщить первым, дать чёткий дедлайн. Компенсацию согласовывать с PM.</p>
-<div class="mrow"><div class="mc"><div class="mc-val">Проактивно</div><div class="mc-lbl">Сообщить до вопроса</div></div><div class="mc"><div class="mc-val">7д</div><div class="mc-lbl">Порог → PM</div></div><div class="mc"><div class="mc-val">14д</div><div class="mc-lbl">Замена или возврат</div></div></div>
-<div class="sec" id="s-flow"><div class="sec-lbl">Чеклист</div>${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>
-<div class="sec" id="s-tpl"><div class="sec-lbl">Шаблоны</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>`;
-  }
-},
-
-'p-refund':{
-  bc:'Проблемы · Возврат',
-  rnav:['s-flow','s-rules','s-tpl'],rlbl:['Чеклист','Когда возможен','Шаблоны'],
-  render(){
-    const id='p-refund';
-    const items=[
-      {text:'Не отказывать сразу — выяснить причину',tag:'p'},
-      {text:'Проверить попадает ли под гарантию',tag:'j'},
-      {text:'Предложить замену как первый вариант',tag:'p'},
-      {text:'Если настаивает на возврате — передать на PM',tag:'p'},
-      {text:'Зафиксировать причину возврата в тикете Jira',tag:'j'},
-    ];
-    const tpls=[
-      {label:'Предложение замены вместо возврата',channels:['platform','messenger'],body:`[Имя], получил запрос — разберёмся.
-
-Прежде чем оформлять возврат, предлагаю замену: это быстрее и вы получаете результат.
-
-<b>Вариант:</b> [домен] — DR [X], та же ниша.
-
-Если всё равно предпочитаете возврат — оформлю, передам на согласование.`},
-    ];
-    return`<h1 class="pg-title">Запрос возврата</h1>
-<p class="pg-desc">Сначала предлагаем замену. Возврат — через PM. Причину всегда фиксируем в Jira.</p>
-<div class="mrow"><div class="mc"><div class="mc-val">Замена</div><div class="mc-lbl">Предложить первым</div></div><div class="mc"><div class="mc-val">→ PM</div><div class="mc-lbl">Все возвраты через PM</div></div><div class="mc"><div class="mc-val">Jira</div><div class="mc-lbl">Зафиксировать причину</div></div></div>
-<div class="sec" id="s-flow"><div class="sec-lbl">Чеклист</div>${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>
-<div class="sec" id="s-rules">
-  <div class="sec-lbl">Когда возврат возможен</div>
-  <div class="rules">
-    <div class="rc ok"><div class="rc-title">✅ Основания</div><div class="rc-body">• Ссылка удалена и замена невозможна (гарантийный период)\n• Качество явно нарушает ТЗ, правки не помогли\n• Заказ не выполнен в двойной срок от обещанного</div></div>
-    <div class="rc danger"><div class="rc-title">❌ Не оформляем</div><div class="rc-body">• Клиент передумал без причины после публикации\n• Субъективное недовольство при выполненном ТЗ\n• Запрос после окончания гарантийного периода</div></div>
-  </div>
-</div>
-<div class="sec" id="s-tpl"><div class="sec-lbl">Шаблоны</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>`;
-  }
 },
 
 reactivation:{
@@ -681,12 +510,14 @@ reactivation:{
 
 'r-process':{
   bc:'Реактивация · Каналы и шаблоны',
-  rnav:['s-channels','s-tpl'],rlbl:['Каналы','Шаблоны'],
+  rnav:['s-channels','s-questions','s-tpl','s-followup'],rlbl:['Чеклист','Вопросы клиенту','Первое касание по путям','Повторное касание'],
   render(){
     const id='r-process';
     const items=[
       {text:'Изучить задание от PM: кто клиент, что предлагать, какая скидка',tag:'p'},
-      {text:'Выбрать канал: email (если есть), мессенджер (Telegram/WhatsApp), LinkedIn',tag:'p'},
+      {text:'Определить путь: заказывал раньше / известен источник трафика / неизвестен',tag:'p'},
+      {text:'Выбрать 1-2 вопроса из пула — не задавать все сразу',tag:'p'},
+      {text:'Выбрать канал: мессенджер, LinkedIn или email',tag:'p'},
       {text:'Отправить первое сообщение с конкретным предложением',tag:'p'},
       {text:'Если нет ответа 5 дней — написать повторно через другой канал',tag:'p'},
       {text:'Если нет ответа на два касания — зафиксировать и сообщить PM',tag:'j'},
@@ -694,34 +525,62 @@ reactivation:{
       {text:'Зафиксировать результат в документе / CRM',tag:'j'},
     ];
     const tpls=[
-      {label:'Первое касание (email)',channels:['email'],body:`Тема: [Имя], для вас есть специальное предложение
-
-[Имя], добрый день!
-
-Мы работали вместе по [сервис] — хотел предложить вернуться на выгодных условиях.
-
-[Конкретное предложение от PM: скидка X% / бонус / специальный пакет]
-
-Если интересно — отвечу на любые вопросы. Предложение действует до [дата].`},
-      {label:'Первое касание (мессенджер)',channels:['messenger'],body:`[Имя], добрый день!
-
-Работали вместе по [сервис] — хотел предложить специальные условия для возобновления.
-
-[Конкретное предложение]
-
-Актуально?`},
-      {label:'Второе касание (LinkedIn)',channels:['linkedin'],body:`[Имя], писал ранее по email — возможно не попало.
-
-У нас есть специальное предложение для вас по [сервис]. Буду рад обсудить если актуально.`},
+      {label:'Путь 1 — уже заказывал (мессенджер / email)',channels:['messenger','email'],body:`[Ім'я], вітаю!
+Мене звати Валерій, я Ваш персональний менеджер на платформі NeedMyLink.
+Бачу, що раніше ви замовляли у нас [сервіс, наприклад: аутрич-публікації] — і давно нічого не брали. Хотів дізнатися, як зараз справи з проєктом [домен]?
+Підкажіть, будь ласка:
+— Чи є зараз актуальні завдання щодо просування?
+— Що тоді сподобалось найбільше в результаті, а що хотілось би покращити наступного разу?
+Залежно від відповіді — підберу для вас найбільш релевантну пропозицію, а не просто загальну знижку.`},
+      {label:'Путь 1 — уже заказывал (LinkedIn)',channels:['linkedin'],body:`[Ім'я], вітаю! Валерій, NeedMyLink.
+Бачу, ви раніше замовляли у нас [сервіс] — давно не зустрічав вас на платформі, тому вирішив написати особисто.
+Чи актуальні зараз завдання з лінкбілдінгу для [домен]? Радо підкажу варіанти під ваш проєкт.`},
+      {label:'Путь 2 — известен источник трафика (мессенджер / email)',channels:['messenger','email'],body:`[Ім'я], вітаю!
+Мене звати Валерій, я Ваш персональний менеджер на платформі NeedMyLink.
+Бачу, що ви цікавились нашою платформою (заходили через [джерело/кампанію]), але поки не встигли оформити перше замовлення.
+Підкажіть, будь ласка — цікавить більше [припущення на основі джерела, наприклад: індексація посилань] чи щось інше з лінкбілдінгу?
+Готовий детально розповісти як це працює і підібрати варіант під ваш бюджет — без зобов'язань.`},
+      {label:'Путь 2 — известен источник трафика (LinkedIn)',channels:['linkedin'],body:`[Ім'я], вітаю! Валерій, персональний менеджер NeedMyLink.
+Бачу, ви цікавились нашою платформою раніше — вирішив познайомитись особисто.
+Підкажіть, чи актуальна зараз тема [сервіс, на основі джерела]? Готовий детально розповісти, як це працює.`},
+      {label:'Путь 3 — источник неизвестен (мессенджер / email)',channels:['messenger','email'],body:`[Ім'я], вітаю!
+Мене звати Валерій, я Ваш персональний менеджер на платформі NeedMyLink.
+Побачив вас серед зареєстрованих користувачів платформи — хотів особисто познайомитись і дізнатися трохи більше про ваш проєкт.
+Підкажіть, будь ласка:
+— Яка сфера/ніша проєкту, з яким плануєте працювати?
+— Чи стоїть зараз задача щодо SEO/лінкбілдінгу, чи поки просто придивляєтесь?
+Залежно від відповіді — підкажу який сервіс (крауд/аутрич/індексація) підійде найкраще, і зможу запропонувати тестовий формат.`},
+      {label:'Путь 3 — источник неизвестен (LinkedIn)',channels:['linkedin'],body:`[Ім'я], вітаю! Валерій, NeedMyLink.
+Побачив вас серед користувачів платформи — вирішив написати особисто, щоб познайомитись.
+Яка ніша проєкту, з яким плануєте працювати? Підкажу який сервіс (крауд/аутрич/індексація) підійде найкраще.`},
+    ];
+    const followup=[
+      {label:'Повторное касание — нет ответа (мессенджер / LinkedIn)',channels:['messenger','linkedin'],body:`[Ім'я], доброго дня!
+Писав раніше — можливо, повідомлення загубилось серед інших.
+Актуальна ще тема [сервіс/пропозиція]? Якщо ні — не буду більше турбувати, просто дайте знати.`},
     ];
     return`<h1 class="pg-title">Каналы и шаблоны реактивации</h1>
-<p class="pg-desc">Три канала: email, мессенджер, LinkedIn. Конкретное предложение и скидку берёшь из задания PM.</p>
+<p class="pg-desc">Три канала: мессенджер, LinkedIn, email. Путь определяет какой вопрос задать и какой шаблон использовать.</p>
 <div class="sec" id="s-channels">
   <div class="sec-lbl">Чеклист</div>
   ${progBar(id,items.length)}
   <div class="chklist">${checkList(id,items)}</div>
 </div>
-<div class="sec" id="s-tpl"><div class="sec-lbl">Шаблоны</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>`;
+<div class="sec" id="s-questions">
+  <div class="sec-lbl">Вопросы, чтобы понять клиента</div>
+  <div class="alert blue"><div class="alert-icon">💡</div><div class="alert-txt">Не задавай все вопросы сразу — 1-2 самых релевантных под путь в первом сообщении, остальные — по ходу диалога.</div></div>
+  <div class="rules">
+    <div class="rc info"><div class="rc-title">Про причину паузы</div><div class="rc-body">• Что стало причиной паузы — бюджет, результат, неудобство работы с нами, или просто не было задач?
+• Был ли негативный опыт с предыдущим заказом, который стоит знать, прежде чем предлагать что-то новое?</div></div>
+    <div class="rc warn"><div class="rc-title">Про текущие задачи</div><div class="rc-body">• Актуальны ли сейчас вообще задачи по SEO/линкбилдингу для проекта?
+• Изменился ли проект/домен, под который нужно продвижение?
+• Какой сейчас в приоритете сервис — крауд, аутрич, индексация, комплекс?</div></div>
+    <div class="rc ok"><div class="rc-title">Про параметры</div><div class="rc-body">• Какие объёмы интересны (разовый тест или регулярные поставки)?
+• Есть ли предпочтения по нишам/языкам доноров?</div></div>
+  </div>
+</div>
+<div class="sec" id="s-tpl"><div class="sec-lbl">Первое касание — по путям</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>
+<div class="sec" id="s-followup"><div class="sec-lbl">Повторное касание (нет ответа)</div>${followup.map((t,i)=>tplCard(t,id+'-fu',i)).join('')}</div>`;
   }
 },
 
@@ -850,6 +709,161 @@ reactivation:{
   </div>
 </div>`;
   }
+},
+
+winback:{
+  bc:'Win-back',
+  rnav:['s-diff','s-process','s-nav'],rlbl:['Чем отличается от реактивации','Как работает','Разделы'],
+  render(){return`
+<h1 class="pg-title">Win-back</h1>
+<p class="pg-desc"><i>Черновой раздел — структура и логика ниже описаны предварительно, PM уточнит содержание.</i> Win-back — точечная, персонализированная работа с самыми ценными ушедшими клиентами, в отличие от массовой реактивации по спискам.</p>
+<div class="sec" id="s-diff">
+  <div class="sec-lbl">Чем win-back отличается от реактивации</div>
+  <table class="mtx">
+    <thead><tr><th></th><th>Реактивация</th><th>Win-back</th></tr></thead>
+    <tbody>
+      <tr><td><b>Кто в списке</b></td><td>Широкий сегмент ушедших клиентов</td><td>Узкий список топ-клиентов с высоким LTV, которые явно ушли к конкуренту или прекратили сотрудничество после конфликта</td></tr>
+      <tr><td><b>Формат</b></td><td>Шаблонные сообщения, массовая рассылка</td><td>Персональный подход — индивидуальный оффер под конкретную ситуацию клиента</td></tr>
+      <tr><td><b>Кто инициирует</b></td><td>PM формирует список, CSM выполняет</td><td>PM формирует список и согласовывает условия по каждому клиенту отдельно</td></tr>
+      <tr><td><b>Условия</b></td><td>Стандартные скидки из задания</td><td>Расширенные, часто нестандартные условия (спецпакеты, персональный менеджер, компенсация за прошлый негативный опыт)</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="sec" id="s-process">
+  <div class="sec-lbl">Как предположительно работает процесс</div>
+  <div class="alert yellow"><div class="alert-icon">🚧</div><div class="alert-txt">Черновик — уточнить у PM точный алгоритм, пороги LTV и список согласующих.</div></div>
+  <div class="flow">
+    ${[
+      ['#dbeafe','#1e40af','PM выявляет кандидатов','Клиенты с высоким LTV, которые ушли из-за проблемы с качеством, конфликта или явно перешли к конкуренту.'],
+      ['#fef9c3','#92400e','PM и CSM разбирают историю клиента','Смотрят причину ухода в CRM/Jira: была ли жалоба, была ли она решена, что предлагалось раньше.'],
+      ['#ede9fe','#5b21b6','Формируется персональный оффер','Индивидуальные условия — согласовываются с PM перед контактом, не берутся из шаблона.'],
+      ['#dcfce7','#166534','CSM выходит на личный контакт','Предпочтительно самый прямой канал — звонок, персональное сообщение, а не массовая рассылка.'],
+      ['#f3f4f6','#374151','Результат фиксируется отдельно','Отдельно от общего трекера реактивации — high-value кейсы требуют более детальной фиксации для PM.'],
+    ].map(([bg,tc,t,d],i)=>`
+    <div class="flow-step">
+      <div class="flow-num" style="background:${bg};color:${tc}">${i+1}</div>
+      <div class="flow-body"><div class="flow-title">${t}</div><div class="flow-desc">${d}</div></div>
+    </div>`).join('')}
+  </div>
+</div>
+<div class="sec" id="s-nav">
+  <div class="sec-lbl">Разделы (наполнение будет добавлено)</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+    <div class="sit-card" onclick="go('wb-process')">
+      <div style="font-size:18px;margin-bottom:7px">🎯</div>
+      <div class="sit-card-title">Процесс win-back</div>
+      <div class="sit-card-desc" style="font-size:11.5px">Пошаговый чеклист от выявления кандидата до фиксации результата</div>
+    </div>
+    <div class="sit-card" onclick="go('wb-offers')">
+      <div style="font-size:18px;margin-bottom:7px">🎁</div>
+      <div class="sit-card-title">Условия и офферы</div>
+      <div class="sit-card-desc" style="font-size:11.5px">Какие условия можно предлагать самостоятельно, какие — только через PM</div>
+    </div>
+    <div class="sit-card" onclick="go('wb-tracker')">
+      <div style="font-size:18px;margin-bottom:7px">📊</div>
+      <div class="sit-card-title">Отчёт win-back</div>
+      <div class="sit-card-desc" style="font-size:11.5px">Отдельный трекер для high-value кейсов</div>
+    </div>
+  </div>
+</div>`;}
+},
+
+'wb-process':{
+  bc:'Win-back · Процесс',
+  rnav:['s-flow','s-tpl','s-linkedin','s-followup'],rlbl:['Чеклист','Шаблоны по услугам','LinkedIn','Повторное касание'],
+  render(){
+    const id='wb-process';
+    const items=[
+      {text:'[Черновик] Получить от PM список кандидатов на win-back с историей по каждому',tag:'p'},
+      {text:'[Черновик] Изучить причину ухода клиента в CRM/Jira',tag:'j'},
+      {text:'[Черновик] Согласовать с PM индивидуальный оффер',tag:'p'},
+      {text:'[Черновик] Выйти на личный контакт (звонок/персональное сообщение)',tag:'p'},
+      {text:'[Черновик] Зафиксировать результат в отдельном win-back трекере',tag:'j'},
+    ];
+    const tpls=[
+      {label:'Крауд',channels:['messenger','email'],body:`[Ім'я], вітаю!
+Мене звати Валерій, я Ваш персональний менеджер, на платформі NeedMyLink.
+Ви раніше замовляли у нас крауд-посилання, і мені дуже цікаво дізнатися, як почувається ваш проєкт? Зараз ми готуємо абсолютно новий формат крауду з підвищеною прохідністю.
+Ми хочемо, щоб ви знову протестували роботу нашої команди, тому вже нарахували на ваш баланс 20 безкоштовних крауд-посилань.
+Підкажіть, чи актуальні зараз завдання щодо лінкбілдінгу? Можу допомогти з підбором донорів під вашу нішу.
+
+Будемо раді знову бачити Вас на нашій платформі!
+З найкращими побажаннями,
+Валерій`},
+      {label:'Аутрич',channels:['messenger','email'],body:`[Ім'я], вітаю!
+Мене звати Валерій, я Ваш персональний менеджер, на платформі NeedMyLink.
+Ми помітно оновили нашу базу аутрич-донорів: додали багато чистих майданчиків із високим DR та реальним трафіком. Знаю, як зараз складно шукати якісних донорів, тому вирішив спростити вам задачу.
+Спеціально під ваш проєкт підготував пропозицію: на замовлення аутрич-публікацій даруємо знижку 15%, плюс я особисто зроблю для вас безкоштовну кастомну добірку майданчиків, яких ще немає в загальному каталозі.
+
+Будемо раді знову бачити Вас на нашій платформі!
+З найкращими побажаннями,
+Валерій`},
+      {label:'Індексація',channels:['messenger','email'],body:`[Ім'я], вітаю!
+Мене звати Валерій, я Ваш персональний менеджер, на платформі NeedMyLink.
+Бачу, що ви тимчасово поставили замовлення у нас на паузу. Хочу підсвітити круте оновлення, яке точно зекономить ваш бюджет на SEO.
+Ми впровадили новий інструмент примусової індексації, який успішно заганяє в індекс Google 97% посилань — навіть тих, що «застрягли» місяцями. Щоб ви перевірили це без жодних ризиків, даруємо вам 10 безкоштовних лімітів на індексацію.
+Можете закинути в кабінет будь-які свої проблемні URL і подивитися на результат. До речі, якщо сподобається — для вас діятиме спеціальна пакетна ціна. Спробуємо?
+
+Будемо раді знову бачити Вас на нашій платформі!
+З найкращими побажаннями,
+Валерій`},
+      {label:'Комплекс (все услуги)',channels:['messenger','email'],body:`[Ім'я], вітаю!
+Мене звати Валерій, я Ваш персональний менеджер, на платформі NeedMyLink.
+Ви раніше замовляли у нас крауд-посилання, і мені дуже важливо дізнатися, як почувається ваш проєкт та чи є щось, що ми можемо покращити в сервісі?
+Ми за цей час сильно оновилися і підготували для вас одразу три круті пропозиції та подарунки, щоб ви могли перевірити наші нові можливості в ділі:
+
+1. Крауд-маркетинг (Подарунок): Ми хочемо, щоб ви знову протестували роботу нашої команди, тому вже нарахували на ваш баланс 20 безкоштовних крауд-посилань.
+2. Прорив в індексації (Гарантія 97%): Впровадили новий інструмент примусової індексації, який успішно заганяє в індекс Google навіть найскладніші сторінки. Тримайте ще +10 безкоштовних лімітів, щоб протестувати сервіс на будь-яких своїх проблемних URL.
+3. Оновлений Аутрич зі знижкою 15%: Суттєво розширили базу якісних донорів із реальним трафіком. На ваше наступне замовлення аутрич-публікацій діятиме знижка 15%, а для великих обсягів я з радістю погоджу окремі індивідуальні умови.
+
+Підкажіть, які завдання щодо лінкбілдінгу та SEO зараз у пріоритеті? Буду радий допомогти з підбором майданчиків або активацією бонусів!
+
+Будемо раді знову бачити Вас на нашій платформі!
+З найкращими побажаннями,
+Валерій`},
+    ];
+    const linkedinTpls=[
+      {label:'Первое касание — LinkedIn (универсальный)',channels:['linkedin'],body:`[Ім'я], вітаю! Валерій, персональний менеджер NeedMyLink.
+Бачу, що ви деякий час не користувались нашими сервісами — хотів особисто дізнатись, як справи з проєктом.
+Ми оновили умови по [крауд / аутрич / індексації] і маю для вас цікаву пропозицію. Актуально обговорити?`},
+    ];
+    const followup=[
+      {label:'Повторное касание — нет ответа (мессенджер / LinkedIn)',channels:['messenger','linkedin'],body:`[Ім'я], доброго дня!
+Писав раніше з пропозицією по [сервіс] — можливо, не побачили повідомлення.
+Пропозиція ще актуальна, буду радий обговорити деталі, якщо є інтерес.`},
+    ];
+    return`<h1 class="pg-title">Процесс win-back</h1>
+<p class="pg-desc"><i>Черновик — PM уточнит шаги и формулировки.</i></p>
+<div class="sec" id="s-flow"><div class="sec-lbl">Чеклист (предварительный)</div>${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>
+<div class="sec" id="s-tpl"><div class="sec-lbl">Шаблоны по услугам</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>
+<div class="sec" id="s-linkedin"><div class="sec-lbl">Первое касание — LinkedIn</div>${linkedinTpls.map((t,i)=>tplCard(t,id+'-li',i)).join('')}</div>
+<div class="sec" id="s-followup"><div class="sec-lbl">Повторное касание (нет ответа)</div>${followup.map((t,i)=>tplCard(t,id+'-fu',i)).join('')}</div>`;
+  }
+},
+
+'wb-offers':{
+  bc:'Win-back · Условия и офферы',
+  rnav:['s-rules'],rlbl:['Правила'],
+  render(){return`
+<h1 class="pg-title">Условия и офферы</h1>
+<p class="pg-desc"><i>Черновик — итоговые пороги и полномочия определит PM.</i></p>
+<div class="sec" id="s-rules">
+  <div class="rules">
+    <div class="rc warn"><div class="rc-title">[Черновик] Все офферы win-back — только через PM</div><div class="rc-body">В отличие от стандартной реактивации, здесь предполагается что CSM не имеет самостоятельных полномочий на скидки — каждый оффер индивидуален и требует согласования.</div></div>
+    <div class="rc info"><div class="rc-title">[Черновик] Учитывать причину ухода</div><div class="rc-body">Если клиент ушёл из-за нерешённой проблемы — оффер должен явно закрывать эту проблему, а не просто предлагать скидку.</div></div>
+  </div>
+</div>`;}
+},
+
+'wb-tracker':{
+  bc:'Win-back · Отчёт',
+  rnav:['s-tracker'],rlbl:['Трекер'],
+  render(){return`
+<h1 class="pg-title">Отчёт win-back</h1>
+<p class="pg-desc"><i>Черновик.</i> Предположительно отдельный Google Sheet (или отдельный лист в общем файле реактивации) — с более подробными полями, так как каждый кейс индивидуален.</p>
+<div class="sec" id="s-tracker">
+  <div class="alert yellow"><div class="alert-icon">🚧</div><div class="alert-txt">PM уточнит: отдельный файл или лист в существующем трекере реактивации, какие поля добавить (причина ухода, история жалоб, согласованный оффер, персональный комментарий).</div></div>
+</div>`;}
 },
 
 jira:{
@@ -1034,6 +1048,423 @@ jira:{
   }
 },
 
+tgbot:{
+  bc:'TG Bot',
+  rnav:['s-about','s-nav'],rlbl:['О боте','Разделы'],
+  render(){return`
+<h1 class="pg-title">TG Bot</h1>
+<p class="pg-desc"><i>Часть разделов ещё черновая — уточнить с командой бота.</i> NeedMyLink Indexing Bot — телеграм-бот для индексации ссылок в Google, работает параллельно с основной платформой. Все вопросы по индексации ссылок (гарантия, сроки, Index Rate) обрабатываются здесь.</p>
+<div class="sec" id="s-about">
+  <div class="sec-lbl">Что нужно знать CSM</div>
+  <div class="rules">
+    <div class="rc info"><div class="rc-title">[Черновик] Что делает бот</div><div class="rc-body">Пользователь отправляет боту список URL → бот ставит их в очередь на индексацию → присылает отчёт о статусе (Index Rate).</div></div>
+    <div class="rc warn"><div class="rc-title">[Черновик] Где живёт поддержка бота</div><div class="rc-body">Обращения по боту могут приходить как отдельный канал (не через основной чат платформы) — нужно уточнить куда падают такие сообщения: в CRM, в отдельный чат поддержки бота, или в личку.</div></div>
+  </div>
+</div>
+<div class="sec" id="s-nav">
+  <div class="sec-lbl">Разделы</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+    <div class="sit-card" onclick="go('tg-support')">
+      <div style="font-size:18px;margin-bottom:7px">💬</div>
+      <div class="sit-card-title">Поддержка юзеров бота</div>
+      <div class="sit-card-desc" style="font-size:11.5px">Как отвечать на вопросы: подписка, лимиты, оплата, как пользоваться ботом</div>
+    </div>
+    <div class="sit-card" onclick="go('tg-index')">
+      <div style="font-size:18px;margin-bottom:7px">🔍</div>
+      <div class="sit-card-title">Не индексируется</div>
+      <div class="sit-card-desc" style="font-size:11.5px">Гарантия по Index Rate, сроки ожидания, шаблоны ответов</div>
+    </div>
+    <div class="sit-card" onclick="go('tg-issues')">
+      <div style="font-size:18px;margin-bottom:7px">🐛</div>
+      <div class="sit-card-title">Типовые проблемы</div>
+      <div class="sit-card-desc" style="font-size:11.5px">Бот не отвечает, ошибка оплаты подписки</div>
+    </div>
+  </div>
+</div>`;}
+},
+
+'tg-index':{
+  bc:'TG Bot · Не индексируется',
+  rnav:['s-rules','s-tpl'],rlbl:['Правила','Шаблоны'],
+  render(){
+    const id='tg-index';
+    const tpls=[
+      {label:'Ответ (менее 10 дней)',channels:['messenger','platform'],body:`[Имя], здравствуйте!
+
+Проверил статус вашей ссылки. Публикация была размещена [дата], то есть прошло всего [X] дней.
+
+На этом этапе отсутствие страницы в выдаче — естественный процесс. В среднем Google индексирует новые материалы от 1-го до 10-ти дней, и для молодых или крупных доменов это стандартные сроки. Мы предоставляем результаты по заказу по истечении 10 дней, чтобы гарантировать результат, но ссылка может попасть в индекс и раньше!
+
+Чтобы вы не тратили время на проверку, я взял этот вопрос на личный контроль и поставил себе напоминание на [дата] (как раз пройдет 10 дней с момента публикации).
+
+Если к этой дате роботы Google не добавят страницу в индекс, мы проверим состояние ссылок и самостоятельно запустим процедуру индексации повторно, и сразу напишу вам по результатам.
+
+Пока с вашей стороны никаких действий не требуется, процесс под контролем!`},
+      {label:'Не проиндексировалось после 10 дней',channels:['messenger','platform'],body:`[Имя], добрый день!
+
+Я с апдейтом по вашей ссылке. К сожалению, в установленные сроки страница так и не появилась в индексе Google.
+
+Мы не оставляем такие кейсы на самотек, поэтому сейчас наша команда делает две вещи:
+Проверяем качество. Мы детально анализируем донорскую страницу, чтобы исключить любые технические ошибки или скрытые фильтры со стороны площадки.
+Запускаем повторный буст. Мы повторно отправляем URL на индексацию через наши внутренние сервисы ускорения, чтобы привлечь роботов Google.
+
+По опыту, на повторный цикл и полное обновление кэша поисковика требуется время. Я беру этот тикет под особый контроль и вернусь к вам с финальным статусом строго в течение 10 дней (или раньше, если страница проиндексируется быстрее).
+
+Спасибо за терпение, мы доведем этот вопрос до результата.`},
+    ];
+    return`<h1 class="pg-title">Не индексируется</h1>
+<p class="pg-desc">Гарантия распространяется только если Index Rate ниже 30%. Стандартное время ожидания — 10 дней. После 10 дней и низкого Index Rate — передать на PM.</p>
+<div class="mrow"><div class="mc"><div class="mc-val">10 дней</div><div class="mc-lbl">Стандартное время ожидания</div></div><div class="mc"><div class="mc-val">&lt;30%</div><div class="mc-lbl">Index Rate для гарантии</div></div><div class="mc"><div class="mc-val">→ PM</div><div class="mc-lbl">После 10 дней</div></div></div>
+<div class="sec" id="s-rules">
+  <div class="sec-lbl">Правила</div>
+  <div class="rules">
+    <div class="rc info"><div class="rc-title">10 дней — стандартный срок</div><div class="rc-body">Google индексирует новые материалы обычно от 1 до 10 дней. Результат по заказу гарантируется по истечении 10 дней.</div></div>
+    <div class="rc warn"><div class="rc-title">Гарантия действует при Index Rate &lt; 30%</div><div class="rc-body">Проверить текущий Index Rate по заказу перед тем как обещать перезапуск индексации.</div></div>
+    <div class="rc danger"><div class="rc-title">После 10 дней → PM</div><div class="rc-body">Если срок истёк и Index Rate низкий — передать тикет на PM для запуска повторной индексации.</div></div>
+  </div>
+</div>
+<div class="sec" id="s-tpl"><div class="sec-lbl">Шаблоны</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>`;
+  }
+},
+
+'tg-support':{
+  bc:'TG Bot · Поддержка юзеров',
+  rnav:['s-flow'],rlbl:['Чеклист'],
+  render(){
+    const id='tg-support';
+    const items=[
+      {text:'[Черновик] Определить откуда пришёл вопрос: сам бот / чат поддержки / упоминание в отзыве',tag:'p'},
+      {text:'[Черновик] Уточнить у пользователя username/ID в боте для проверки статуса',tag:'p'},
+      {text:'[Черновик] Проверить статус подписки/лимитов пользователя',tag:'p'},
+      {text:'[Черновик] Ответить по стандартным вопросам (как пользоваться, лимиты, тарифы)',tag:'p'},
+      {text:'[Черновик] Технический вопрос → тикет в Jira, не решать самостоятельно',tag:'j'},
+    ];
+    return`<h1 class="pg-title">Поддержка юзеров бота</h1>
+<p class="pg-desc"><i>Черновик — уточнить реальные тарифы, лимиты и типовые вопросы у команды бота.</i></p>
+<div class="sec" id="s-flow"><div class="sec-lbl">Чеклист (предварительный)</div>${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>`;
+  }
+},
+
+'tg-issues':{
+  bc:'TG Bot · Типовые проблемы',
+  rnav:['s-table'],rlbl:['Проблемы'],
+  render(){return`
+<h1 class="pg-title">Типовые проблемы</h1>
+<p class="pg-desc"><i>Черновик — список проблем предположительный, требует уточнения у разработчика бота.</i></p>
+<div class="sec" id="s-table">
+  <table class="mtx">
+    <thead><tr><th>Проблема</th><th>Предполагаемое действие CSM</th></tr></thead>
+    <tbody>
+      <tr><td>Бот не отвечает / завис</td><td>Проверить статус бота (жив ли сервис) → тикет в [ADMIN] space если баг подтверждён</td></tr>
+      <tr><td>Ссылка отправлена, но не индексируется</td><td>См. раздел «Не индексируется»</td></tr>
+      <tr><td>Ошибка при оплате подписки в боте</td><td>Не решать самому — тикет на PM с деталями платежа</td></tr>
+      <tr><td>Не понимает как пользоваться ботом</td><td>Прислать краткую инструкцию/скрин команд бота</td></tr>
+    </tbody>
+  </table>
+</div>`;}
+},
+
+platform:{
+  bc:'Platform',
+  rnav:['s-about','s-nav','s-tech'],rlbl:['Что это','Проблемы с заказом','Технические разделы'],
+  render(){return`
+<h1 class="pg-title">Platform</h1>
+<p class="pg-desc">Вопросы по работе платформы service.needmylink.com — включая все проблемы с заказами (кроме индексации, она в разделе TG Bot), кабинет, оплаты, баги.</p>
+<div class="sec" id="s-about">
+  <div class="sec-lbl">Общие правила</div>
+  <div class="rules">
+    <div class="rc danger"><div class="rc-title">≤2 часа — первый ответ</div><div class="rc-body">Клиент, который ждёт ответа больше 2 часов в рабочее время, уже недоволен до того как ты ответил. Скорость реакции важнее идеального ответа.</div></div>
+    <div class="rc warn"><div class="rc-title">Не обещай сроки без подтверждения команды</div><div class="rc-body">Сначала уточни у Аутрич / Крауд / Копирайтинг — потом называй сроки клиенту.</div></div>
+  </div>
+</div>
+<div class="sec" id="s-nav">
+  <div class="sec-lbl">Проблемы с заказом</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+    ${[['pl-link-removed','🔗','Ссылка удалена / nofollow','Замена по гарантии или возврат'],['pl-quality','⚠️','Претензия к качеству','Правки или замена контента'],['pl-delay','⏱','Задержка публикации','Таймлайн или замена площадки'],['pl-refund','💸','Возврат / вывод средств','Возврат, вывод реферального и личного баланса'],['pl-bug','🐞','Не работает кнопка','Баг интерфейса — тикет на PM']].map(([id,ic,t,d])=>`
+    <div class="sit-card" style="padding:14px" onclick="go('${id}')">
+      <div style="font-size:18px;margin-bottom:7px">${ic}</div>
+      <div class="sit-card-title" style="font-size:12.5px">${t}</div>
+      <div class="sit-card-desc" style="font-size:11.5px">${d}</div>
+    </div>`).join('')}
+  </div>
+</div>
+<div class="sec" id="s-tech">
+  <div class="sec-lbl">Технические разделы <span style="font-weight:400;color:#9ca3af;text-transform:none;font-size:11px">(черновик — наполнение будет добавлено)</span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+    <div class="sit-card" onclick="go('pl-cabinet')">
+      <div style="font-size:18px;margin-bottom:7px">👤</div>
+      <div class="sit-card-title">Личный кабинет</div>
+      <div class="sit-card-desc" style="font-size:11.5px">Регистрация, вход, восстановление доступа, настройки профиля</div>
+    </div>
+    <div class="sit-card" onclick="go('pl-payments')">
+      <div style="font-size:18px;margin-bottom:7px">💳</div>
+      <div class="sit-card-title">Оплаты и баланс</div>
+      <div class="sit-card-desc" style="font-size:11.5px">Пополнение баланса, неудачные платежи, инвойсы, история транзакций</div>
+    </div>
+    <div class="sit-card" onclick="go('pl-orders')">
+      <div style="font-size:18px;margin-bottom:7px">🛒</div>
+      <div class="sit-card-title">Оформление заказов</div>
+      <div class="sit-card-desc" style="font-size:11.5px">Ошибки при создании заказа, доступные сервисы, статусы заказа в кабинете</div>
+    </div>
+  </div>
+</div>`;}
+},
+
+'pl-link-removed':{
+  bc:'Platform · Ссылка удалена',
+  rnav:['s-rules','s-tpl'],rlbl:['Правила','Шаблоны'],
+  render(){
+    const id='pl-link-removed';
+    const tpls=[
+      {label:'Первый ответ — подтверждение',channels:['platform','messenger'],body:`[Имя], здравствуйте!
+
+Меня зовут Валерий, я Ваш персональный менеджер. Ваше обращение находится в работе. Мы проверили ссылку — факт удаления (или несоответствия качеству) подтвердился.
+
+На этот кейс полностью распространяется наша гарантия, поэтому мы уже запустили процедуру восстановления. Что делаем дальше:
+Связываемся с вебмастером. В течение 48 часов мы попытаемся восстановить ссылку на прежней площадке.
+Подбираем альтернативу. Если площадка не пойдет навстречу, мы оперативно предложим вам варианты замены аналогичного или более высокого качества.
+Держим в курсе. Я вернусь к вам с апдейтом сразу, как только получу ответ от площадки, либо строго через 48 часов.
+
+Спасибо, что подсветили проблему, мы уже всем занимаемся.`},
+      {label:'Предложение замены (площадка отказала)',channels:['platform','email'],body:`[Имя], добрый день!
+
+Я с обновлением по вашему тикету. Площадка [домен], к сожалению, не сможет восстановить прежнюю ссылку.
+
+Как и обещал, в рамках гарантии я подготовил для вас два проверенных и полностью релевантных варианта на замену. Оба площадки подходят под ваши исходные параметры (анкор и целевой URL остаются прежними):
+Вариант 1: [домен] — DR [X], трафик [Y]/мес, ниша [Z]
+Вариант 2: [домен] — DR [X], трафик [Y]/мес, ниша [Z]
+
+Посмотрите, пожалуйста, какой из вариантов вам ближе? Как только согласуем, я сразу передам его в работу на размещение.`},
+      {label:'Промежуточный апдейт',channels:['platform','messenger'],body:`[Имя], добрый день!
+
+Я с коротким апдейтом по поводу ссылки на [домен].
+
+Мы отправили запрос вебмастеру, но площадка пока не вышла на связь. Мы не хотим затягивать процесс, поэтому параллельно я уже подбираю для вас качественные варианты на замену.
+
+Дам вебмастеру еще [Х часов / до конца дня] на ответ. Если тишина — сразу пришлю вам альтернативные площадки, чтобы быстрее закрыть этот вопрос.`},
+      {label:'Финальное подтверждение новой ссылки',channels:['platform','email'],body:`[Имя], добрый день!
+
+Новая ссылка взамен удаленной успешно размещена на площадке [домен].
+
+Вот прямая ссылка для проверки: [Ссылка] Мы сохранили ваш исходный анкор и целевой URL, а показатели площадки (DR и трафик) полностью соответствуют согласованным.
+
+На это размещение также начинает действовать наша стандартная гарантия. Подскажите, можем закрывать этот тикет или остались еще вопросы по проекту?`},
+    ];
+    return`<h1 class="pg-title">Ссылка удалена / nofollow</h1>
+<p class="pg-desc">Цель — замена по гарантии, не возврат.</p>
+<div class="sec" id="s-rules">
+  <div class="sec-lbl">Правила</div>
+  <div class="rules">
+    <div class="rc info"><div class="rc-title">48 часов на связь с вебмастером</div><div class="rc-body">После подтверждения факта удаления — связаться с площадкой, дать ей 48 часов на восстановление ссылки.</div></div>
+    <div class="rc warn"><div class="rc-title">Если площадка отказала — замена</div><div class="rc-body">Подобрать 1-2 альтернативных варианта того же или более высокого качества, с сохранением исходного анкора и целевого URL.</div></div>
+  </div>
+</div>
+<div class="sec" id="s-tpl"><div class="sec-lbl">Шаблоны</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>`;
+  }
+},
+
+'pl-quality':{
+  bc:'Platform · Претензия к качеству',
+  rnav:['s-rules','s-tpl'],rlbl:['Правила','Шаблоны'],
+  render(){
+    const id='pl-quality';
+    const tpls=[
+      {label:'Запрос деталей',channels:['platform','messenger'],body:`[Имя], здравствуйте!
+
+Спасибо, что обратили на это внимание. Качество контента и его релевантность для нас в приоритете, поэтому мы обязательно все исправим.
+
+Чтобы мы оперативно переработали материал и попали точно в цель, сориентируйте меня, пожалуйста, по деталям:
+Что именно критично исправить? (стилистику текста, интеграцию анкора, общую тематику статьи или саму площадку?)
+Есть ли у вас конкретные пожелания, тезисы или примеры, на которые автору стоит опереться?
+
+Как только вы поделитесь деталями, я сразу передам материал в работу. Наша цель — сделать так, чтобы размещение полностью вас устраивало.`},
+      {label:'Подтверждение правок',channels:['platform','email'],body:`[Имя], принял, спасибо за конкретику!
+
+Все комментарии зафиксировал и уже передал [автору / редактору] на исправление. Мы откорректируем: [кратко перечислить основные правки, например: тональность текста и интеграцию анкора].
+
+По срокам ориентируюсь на [X] рабочих дней. Как только обновленный вариант будет готов, я сразу пришлю его вам на согласование перед публикацией. Процесс под контролем!`},
+      {label:'Вебмастер отказывается править',channels:['platform','messenger'],body:`[Имя], добрый день!
+
+Я с апдейтом по поводу правок в текст на площадке [домен].
+
+К сожалению, со стороны площадки мы столкнулись с жестким регламентом: вебмастер отказывается бесплатно корректировать уже размещенный и проиндексированный материал.
+
+Мы ценим ваше время и качество размещения, поэтому не будем тратить ресурсы на долгие споры с этой площадкой. Я предлагаю пойти по более эффективному пути — мы снимем этот материал и бесплатно подберем для вас альтернативную площадку аналогичного уровня, где полностью учтем все ваши требования к тексту.
+
+Подскажите, такой вариант устроит вас? Если да, я сразу подготовлю список доноров на замену.`},
+      {label:'Площадка не соответствует метрикам',channels:['platform','messenger'],body:`[Имя], спасибо, что обратили внимание и прислали скриншоты.
+
+Мы регулярно обновляем базу, но показатели доменов динамичны, и просадки по метрикам со стороны площадок действительно иногда случаются. Для нас важно, чтобы вы получали именно тот вес ссылки, за который заплатили.
+
+Я уже передал этот кейс в наш аналитический отдел на перепроверку. Дайте мне [X часов / до конца дня], я сверю данные с нашими актуальными логами.
+
+Если несоответствие подтвердится, мы либо договоримся с площадкой о бонусах, либо оперативно предложим вам замену на донор с честными высокими показателями. Я вернусь к вам с решением.`},
+      {label:'Замена URL/анкора до публикации',channels:['platform','messenger'],body:`[Имя], понял вас. Хорошо, что написали сейчас.
+
+Я оперативно отправляю запрос нашей команде размещения и вебмастеру, чтобы приостановить публикацию. Если площадка еще не успела выкатить материал на сайт, мы без проблем заменим целевой URL на [Новый URL] и анкор на [Новый анкор].
+
+Проверю текущий статус задачи и вернусь к вам в течение пары часов с подтверждением, удалось ли перехватить материал до публикации.`},
+    ];
+    return`<h1 class="pg-title">Претензия к качеству</h1>
+<p class="pg-desc">Цель — не доказать правоту, а сохранить клиента.</p>
+<div class="sec" id="s-rules">
+  <div class="sec-lbl">Правила</div>
+  <div class="rules">
+    <div class="rc info"><div class="rc-title">Сначала — конкретика</div><div class="rc-body">Не спорить, запросить детали: что именно не устраивает, есть ли пожелания по правкам.</div></div>
+    <div class="rc warn"><div class="rc-title">Если вебмастер отказывается править</div><div class="rc-body">Не тратить время на споры с площадкой — предложить снять материал и подобрать бесплатную замену.</div></div>
+  </div>
+</div>
+<div class="sec" id="s-tpl"><div class="sec-lbl">Шаблоны</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>`;
+  }
+},
+
+'pl-delay':{
+  bc:'Platform · Задержка публикации',
+  rnav:['s-rules','s-tpl'],rlbl:['Правила','Шаблоны'],
+  render(){
+    const id='pl-delay';
+    const tpls=[
+      {label:'Уведомление о задержке',channels:['platform','messenger'],body:`[Имя], здравствуйте!
+
+Я с важным обновлением по вашему заказу. Хочу предупредить заранее, что публикация на площадке [домен] задерживается с нашей стороны из-за [краткая понятная причина, например: долгой модерации на стороне вебмастера / технических работ на сайте].
+
+Мы согласовали с площадкой новый крайний срок размещения — [дата].
+
+Мы понимаем, что у вас могут быть строгие дедлайны по продвижению, поэтому предлагаю два варианта на выбор:
+Подождать. Мы проконтролируем, чтобы ссылка вышла строго к [дата], и я сразу пришлю её вам.
+Сделать быструю замену. Если время критично, я прямо сейчас подберу для вас альтернативную площадку с аналогичными или более высокими метриками (DR, трафик), которую мы сможем опубликовать без ожидания.
+
+Подскажите, пожалуйста, какой вариант для вас предпочтительнее?`},
+    ];
+    return`<h1 class="pg-title">Задержка публикации</h1>
+<p class="pg-desc">Главное — сообщить первым, дать конкретную дату и выбор: подождать или заменить площадку.</p>
+<div class="sec" id="s-rules">
+  <div class="sec-lbl">Правила</div>
+  <div class="rules">
+    <div class="rc warn"><div class="rc-title">Сообщать проактивно</div><div class="rc-body">Не ждать пока клиент напишет сам — предупредить о задержке и назвать новый срок.</div></div>
+  </div>
+</div>
+<div class="sec" id="s-tpl"><div class="sec-lbl">Шаблоны</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>`;
+  }
+},
+
+'pl-refund':{
+  bc:'Platform · Возврат / вывод средств',
+  rnav:['s-rules','s-tpl'],rlbl:['Правила','Шаблоны'],
+  render(){
+    const id='pl-refund';
+    const tpls=[
+      {label:'Предложение замены вместо возврата',channels:['platform','messenger'],body:`[Имя], здравствуйте!
+
+Получил ваше обращение по поводу возврата, вопрос уже в работе.
+
+Мы без проблем запустим этот процесс, но, чтобы сэкономить ваше время и не ставить на паузу продвижение проекта, я хочу предложить более быстрое решение — оперативную замену. Процедура возврата обычно занимает некоторое время, в то время как замену мы можем запустить в работу сразу.
+
+Я подобрал качественную альтернативную площадку, которая полностью закроет вашу задачу:
+[домен] — DR [X], трафик [Y]/мес, ниша [Z]. Параметры полностью соответствуют вашему исходному заказу.
+
+Посмотрите, пожалуйста, подходит ли вам такой донор? Если площадка устраивает — мы мгновенно отдаем её в работу. Если же вы все-таки предпочитаете возврат средств, дайте знать, я сразу передам финансовому отделу документы на согласование.`},
+      {label:'Вывод с реферального счёта',channels:['platform','messenger'],body:`[Имя], здравствуйте!
+
+Да, конечно, без проблем выведем средства с вашего реферального баланса. Здорово, что вы активно участвуете в нашей партнерской программе!
+
+Чтобы мы могли оперативно отправить транзакцию в финансовый отдел, уточните, пожалуйста:
+Удобный для вас способ получения (карта, расчетный счет, платежная система);
+Реквизиты для перевода.
+
+Как только вы пришлете данные, я сразу передам заявку в работу и сориентирую вас по срокам выплаты.`},
+      {label:'Вывод личных средств с баланса платформы',channels:['platform','messenger'],body:`[Имя], добрый день!
+
+Получил ваш запрос на вывод средств с баланса профиля, мы готовы взять его в работу.
+
+Подскажите, пожалуйста, с чем связано такое решение? Возможно, возникли сложности в работе с платформой, не подошли текущие площадки или изменились приоритеты в продвижении проекта?
+
+Нам бы очень хотелось помочь вам получить нужный результат от линкбилдинга. Если дело в донорах, я могу подключить нашу команду аналитиков, чтобы мы вручную и под ваши индивидуальные требования собрали закрытую базу качественных площадок, которых еще нет в общем поиске.
+
+Если вы всё же настроены закрыть баланс, дайте знать — я пришлю список данных, которые понадобятся для оформления официального возврата финансовым отделом.`},
+    ];
+    return`<h1 class="pg-title">Возврат / вывод средств</h1>
+<p class="pg-desc">Три разных кейса: возврат за заказ (сначала предлагаем замену), вывод реферального баланса, вывод личных внесённых средств.</p>
+<div class="sec" id="s-rules">
+  <div class="sec-lbl">Правила</div>
+  <div class="rules">
+    <div class="rc ok"><div class="rc-title">Возврат за заказ — сначала замена</div><div class="rc-body">Предложить оперативную замену площадки как более быстрый вариант. Если клиент настаивает на возврате — передать финансовому отделу.</div></div>
+    <div class="rc info"><div class="rc-title">Реферальный баланс — выводится без вопросов</div><div class="rc-body">Партнёрские деньги выводятся по первому запросу — уточнить способ получения и реквизиты.</div></div>
+    <div class="rc warn"><div class="rc-title">Вывод личных средств — сначала выяснить причину</div><div class="rc-body">Прежде чем оформлять закрытие баланса, попробовать понять что не устроило и предложить помощь (например, индивидуальный подбор доноров).</div></div>
+  </div>
+</div>
+<div class="sec" id="s-tpl"><div class="sec-lbl">Шаблоны</div>${tpls.map((t,i)=>tplCard(t,id,i)).join('')}</div>`;
+  }
+},
+
+'pl-bug':{
+  bc:'Platform · Не работает кнопка',
+  rnav:['s-rules'],rlbl:['Правила'],
+  render(){
+    const id='pl-bug';
+    const items=[
+      {text:'[Черновик] Уточнить у клиента какая кнопка/элемент не работает и на каком шаге',tag:'p'},
+      {text:'[Черновик] Попробовать воспроизвести баг самостоятельно, сделать скрин',tag:'p'},
+      {text:'[Черновик] Создать тикет в [ADMIN] space / [Portal] chat с описанием и скрином',tag:'j'},
+      {text:'[Черновик] Передать на PM → Dev, не чинить самостоятельно',tag:'j'},
+    ];
+    return`<h1 class="pg-title">Не работает кнопка</h1>
+<p class="pg-desc"><i>Черновик — детали и типовые кейсы уточнить у PM.</i> Технический баг платформы — фиксируем и передаём, не решаем сами.</p>
+<div class="sec" id="s-rules">${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>`;
+  }
+},
+
+'pl-cabinet':{
+  bc:'Platform · Личный кабинет',
+  rnav:['s-flow'],rlbl:['Чеклист'],
+  render(){
+    const id='pl-cabinet';
+    const items=[
+      {text:'[Черновик] Уточнить у клиента email аккаунта для проверки в CRM',tag:'p'},
+      {text:'[Черновик] Проблема со входом → проверить не заблокирован ли аккаунт',tag:'j'},
+      {text:'[Черновик] Восстановление пароля → направить на стандартную форму сброса',tag:'p'},
+      {text:'[Черновик] Если форма сброса не работает → тикет в [ADMIN] space',tag:'j'},
+    ];
+    return`<h1 class="pg-title">Личный кабинет</h1>
+<p class="pg-desc"><i>Черновик.</i></p>
+<div class="sec" id="s-flow"><div class="sec-lbl">Чеклист (предварительный)</div>${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>`;
+  }
+},
+
+'pl-payments':{
+  bc:'Platform · Оплаты и баланс',
+  rnav:['s-flow'],rlbl:['Чеклист'],
+  render(){
+    const id='pl-payments';
+    const items=[
+      {text:'[Черновик] Запросить скрин ошибки и способ оплаты',tag:'p'},
+      {text:'[Черновик] Проверить статус транзакции в платёжной системе / CRM',tag:'j'},
+      {text:'[Черновик] Деньги списаны, баланс не пополнен → тикет на PM с деталями транзакции',tag:'j'},
+      {text:'[Черновик] Вопрос по инвойсу/бухгалтерии → направить на соответствующего специалиста',tag:'p'},
+    ];
+    return`<h1 class="pg-title">Оплаты и баланс</h1>
+<p class="pg-desc"><i>Черновик — не давать финансовых гарантий без подтверждения PM.</i></p>
+<div class="sec" id="s-flow"><div class="sec-lbl">Чеклист (предварительный)</div>${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>`;
+  }
+},
+
+'pl-orders':{
+  bc:'Platform · Оформление заказов',
+  rnav:['s-flow'],rlbl:['Чеклист'],
+  render(){
+    const id='pl-orders';
+    const items=[
+      {text:'[Черновик] Уточнить на каком шаге оформления возникла ошибка',tag:'p'},
+      {text:'[Черновик] Проверить доступность нужного сервиса в кабинете',tag:'j'},
+      {text:'[Черновик] Баг оформления → тикет в [ADMIN] space, не оформлять заказ вручную без PM',tag:'j'},
+      {text:'[Черновик] Уточнить статус уже оформленного заказа в CRM',tag:'p'},
+    ];
+    return`<h1 class="pg-title">Оформление заказов</h1>
+<p class="pg-desc"><i>Черновик.</i></p>
+<div class="sec" id="s-flow"><div class="sec-lbl">Чеклист (предварительный)</div>${progBar(id,items.length)}<div class="chklist">${checkList(id,items)}</div></div>`;
+  }
+},
+
 escalation:{
   bc:'Матрица эскалации',
   rnav:['s-matrix','s-contacts'],rlbl:['Матрица','Контакты'],
@@ -1134,15 +1565,19 @@ function go(pageId){
     const oc=el.getAttribute('onclick')||'';
     if(oc.includes(`'${pageId}'`))el.classList.add('active');
   });
-  ['problems','reactivation','jira'].forEach(grp=>{
+  ['reactivation','winback','jira','tgbot','platform'].forEach(grp=>{
     const sub=document.getElementById('sub-'+grp);
     if(!sub)return;
-    const problemPages=['p-link-removed','p-not-indexed','p-quality','p-delay','p-refund'];
     const reactPages=['r-process','r-channels','r-tracker'];
+    const winbackPages=['wb-process','wb-offers','wb-tracker'];
     const jiraPages=['jira-chat','jira-reviews','jira-admin'];
-    const open=(grp==='problems'&&(pageId===grp||problemPages.includes(pageId)))||
-               (grp==='reactivation'&&(pageId===grp||reactPages.includes(pageId)))||
-               (grp==='jira'&&(pageId===grp||jiraPages.includes(pageId)));
+    const tgbotPages=['tg-support','tg-index','tg-issues'];
+    const platformPages=['pl-link-removed','pl-quality','pl-delay','pl-refund','pl-bug','pl-cabinet','pl-payments','pl-orders'];
+    const open=(grp==='reactivation'&&(pageId===grp||reactPages.includes(pageId)))||
+               (grp==='winback'&&(pageId===grp||winbackPages.includes(pageId)))||
+               (grp==='jira'&&(pageId===grp||jiraPages.includes(pageId)))||
+               (grp==='tgbot'&&(pageId===grp||tgbotPages.includes(pageId)))||
+               (grp==='platform'&&(pageId===grp||platformPages.includes(pageId)));
     sub.style.display=open?'block':'none';
   });
   const pg=PAGES[pageId];
